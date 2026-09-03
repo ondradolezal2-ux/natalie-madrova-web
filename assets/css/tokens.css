@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Design tokens — Natálie Mádrová (Finance & Reality)
+   ========================================================================== */
+
+:root {
+  /* základní plochy — světlé, editoriální (bílá s teplým nádechem) */
+  --color-bg:            #FDFCFA;
+  --color-bg-alt:        #F6F3EC;
+  --color-surface:       #FFFFFF;
+
+  /* text */
+  --color-text-primary:   #2A2621;
+  --color-text-secondary: #6E655A;
+  --color-text-on-dark:   #FAF7F2;
+
+  /* akcent */
+  --color-accent:       #74805F;
+  --color-accent-dark:  #545C42;
+  --color-accent-soft:  #74805F26;
+
+  /* CTA / tlačítka */
+  --color-cta-bg:       #2A2621;
+  --color-cta-bg-hover: #545C42;
+  --color-cta-text:     #FAF7F2;
+
+  /* okraje, stavy — tenké, jemné linky místo těžkých stínů */
+  --color-border:       #E9E3D5;
+  --color-error:        #B3543F;
+  --color-success:      #6B7A54;
+
+  /* typografie */
+  --font-display: "Instrument Serif", "Playfair Display", Georgia, serif;
+  --font-body: "Inter", -apple-system, system-ui, sans-serif;
+
+  --fs-h1: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+  --fs-h2: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+  --fs-h3: clamp(1.375rem, 1.5vw + 1rem, 1.75rem);
+  --fs-h4: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  --lh-heading: 1.15;
+  --lh-body: 1.7;
+
+  /* spacing */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
+  --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px; --space-9: 128px;
+
+  --container-max: 1240px;
+  --container-padding: 24px;
+  --container-padding-lg: 64px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-soft: 0 2px 16px rgba(42, 38, 33, 0.045);
+  --shadow-hover: 0 10px 28px rgba(42, 38, 33, 0.08);
+}
