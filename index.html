@@ -125,29 +125,17 @@
         </div>
       </div>
       <div class="photo-collage reveal">
-        <!-- TODO: natalie-01-notebook.jpg – tři čtvrtě postava, drží otevřený notebook -->
         <div class="photo-frame">
-          <div class="photo-placeholder" title="Foto: Natálie s notebookem (natalie-01-notebook.jpg)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          </div>
+          <img class="brand-photo" src="assets/img/portraits/natalie-01-notebook.jpg" alt="Natálie Mádrová s notebookem" loading="lazy">
         </div>
-        <!-- TODO: natalie-05-mercedes.jpg – boční portrét se složkou Mercedes-Benz -->
         <div class="photo-frame">
-          <div class="photo-placeholder" title="Foto: Natálie se složkou (natalie-05-mercedes.jpg)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          </div>
+          <img class="brand-photo" src="assets/img/portraits/natalie-05-mercedes.jpg" alt="Natálie Mádrová" loading="lazy">
         </div>
-        <!-- TODO: natalie-04-phone.jpg – bílý top, telefon v ruce -->
         <div class="photo-frame">
-          <div class="photo-placeholder" title="Foto: Natálie telefonuje (natalie-04-phone.jpg)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          </div>
+          <img class="brand-photo" src="assets/img/portraits/natalie-06-macbook.jpg" alt="Natálie Mádrová s notebookem u okna" loading="lazy">
         </div>
-        <!-- TODO: natalie-02-whatsapp.jpg – sedí na patách, telefon u ucha -->
         <div class="photo-frame">
-          <div class="photo-placeholder" title="Foto: Natálie s telefonem (natalie-02-whatsapp.jpg)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          </div>
+          <img class="brand-photo" src="assets/img/portraits/natalie-02-whatsapp.jpg" alt="Natálie Mádrová telefonuje" loading="lazy">
         </div>
       </div>
     </div>
@@ -216,10 +204,10 @@
   <section class="section">
     <div class="container">
       <div class="grid stats-grid">
-        <!-- TODO: čísla ověřit s klientkou -->
+        <!-- TODO: číslo 6+ let ověřit s klientkou (odkazuje na zkušenost týmu, ne jen její vlastní praxi) -->
         <div class="reveal">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">let zkušeností</div>
+          <div class="stat-number">6+</div>
+          <div class="stat-label">let zkušeností v týmu</div>
         </div>
         <div class="reveal">
           <div class="stat-number">100+</div>
@@ -237,6 +225,31 @@
     </div>
   </section>
 
+  <!-- LEAD MAGNET -->
+  <section class="section">
+    <div class="container">
+      <div class="lead-capture reveal" style="max-width: 640px; margin-inline: auto; text-align: center;">
+        <span class="eyebrow">Zdarma</span>
+        <h3 class="mb-1">Připravuji pro vás praktického průvodce</h3>
+        <!-- TODO: téma průvodce ještě není finální (na výběr: hypotéka checklist / chyby při prodeji / zahraniční investice / kolik si můžu půjčit) — doplnit skutečný obsah, až bude hotový -->
+        <p class="lead-note" style="text-align:center;">Chystám krátký praktický materiál ke stažení. Nechte mi telefon a dám vám vědět, jakmile bude hotový — žádný spam, jen jedna zpráva.</p>
+        <form data-lead-form="lead-magnet" action="mailto:info@natalie-madrova.cz" method="post" enctype="text/plain" style="max-width:420px; margin-inline:auto;">
+          <div class="form-row cols-2">
+            <div class="form-field">
+              <label for="magnet-jmeno">Jméno</label>
+              <input type="text" id="magnet-jmeno" name="jmeno" required autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label for="magnet-telefon">Telefon</label>
+              <input type="tel" id="magnet-telefon" name="telefon" required autocomplete="tel">
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">Chci vědět, až to bude hotové</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- REFERENCE -->
   <section class="section section-alt">
     <div class="container">
@@ -245,21 +258,21 @@
         <h2>Co říkají klienti</h2>
       </div>
       <div class="grid grid-3">
-        <!-- TODO: nahradit reálnou referencí od klientky -->
+        <!-- Reálné recenze z Google (ověřeno 9/2026) -->
         <div class="testimonial-card reveal">
-          <p class="testimonial-quote">Paní Mádrová nám s manželem pomohla prodat byt během měsíce a rovnou zařídila i hypotéku na nové bydlení.</p>
-          <p class="testimonial-name">Jana K.</p>
-          <p class="testimonial-role">Týniště nad Orlicí</p>
+          <p class="testimonial-quote">Slečna Mádrová si na mě udělala dostatek času, vše mi důkladně a srozumitelně vysvětlila a ukázala jednotlivé možnosti. Bylo vidět, že má ve své práci přehled a opravdu se vyzná.</p>
+          <p class="testimonial-name">Vanesa Miřejovská</p>
+          <p class="testimonial-role">Ověřeno na Google</p>
         </div>
         <div class="testimonial-card reveal">
-          <p class="testimonial-quote">Profesionální přístup, srozumitelné vysvětlení všech kroků a žádný tlak na rychlé rozhodnutí. Doporučuji.</p>
-          <p class="testimonial-name">Petr S.</p>
-          <p class="testimonial-role">Hradec Králové</p>
+          <p class="testimonial-quote">Velmi profesionální a milý přístup. Vše mi bylo srozumitelně vysvětleno — jak jednotlivé druhy pojištění, tak i možnosti investování. Moc děkuji za poradenství Natálii Madrové.</p>
+          <p class="testimonial-name">Michaela Cachová</p>
+          <p class="testimonial-role">Ověřeno na Google</p>
         </div>
         <div class="testimonial-card reveal">
-          <p class="testimonial-quote">Díky konzultaci jsme se rozhodli investovat do nemovitosti ve Španělsku — celý proces byl mnohem jednodušší, než jsme čekali.</p>
-          <p class="testimonial-name">Lucie a Martin</p>
-          <p class="testimonial-role">Rychnov nad Kněžnou</p>
+          <p class="testimonial-quote">Při schůzce jsme probírali finance a pojištění. Poradili mi, co by se dalo změnit k lepšímu — a taky se změnilo. Mohu doporučit dalším.</p>
+          <p class="testimonial-name">Vladimíra Mrkvičková</p>
+          <p class="testimonial-role">Ověřeno na Google</p>
         </div>
       </div>
       <div class="text-center mt-2 reveal">
