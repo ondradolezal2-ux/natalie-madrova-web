@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/tokens.css?v=3">
-<link rel="stylesheet" href="assets/css/main.css?v=3">
+<link rel="stylesheet" href="assets/css/tokens.css?v=4">
+<link rel="stylesheet" href="assets/css/main.css?v=4">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -144,9 +144,9 @@
         </div>
       </div>
 
-      <form class="card-surface reveal" action="mailto:info@natalie-madrova.cz" method="post" enctype="text/plain" data-lead-form="kontakt">
+      <form class="card-surface reveal" id="kontakt-form" data-lead-form="kontakt">
         <span class="eyebrow">Nebo napište zprávu</span>
-        <!-- TODO: napojit na reálné odeslání (formulářová služba, např. Formspree, nebo CRM) — nyní mailto jako dočasné řešení -->
+        <!-- TODO: napojit na reálné odeslání (Formspree nebo CRM) — nyní JS otevře e-mail klienta jako dočasné řešení -->
         <div class="form-field">
           <label for="jmeno">Jméno a příjmení</label>
           <input type="text" id="jmeno" name="jmeno" required autocomplete="name">
@@ -322,6 +322,6 @@
   </a>
 </div>
 
-<script src="assets/js/main.js?v=3"></script>
+<script src="assets/js/main.js?v=4"></script>
 </body>
 </html>

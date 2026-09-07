@@ -116,6 +116,43 @@
     });
   });
 
+  /* ---------- Kontaktní formulář — otevře e-mail klienta (dočasné řešení) ---------- */
+  var kontaktForm = document.getElementById("kontakt-form");
+  if (kontaktForm) {
+    kontaktForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var jmeno = kontaktForm.querySelector("#jmeno").value;
+      var email = kontaktForm.querySelector("#email").value;
+      var telefon = kontaktForm.querySelector("#telefon").value;
+      var tema = kontaktForm.querySelector("#tema").value;
+      var zprava = kontaktForm.querySelector("#zprava").value;
+      var subject = "Poptávka z webu — " + (tema || "kontaktní formulář");
+      var body =
+        "Jméno: " + jmeno + "\n" +
+        "E-mail: " + email + "\n" +
+        "Telefon: " + telefon + "\n" +
+        "Téma: " + tema + "\n\n" +
+        "Zpráva:\n" + zprava;
+      window.location.href =
+        "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  }
+
+  /* ---------- Lead magnet formulář (Španělsko) — otevře e-mail klienta ---------- */
+  var leadMagnetForm = document.getElementById("lead-magnet-form");
+  if (leadMagnetForm) {
+    leadMagnetForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var jmeno = leadMagnetForm.querySelector("#magnet-jmeno").value;
+      var telefon = leadMagnetForm.querySelector("#magnet-telefon").value;
+      var email = leadMagnetForm.querySelector("#magnet-email").value;
+      var subject = "Průvodce nemovitostmi ve Španělsku";
+      var body = "Jméno: " + jmeno + "\nTelefon: " + telefon + "\nE-mail: " + email;
+      window.location.href =
+        "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  }
+
   /* ---------- FAQ akordeon ---------- */
   document.querySelectorAll(".faq-item").forEach(function (item) {
     var question = item.querySelector(".faq-question");
@@ -146,7 +183,7 @@
           '<span class="eyebrow">Zdarma</span>' +
           '<h3 id="lead-popup-heading" class="mb-1">Průvodce nemovitostmi ve Španělsku</h3>' +
           '<p class="lead-note">Připravuji stručný přehled, jak z pohledu českého klienta funguje nákup nemovitosti ve Španělsku — financování, daně i časté chyby. Nechte mi telefon a e-mail, pošlu vám ho, jakmile bude hotový.</p>' +
-          '<form data-lead-form="lead-magnet-popup" action="mailto:info@natalie-madrova.cz" method="post" enctype="text/plain">' +
+          '<form data-lead-form="lead-magnet-popup">' +
             '<div class="form-field"><label for="popup-jmeno">Jméno</label><input type="text" id="popup-jmeno" name="jmeno" required autocomplete="name"></div>' +
             '<div class="form-row cols-2">' +
               '<div class="form-field"><label for="popup-telefon">Telefon</label><input type="tel" id="popup-telefon" name="telefon" required autocomplete="tel"></div>' +
@@ -169,9 +206,17 @@
         if (e.key === "Escape") { close(true); document.removeEventListener("keydown", onKey); }
       });
       overlay.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var jmeno = overlay.querySelector("#popup-jmeno").value;
+        var telefon = overlay.querySelector("#popup-telefon").value;
+        var email = overlay.querySelector("#popup-email").value;
+        var subject = "Průvodce nemovitostmi ve Španělsku";
+        var body = "Jméno: " + jmeno + "\nTelefon: " + telefon + "\nE-mail: " + email;
         trackEvent("lead_form_submit", { form_id: "lead-magnet-popup" });
         try { sessionStorage.setItem(STORAGE_KEY, "1"); } catch (err) {}
         window.setTimeout(function () { close(false); }, 400);
+        window.location.href =
+          "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       });
     }, 9000);
   })();
