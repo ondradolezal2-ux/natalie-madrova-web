@@ -11,6 +11,7 @@ img, picture, svg { display: block; max-width: 100%; }
 input, button, textarea, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }
+[hidden] { display: none !important; }
 
 body {
   font-family: var(--font-body);
@@ -404,6 +405,9 @@ p { color: var(--color-text-primary); }
 
 /* ---------- Karty nemovitostí ---------- */
 .property-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
   background: var(--color-surface);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -425,6 +429,22 @@ p { color: var(--color-text-primary); }
 .property-location { display: block; margin-bottom: var(--space-2); }
 .property-title { margin-bottom: var(--space-2); }
 .property-price { font-family: var(--font-display); font-size: 1.375rem; color: var(--color-accent-dark); }
+
+/* ---------- Detail nemovitosti ---------- */
+.property-detail-media { border-radius: var(--radius-md); overflow: hidden; }
+.property-detail-media .photo-placeholder { aspect-ratio: 4 / 3; }
+.property-detail-tag {
+  position: static; display: inline-block;
+  background: var(--color-cta-bg); color: var(--color-cta-text);
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 6px 12px; border-radius: var(--radius-sm);
+}
+.property-detail-price { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-accent-dark); margin: var(--space-3) 0; }
+.property-detail-features { list-style: none; padding: 0; margin: var(--space-4) 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.property-detail-features li {
+  background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+  padding: 6px 14px; font-size: var(--fs-small); color: var(--color-text-secondary);
+}
 
 /* ---------- Kroky procesu ---------- */
 .process-steps { display: flex; flex-direction: column; gap: var(--space-6); }

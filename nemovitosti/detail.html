@@ -3,13 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nemovitosti — aktuální nabídka | Natálie Mádrová</title>
-<meta name="description" content="Aktuální nabídka bytů, domů a pozemků k prodeji a pronájmu na Rychnovsku, Pardubicku a Královéhradecku.">
-<meta property="og:title" content="Nemovitosti — aktuální nabídka | Natálie Mádrová">
-<meta property="og:description" content="Aktuální nabídka nemovitostí k prodeji a pronájmu.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.natalie-madrova.cz/nemovitosti/index.html">
-<link rel="canonical" href="https://www.natalie-madrova.cz/nemovitosti/index.html">
+<title>Nemovitost | Natálie Mádrová</title>
+<meta name="description" content="Detail nemovitosti z aktuální nabídky Natálie Mádrové.">
+<meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%224%22 fill=%22%232A2621%22/><text x=%2212%22 y=%2217%22 font-family=%22Georgia,serif%22 font-size=%2214%22 fill=%22%23FAF7F2%22 text-anchor=%22middle%22>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,56 +89,40 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow reveal">Nemovitosti</p>
-      <h1 class="reveal">Aktuální nabídka</h1>
-      <p class="lead reveal">Byty, domy a pozemky k prodeji i pronájmu. Nabídka se pravidelně mění — pokud nevidíte, co hledáte, ozvěte se, ráda vám pomůžu najít nemovitost na míru.</p>
+      <p class="eyebrow reveal"><a href="index.html" class="link-accent">← Zpět na nabídku</a></p>
+      <h1 class="reveal" data-detail-title>Nemovitost</h1>
+      <p class="lead reveal" data-detail-location></p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="form-row cols-2 mb-2 reveal" style="grid-template-columns: repeat(3,1fr); gap: var(--space-3);">
-        <div class="form-field" style="margin-bottom:0;">
-          <label for="filter-typ">Typ</label>
-          <select id="filter-typ" data-property-filter="type">
-            <option value="">Všechny typy</option>
-            <option value="byt">Byt</option>
-            <option value="dum">Rodinný dům</option>
-            <option value="pozemek">Pozemek</option>
-          </select>
+
+      <div class="grid grid-2" style="align-items:start;" data-detail-content hidden>
+        <div class="reveal">
+          <div class="property-detail-media">
+            <div class="photo-placeholder" data-detail-photo></div>
+          </div>
         </div>
-        <div class="form-field" style="margin-bottom:0;">
-          <label for="filter-lokalita">Lokalita</label>
-          <select id="filter-lokalita" data-property-filter="location">
-            <option value="">Všechny lokality</option>
-            <option value="tyniste-nad-orlici">Týniště nad Orlicí</option>
-            <option value="rychnov-nad-kneznou">Rychnov nad Kněžnou</option>
-            <option value="hradec-kralove">Hradec Králové</option>
-            <option value="pardubice">Pardubice</option>
-            <option value="jina">Jiná lokalita</option>
-            <option value="zahranici">Zahraničí</option>
-          </select>
-        </div>
-        <div class="form-field" style="margin-bottom:0;">
-          <label for="filter-cena">Cena</label>
-          <select id="filter-cena" data-property-filter="price">
-            <option value="">Bez omezení</option>
-            <option value="0-3">do 3 mil. Kč</option>
-            <option value="3-6">3–6 mil. Kč</option>
-            <option value="6-plus">nad 6 mil. Kč</option>
-          </select>
+        <div class="reveal">
+          <span class="property-detail-tag" data-detail-tag></span>
+          <p class="property-detail-price" data-detail-price></p>
+          <p class="text-secondary" data-detail-summary></p>
+          <ul class="property-detail-features" data-detail-features></ul>
+          <!-- TODO: doplnit reálné parametry, fotografie a popis od klientky -->
+          <p class="text-secondary" style="font-size:0.875rem;">Přesné parametry, fotografie a další podklady vám ráda pošlu — ozvěte se mi.</p>
+          <div class="hero-actions mt-3">
+            <a href="../kontakt.html" class="btn-primary">Mám zájem — domluvit prohlídku</a>
+            <a href="https://wa.me/420604306514" class="btn-secondary" target="_blank" rel="noopener">Napsat na WhatsApp</a>
+          </div>
         </div>
       </div>
 
-      <!-- TODO: nahradit reálnými nemovitostmi z aktuální nabídky klientky (data v assets/js/properties-data.js) -->
-      <div class="grid grid-3" data-property-grid></div>
-
-      <p class="text-center text-secondary mt-2" data-property-empty hidden>Žádná nemovitost neodpovídá zvoleným filtrům — zkuste je upravit, nebo se mi rovnou ozvěte, ráda pomůžu najít něco na míru.</p>
-
-      <div class="text-center mt-3 reveal">
-        <p class="lead mb-1">Nevidíte, co hledáte?</p>
-        <a href="../kontakt.html" class="btn-primary">Ozvěte se mi</a>
+      <div class="text-center" data-detail-not-found hidden>
+        <p class="lead mb-2">Tuto nemovitost se nepodařilo najít — možná už byla prodána nebo pronajata, nebo je odkaz neplatný.</p>
+        <a href="index.html" class="btn-primary">Zpět na aktuální nabídku</a>
       </div>
+
     </div>
   </section>
 
@@ -234,6 +214,6 @@
 
 <script src="../assets/js/main.js?v=3"></script>
 <script src="../assets/js/properties-data.js?v=3"></script>
-<script src="../assets/js/nemovitosti.js?v=3"></script>
+<script src="../assets/js/property-detail.js?v=3"></script>
 </body>
 </html>

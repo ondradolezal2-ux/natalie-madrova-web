@@ -116,35 +116,6 @@
     });
   });
 
-  /* ---------- Filtrování nemovitostí ---------- */
-  var propertyGrid = document.querySelector("[data-property-grid]");
-  if (propertyGrid) {
-    var filterSelects = document.querySelectorAll("[data-property-filter]");
-    var propertyCards = Array.prototype.slice.call(propertyGrid.querySelectorAll(".property-card"));
-    var emptyMsg = document.querySelector("[data-property-empty]");
-
-    var applyPropertyFilters = function () {
-      var values = {};
-      filterSelects.forEach(function (select) {
-        values[select.getAttribute("data-property-filter")] = select.value;
-      });
-      var visibleCount = 0;
-      propertyCards.forEach(function (card) {
-        var matches =
-          (!values.type || card.getAttribute("data-type") === values.type) &&
-          (!values.location || card.getAttribute("data-location") === values.location) &&
-          (!values.price || card.getAttribute("data-price") === values.price);
-        card.hidden = !matches;
-        if (matches) visibleCount++;
-      });
-      if (emptyMsg) emptyMsg.hidden = visibleCount > 0;
-    };
-
-    filterSelects.forEach(function (select) {
-      select.addEventListener("change", applyPropertyFilters);
-    });
-  }
-
   /* ---------- FAQ akordeon ---------- */
   document.querySelectorAll(".faq-item").forEach(function (item) {
     var question = item.querySelector(".faq-question");
