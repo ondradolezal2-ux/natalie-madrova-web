@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ondradolezal2-ux.github.io/natalie-madrova-web/sitemap.xml

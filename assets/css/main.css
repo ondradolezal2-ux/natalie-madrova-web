@@ -569,7 +569,7 @@ p { color: var(--color-text-primary); }
   }
   .mobile-cta-bar__btn:last-child { border-right: none; }
   .mobile-cta-bar__btn svg { width: 18px; height: 18px; }
-  .mobile-cta-bar__btn--whatsapp { background: var(--color-accent); color: var(--color-text-on-dark); }
+  .mobile-cta-bar__btn--whatsapp { background: var(--color-accent-dark); color: var(--color-text-on-dark); }
 }
 
 /* ---------- Formuláře ---------- */

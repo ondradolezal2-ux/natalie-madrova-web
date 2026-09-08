@@ -34,13 +34,29 @@
     });
   }
 
+  /* ---------- Google Analytics (GA4) — načte se až po souhlasu s cookies ---------- */
+  var GA4_ID = "G-XXXXXXXXXX"; // TODO: nahradit reálným GA4 Measurement ID od Natky
+  var gaLoaded = false;
+  var loadAnalytics = function () {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_ID;
+    document.head.appendChild(script);
+    gtag("js", new Date());
+    gtag("config", GA4_ID);
+  };
+
   /* ---------- Cookie lišta ---------- */
   var cookieBar = document.querySelector(".cookie-bar");
   if (cookieBar) {
     var CONSENT_KEY = "nm-cookie-consent";
     var stored = null;
     try { stored = localStorage.getItem(CONSENT_KEY); } catch (e) {}
-    if (!stored) {
+    if (stored === "accepted") {
+      loadAnalytics();
+    } else if (!stored) {
       window.setTimeout(function () { cookieBar.classList.add("is-visible"); }, 600);
     }
     var acceptBtn = cookieBar.querySelector("[data-cookie-accept]");
@@ -49,8 +65,15 @@
       cookieBar.classList.remove("is-visible");
       try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
     };
-    if (acceptBtn) acceptBtn.addEventListener("click", function () { hide("accepted"); });
+    if (acceptBtn) acceptBtn.addEventListener("click", function () { loadAnalytics(); hide("accepted"); });
     if (declineBtn) declineBtn.addEventListener("click", function () { hide("declined"); });
+
+    document.querySelectorAll("[data-cookie-settings]").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        cookieBar.classList.add("is-visible");
+      });
+    });
   }
 
   /* ---------- Scroll reveal animace ---------- */

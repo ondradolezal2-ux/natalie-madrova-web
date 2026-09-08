@@ -3,26 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O mně | Natálie Mádrová</title>
+<title>O mně | Natálie Mádrová — poradkyně Rychnovsko, Pardubicko</title>
 <meta name="description" content="Poznejte Natálii Mádrovou — realitní a finanční poradkyni pro Rychnovsko, Pardubicko a Královéhradecko. Transparentnost, individuální přístup a komplexní servis.">
 <meta property="og:title" content="O mně | Natálie Mádrová">
 <meta property="og:description" content="Realitní a finanční poradkyně, která spojuje péči o nemovitost i o vaše finance.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.natalie-madrova.cz/o-mne.html">
-<link rel="canonical" href="https://www.natalie-madrova.cz/o-mne.html">
+<meta property="og:image" content="https://ondradolezal2-ux.github.io/natalie-madrova-web/assets/img/og-image.jpg">
+<meta property="og:url" content="https://ondradolezal2-ux.github.io/natalie-madrova-web/o-mne.html">
+<link rel="canonical" href="https://ondradolezal2-ux.github.io/natalie-madrova-web/o-mne.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%224%22 fill=%22%232A2621%22/><text x=%2212%22 y=%2217%22 font-family=%22Georgia,serif%22 font-size=%2214%22 fill=%22%23FAF7F2%22 text-anchor=%22middle%22>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/tokens.css?v=4">
-<link rel="stylesheet" href="assets/css/main.css?v=4">
-<!-- TODO: nahradit G-XXXXXXXXXX reálným GA4 Measurement ID od Natky -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<link rel="stylesheet" href="assets/css/tokens.css?v=5">
+<link rel="stylesheet" href="assets/css/main.css?v=5">
+<!-- GA4 (TODO: reálné ID od Natky) se načte až po souhlasu s cookies — viz assets/js/main.js -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
 </script>
 </head>
 <body>
@@ -213,7 +211,8 @@
     </div>
     <div class="footer-bottom">
       <span>© <span data-current-year></span> Natálie Mádrová. Všechna práva vyhrazena.</span>
-      <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+      <span style="display:flex; gap:var(--space-3); flex-wrap:wrap;"><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+        <a href="#" data-cookie-settings>Nastavení cookies</a></span>
     </div>
   </div>
 </footer>
@@ -249,6 +248,6 @@
   </a>
 </div>
 
-<script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/main.js?v=5"></script>
 </body>
 </html>
