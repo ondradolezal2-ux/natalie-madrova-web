@@ -326,7 +326,7 @@ def render_realized(cards):
           </div>
           <div class="property-body">
             <span class="eyebrow property-location">{town}</span>
-            <h4 class="property-title">{html.escape(title)}</h4>
+            <h3 class="property-title">{html.escape(title)}</h3>
           </div>
         </div>""")
     return "".join(items)

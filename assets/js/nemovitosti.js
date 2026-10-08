@@ -4,6 +4,13 @@
   var propertyGrid = document.querySelector("[data-property-grid]");
   if (!propertyGrid || !window.PROPERTIES) return;
 
+  // Úvodní stránka ukazuje jen pár nabídek a odkazuje do podsložky nemovitosti/
+  var detailBase = propertyGrid.getAttribute("data-detail-base") || "detail.html";
+  var limit = parseInt(propertyGrid.getAttribute("data-limit"), 10) || window.PROPERTIES.length;
+  var properties = window.PROPERTIES.slice(0, limit);
+  var section = propertyGrid.closest("[data-property-section]");
+  if (section && !properties.length) { section.hidden = true; return; }
+
   var svgHome =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">' +
     '<path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
@@ -14,7 +21,7 @@
       ? '<img src="' + cover + '" alt="' + p.title + ', ' + p.locationLabel + '" loading="lazy" decoding="async">'
       : '<div class="photo-placeholder">' + svgHome + '</div>';
     return (
-      '<a class="property-card reveal" href="detail.html?id=' + encodeURIComponent(p.id) + '" ' +
+      '<a class="property-card" href="' + detailBase + '?id=' + encodeURIComponent(p.id) + '" ' +
       'data-type="' + p.type + '" data-location="' + p.location + '" data-price="' + p.priceBand + '">' +
         '<div class="property-media">' +
           media +
@@ -22,15 +29,14 @@
         '</div>' +
         '<div class="property-body">' +
           '<span class="eyebrow property-location">' + p.locationLabel + '</span>' +
-          '<h4 class="property-title">' + p.title + '</h4>' +
+          '<h3 class="property-title">' + p.title + '</h3>' +
           '<p class="property-price">' + p.price + '</p>' +
         '</div>' +
       '</a>'
     );
   };
 
-  propertyGrid.innerHTML = window.PROPERTIES.map(cardHtml).join("");
-  propertyGrid.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-visible"); });
+  propertyGrid.innerHTML = properties.map(cardHtml).join("");
 
   var filterSelects = document.querySelectorAll("[data-property-filter]");
   var propertyCards = Array.prototype.slice.call(propertyGrid.querySelectorAll(".property-card"));

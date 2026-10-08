@@ -13,10 +13,11 @@
 <link rel="canonical" href="https://ondradolezal2-ux.github.io/natalie-madrova-web/">
 <!-- TODO: nahradit finálním favicon souborem, až bude k dispozici logo -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%224%22 fill=%22%232A2621%22/><text x=%2212%22 y=%2217%22 font-family=%22Georgia,serif%22 font-size=%2214%22 fill=%22%23FAF7F2%22 text-anchor=%22middle%22>N</text></svg>">
-<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=8">
-<link rel="stylesheet" href="assets/css/tokens.css?v=8">
-<link rel="stylesheet" href="assets/css/main.css?v=8">
+<link rel="preload" href="assets/fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css?v=9">
+<link rel="stylesheet" href="assets/css/tokens.css?v=9">
+<link rel="stylesheet" href="assets/css/main.css?v=9">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -113,49 +114,65 @@
   <section class="hero">
     <div class="container">
       <div>
-        <p class="eyebrow hero-eyebrow reveal">Reality &amp; finance</p>
-        <h1 class="reveal">Váš domov, moje péče.<br>Vaše finance, moje <em>odpovědnost</em>.</h1>
-        <p class="lead reveal">Pomáhám klientům z Rychnovska, Pardubicka a Královéhradecka s prodejem i koupí nemovitostí, hypotékami, investicemi a pojištěním — včetně nemovitostí ve Španělsku a Dubaji.</p>
-        <div class="hero-actions reveal">
+        <p class="eyebrow hero-eyebrow">Reality &amp; finance</p>
+        <h1>Váš domov, moje péče. Vaše finance, moje <em>odpovědnost</em>.</h1>
+        <p class="lead">Pomáhám klientům z Rychnovska, Pardubicka a Královéhradecka s prodejem i koupí nemovitostí, hypotékami, investicemi a pojištěním — včetně nemovitostí ve Španělsku a Dubaji.</p>
+        <div class="hero-actions">
           <a href="kontakt.html" class="btn-primary">Domluvit konzultaci</a>
           <a href="o-mne.html" class="btn-secondary">Více o mně</a>
         </div>
       </div>
-      <div class="photo-collage reveal">
+      <div class="photo-collage">
         <div class="photo-frame photo-frame-main">
-          <img class="brand-photo" src="assets/img/portraits/natalie-01-notebook.jpg" alt="Natálie Mádrová s notebookem" loading="lazy">
+          <img class="brand-photo" src="assets/img/portraits/natalie-01-notebook.jpg" alt="Natálie Mádrová s notebookem">
         </div>
         <div class="photo-frame photo-frame-accent">
-          <img class="brand-photo" src="assets/img/portraits/natalie-02-whatsapp.jpg" alt="Natálie Mádrová telefonuje" loading="lazy">
+          <img class="brand-photo" src="assets/img/portraits/natalie-02-whatsapp.jpg" alt="Natálie Mádrová telefonuje">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KRÁTKÉ PŘEDSTAVENÍ -->
+  <!-- AKTUÁLNĚ V NABÍDCE (karty z denní synchronizace, assets/js/properties-data.js) -->
+  <section class="section section-alt" data-property-section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Aktuálně v nabídce</h2>
+        <a href="nemovitosti/index.html" class="link-accent">Celá nabídka →</a>
+      </div>
+      <div class="cards-3" data-property-grid data-limit="3" data-detail-base="nemovitosti/detail.html"></div>
+    </div>
+  </section>
+
+  <!-- O MNĚ + ČÍSLA -->
   <section class="section">
-    <div class="container intro-feature">
-      <div class="photo-frame intro-feature-photo reveal">
+    <div class="container about">
+      <div class="photo-frame">
         <img class="brand-photo" src="assets/img/portraits/natalie-05-mercedes.jpg" alt="Natálie Mádrová" loading="lazy">
       </div>
-      <div class="reveal">
-        <p class="eyebrow">O mně</p>
-        <h2 class="mb-2">Realitní a finanční poradenství pod jednou střechou</h2>
+      <div class="about-text">
+        <h2>Realitní a finanční poradenství pod jednou střechou</h2>
         <!-- TODO: nahradit reálným textem od klientky -->
         <p class="lead">Spojuji realitní poradenství s financemi, abyste nemuseli řešit hypotéku, pojištění a prodej nemovitosti s několika různými lidmi. Individuální přístup, transparentní komunikace a komplexní servis od prvního kroku až po předání klíčů.</p>
-        <a href="o-mne.html" class="link-accent mt-1" style="display:inline-block;">Více o mně →</a>
+        <a href="o-mne.html" class="link-accent" style="display:inline-block;">Více o mně →</a>
+        <!-- Čísla potvrdila Natka 5. 9. 2026 (6+ let = zkušenost týmu) -->
+        <div class="about-stats">
+          <div><div class="stat-number">6+</div><div class="stat-label">let zkušeností v týmu</div></div>
+          <div><div class="stat-number">100+</div><div class="stat-label">spokojených klientů</div></div>
+          <div><div class="stat-number">150+</div><div class="stat-label">uzavřených obchodů</div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PILÍŘE SLUŽEB -->
+  <!-- SLUŽBY -->
   <section class="section section-alt">
-    <div class="container">
-      <div class="section-header center reveal">
-        <p class="eyebrow">Služby</p>
+    <div class="container split">
+      <div class="split-aside">
         <h2>Ve čtyřech oblastech, na které se můžete spolehnout</h2>
+        <p class="lead">Reality, financování i pojištění vyřešíte s jedním člověkem.</p>
       </div>
-      <div class="grid grid-4">
+      <div class="cards-2">
         <div class="service-card reveal">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
@@ -192,64 +209,14 @@
     </div>
   </section>
 
-  <!-- STATISTIKY -->
-  <section class="section">
-    <div class="container">
-      <div class="grid stats-grid">
-        <!-- TODO: číslo 6+ let ověřit s klientkou (odkazuje na zkušenost týmu, ne jen její vlastní praxi) -->
-        <div class="reveal">
-          <div class="stat-number">6+</div>
-          <div class="stat-label">let zkušeností v týmu</div>
-        </div>
-        <div class="reveal">
-          <div class="stat-number">100+</div>
-          <div class="stat-label">spokojených klientů</div>
-        </div>
-        <div class="reveal">
-          <div class="stat-number">150+</div>
-          <div class="stat-label">uzavřených obchodů</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEAD MAGNET -->
-  <section class="section">
-    <div class="container">
-      <div class="lead-capture reveal" style="max-width: 640px; margin-inline: auto; text-align: center;">
-        <span class="eyebrow">Zdarma</span>
-        <h3 class="mb-1">Průvodce nemovitostmi ve Španělsku</h3>
-        <!-- TODO: obsah průvodce ještě není hotový — doplnit skutečný materiál, až bude připravený -->
-        <p class="lead-note" style="text-align:center;">Připravuji stručný přehled, jak z pohledu českého klienta funguje nákup nemovitosti ve Španělsku — financování, daně i časté chyby. Nechte mi telefon a e-mail, pošlu vám ho, jakmile bude hotový — žádný spam, jen jedna zpráva.</p>
-        <form id="lead-magnet-form" data-lead-form="lead-magnet" style="max-width:420px; margin-inline:auto;">
-          <div class="form-field">
-            <label for="magnet-jmeno">Jméno</label>
-            <input type="text" id="magnet-jmeno" name="jmeno" required autocomplete="name">
-          </div>
-          <div class="form-row cols-2">
-            <div class="form-field">
-              <label for="magnet-telefon">Telefon</label>
-              <input type="tel" id="magnet-telefon" name="telefon" required autocomplete="tel">
-            </div>
-            <div class="form-field">
-              <label for="magnet-email">E-mail</label>
-              <input type="email" id="magnet-email" name="email" required autocomplete="email">
-            </div>
-          </div>
-          <button type="submit" class="btn-primary">Chci ho dostat</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
   <!-- REFERENCE -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
-      <div class="section-header center reveal">
-        <p class="eyebrow">Reference</p>
+      <div class="section-head">
         <h2>Co říkají klienti</h2>
+        <a href="reference.html" class="link-accent">Všechny reference →</a>
       </div>
-      <div class="grid grid-3">
+      <div class="cards-3">
         <!-- Reálné recenze z Google (ověřeno 9/2026) -->
         <div class="testimonial-card reveal">
           <p class="testimonial-quote">Slečna Mádrová si na mě udělala dostatek času, vše mi důkladně a srozumitelně vysvětlila a ukázala jednotlivé možnosti. Bylo vidět, že má ve své práci přehled a opravdu se vyzná.</p>
@@ -267,18 +234,52 @@
           <p class="testimonial-role">Ověřeno na Google</p>
         </div>
       </div>
-      <div class="text-center mt-2 reveal">
-        <a href="reference.html" class="link-accent">Všechny reference →</a>
-      </div>
     </div>
   </section>
 
-  <!-- CTA BANNER -->
-  <section class="section-dark cta-banner on-dark reveal">
-    <div class="container">
-      <h2>Pojďme probrat váš plán</h2>
-      <p>Ať už prodáváte, kupujete, nebo řešíte financování — první konzultace je nezávazná a pomůže vám ujasnit další kroky.</p>
-      <a href="kontakt.html" class="btn-primary">Domluvit konzultaci</a>
+  <!-- LEAD MAGNET -->
+  <section class="section section-alt">
+    <div class="container offer">
+      <div class="offer-text">
+        <p class="eyebrow">Zdarma</p>
+        <h2>Průvodce nemovitostmi ve Španělsku</h2>
+        <!-- TODO: obsah průvodce ještě není hotový — doplnit skutečný materiál, až bude připravený -->
+        <p class="lead">Připravuji stručný přehled, jak z pohledu českého klienta funguje nákup nemovitosti ve Španělsku — financování, daně i časté chyby. Nechte mi telefon a e-mail, pošlu vám ho, jakmile bude hotový — žádný spam, jen jedna zpráva.</p>
+      </div>
+        <form id="lead-magnet-form" class="card-surface" data-lead-form="lead-magnet">
+          <div class="form-field">
+            <label for="magnet-jmeno">Jméno</label>
+            <input type="text" id="magnet-jmeno" name="jmeno" required autocomplete="name">
+          </div>
+          <div class="form-row cols-2">
+            <div class="form-field">
+              <label for="magnet-telefon">Telefon</label>
+              <input type="tel" id="magnet-telefon" name="telefon" required autocomplete="tel">
+            </div>
+            <div class="form-field">
+              <label for="magnet-email">E-mail</label>
+              <input type="email" id="magnet-email" name="email" required autocomplete="email">
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">Chci ho dostat</button>
+        </form>
+    </div>
+  </section>
+
+  <!-- ZÁVĚREČNÁ VÝZVA -->
+  <section class="section section-dark">
+    <div class="container cta-split">
+      <div>
+        <h2>Pojďme probrat váš plán</h2>
+        <p>Ať už prodáváte, kupujete, nebo řešíte financování — první konzultace je nezávazná a pomůže vám ujasnit další kroky.</p>
+      </div>
+      <div>
+        <a class="cta-phone" href="tel:+420604306514">604 306 514</a>
+        <div class="cta-actions">
+          <a href="kontakt.html" class="btn-primary">Domluvit konzultaci</a>
+          <a href="https://wa.me/420604306514" class="btn-secondary" target="_blank" rel="noopener">Napsat na WhatsApp</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -359,6 +360,8 @@
   </a>
 </div>
 
-<script src="assets/js/main.js?v=8"></script>
+<script src="assets/js/main.js?v=9"></script>
+<script src="assets/js/properties-data.js?v=9"></script>
+<script src="assets/js/nemovitosti.js?v=9"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@ a { color: inherit; text-decoration: none; }
 
 body {
   font-family: var(--font-body);
+  font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--color-text-primary);
   background: var(--color-bg);
@@ -24,8 +25,9 @@ body {
 main { display: block; overflow-x: hidden; }
 
 /* ---------- Typografie ---------- */
-h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: var(--lh-heading); }
-h1 em, h2 em { font-style: italic; color: var(--color-accent-dark); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: var(--lh-heading); font-optical-sizing: auto; text-wrap: balance; }
+h1 { letter-spacing: -0.01em; }
+h1 em, h2 em { font-style: italic; font-weight: 400; color: inherit; }
 h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
@@ -33,7 +35,7 @@ h4 { font-family: var(--font-body); font-size: var(--fs-h4); font-weight: 600; }
 
 p { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }
-.lead { font-size: 1.125rem; color: var(--color-text-secondary); }
+.lead { font-size: 1.1875rem; line-height: 1.6; color: var(--color-text-secondary); }
 
 .eyebrow {
   display: inline-block;
@@ -41,7 +43,8 @@ p { color: var(--color-text-primary); }
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: var(--fs-small);
-  color: var(--color-accent-dark);
+  font-weight: 600;
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-3);
 }
 
@@ -59,7 +62,8 @@ p { color: var(--color-text-primary); }
 .section-alt { background: var(--color-bg-alt); }
 .section-dark { background: var(--color-text-primary); color: var(--color-text-on-dark); }
 .section-header { max-width: 640px; margin-bottom: var(--space-7); }
-.section-header.center { margin-inline: auto; text-align: center; }
+/* .center se už nezarovnává na střed: hlavičky sekcí jsou vlevo (design systém, Rozvržení) */
+.section-header.center { margin-inline: 0; text-align: left; }
 
 @media (max-width: 639px) {
   .section { padding-block: var(--space-7); }
@@ -106,13 +110,13 @@ p { color: var(--color-text-primary); }
 .btn-secondary:hover { background: var(--color-accent-soft); }
 
 .link-accent {
-  color: var(--color-accent-dark);
+  color: var(--color-text-primary);
   font-weight: 600;
   border-bottom: 1px solid var(--color-accent);
   padding-bottom: 2px;
   transition: color .2s ease, border-color .2s ease;
 }
-.link-accent:hover { color: var(--color-text-primary); border-color: var(--color-text-primary); }
+.link-accent:hover { border-color: var(--color-text-primary); }
 
 /* ---------- Navigace ---------- */
 .site-header {
@@ -138,10 +142,11 @@ p { color: var(--color-text-primary); }
 .wordmark {
   font-family: var(--font-display);
   font-size: 1.375rem;
+  font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--color-text-primary);
 }
-.wordmark span { color: var(--color-accent-dark); font-style: italic; }
+.wordmark span { font-style: italic; font-weight: 400; }
 
 .main-nav { display: none; }
 @media (min-width: 1024px) {
@@ -197,7 +202,7 @@ p { color: var(--color-text-primary); }
     font-size: var(--fs-small);
     color: var(--color-text-primary);
   }
-  .nav-dropdown a:hover { background: var(--color-bg-alt); color: var(--color-accent-dark); }
+  .nav-dropdown a:hover { background: var(--color-bg-alt); color: var(--color-text-primary); }
 }
 
 .nav-cta { display: none; }
@@ -258,7 +263,7 @@ p { color: var(--color-text-primary); }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  padding-top: calc(var(--space-9) + var(--space-6));
+  padding-top: var(--space-9);
   padding-bottom: var(--space-8);
   background: var(--color-bg);
   overflow: hidden;
@@ -269,7 +274,8 @@ p { color: var(--color-text-primary); }
   align-items: center;
 }
 @media (min-width: 1024px) {
-  .hero .container { grid-template-columns: 1.05fr 0.95fr; }
+  .hero .container { grid-template-columns: 7fr 5fr; gap: var(--space-8); }
+  .hero .photo-collage { justify-self: end; width: 100%; }
 }
 .hero-eyebrow { margin-bottom: var(--space-3); }
 .hero h1 { margin-bottom: var(--space-4); }
@@ -350,13 +356,13 @@ p { color: var(--color-text-primary); }
   margin-bottom: var(--space-4);
 }
 .service-icon svg { width: 28px; height: 28px; stroke: var(--color-accent-dark); }
-.service-card h3 { font-size: 1.25rem; margin-bottom: var(--space-2); }
-.service-card p { font-size: 0.9375rem; color: var(--color-text-secondary); }
+.service-card h3 { font-size: var(--fs-h3); margin-bottom: var(--space-2); }
+.service-card p { color: var(--color-text-secondary); }
 .service-card .link-accent { display: inline-block; margin-top: var(--space-3); font-size: var(--fs-small); }
 
 /* ---------- Statistiky ---------- */
 .stats-grid { grid-template-columns: repeat(3, 1fr); text-align: center; }
-.stat-number { font-family: var(--font-display); font-size: clamp(2.25rem, 4vw, 3.25rem); color: var(--color-accent-dark); }
+.stat-number { font-family: var(--font-display); font-weight: 500; font-size: 2.75rem; line-height: 1.1; color: var(--color-text-primary); }
 .stat-label {
   font-size: var(--fs-small);
   text-transform: uppercase;
@@ -376,7 +382,8 @@ p { color: var(--color-text-primary); }
 .testimonial-quote {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.25rem, 1.6vw + 1rem, 1.5rem);
+  font-weight: 400;
+  font-size: 1.375rem;
   line-height: 1.5;
   color: var(--color-text-primary);
   position: relative;
@@ -386,7 +393,7 @@ p { color: var(--color-text-primary); }
   content: "\201C";
   display: block;
   font-size: 3rem;
-  color: var(--color-accent);
+  color: var(--color-text-secondary);
   line-height: 1;
   margin-bottom: var(--space-2);
 }
@@ -429,7 +436,7 @@ p { color: var(--color-text-primary); }
 .property-body { padding: var(--space-4); }
 .property-location { display: block; margin-bottom: var(--space-2); }
 .property-title { margin-bottom: var(--space-2); }
-.property-price { font-family: var(--font-display); font-size: 1.375rem; color: var(--color-accent-dark); }
+.property-price { font-family: var(--font-display); font-weight: 500; font-size: 1.375rem; color: var(--color-text-primary); }
 
 /* ---------- Detail nemovitosti ---------- */
 .property-detail-media { border-radius: var(--radius-md); overflow: hidden; }
@@ -451,7 +458,7 @@ p { color: var(--color-text-primary); }
   font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
   padding: 6px 12px; border-radius: var(--radius-sm);
 }
-.property-detail-price { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-accent-dark); margin: var(--space-3) 0; }
+.property-detail-price { font-family: var(--font-display); font-weight: 500; font-size: 1.75rem; color: var(--color-text-primary); margin: var(--space-3) 0; }
 .property-detail-features { list-style: none; padding: 0; margin: var(--space-4) 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .property-detail-features li {
   background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-sm);
@@ -618,7 +625,7 @@ p { color: var(--color-text-primary); }
   padding: var(--space-5);
   margin-top: var(--space-5);
 }
-.result-box .result-value { font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--color-accent-dark); }
+.result-box .result-value { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--color-text-primary); }
 .result-box .result-label { text-transform: uppercase; letter-spacing: 0.06em; font-size: var(--fs-small); color: var(--color-text-secondary); }
 
 .step-indicator { display: flex; gap: var(--space-2); margin-bottom: var(--space-6); }
@@ -646,7 +653,7 @@ p { color: var(--color-text-primary); }
 .faq-item.is-open .faq-question .faq-icon { transform: rotate(45deg); }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
 .faq-item.is-open .faq-answer { max-height: 320px; }
-.faq-answer p { padding-bottom: var(--space-4); color: var(--color-text-secondary); font-size: 0.9375rem; max-width: 62ch; }
+.faq-answer p { padding-bottom: var(--space-4); color: var(--color-text-secondary); max-width: 62ch; }
 
 /* ---------- Lead formulář u kalkulaček ---------- */
 .lead-capture {
@@ -690,13 +697,11 @@ p { color: var(--color-text-primary); }
 .page-hero .eyebrow { margin-bottom: var(--space-3); }
 .page-hero p.lead { max-width: 60ch; }
 
-/* ---------- Reveal animace ---------- */
-/* Skrývá se jen se zapnutým JS (třída .js z <head>), bez JS je obsah vidět hned */
-.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease-out, transform .6s ease-out; }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+/* ---------- Pohyb ---------- */
+/* Animace objevování sekcí při scrollu je zrušená (design systém, Pohyb); třída .reveal v HTML nic nedělá */
 @media (prefers-reduced-motion: reduce) {
-  .js .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
 }
 
 /* ---------- Utility ---------- */
@@ -705,7 +710,7 @@ p { color: var(--color-text-primary); }
 .text-center { text-align: center; }
 .flow > * + * { margin-top: var(--space-3); }
 .tag-pill {
-  display: inline-block; background: var(--color-accent-soft); color: var(--color-accent-dark);
+  display: inline-block; background: var(--color-accent-soft); color: var(--color-text-primary);
   padding: 4px 14px; border-radius: 999px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
 }
 
@@ -716,3 +721,60 @@ p { color: var(--color-text-primary); }
 .map-consent__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
 .map-consent.is-loaded { padding: 0; overflow: hidden; display: block; }
 .map-consent.is-loaded iframe { display: block; width: 100%; height: 280px; border: 0; }
+
+/* ==========================================================================
+   Rozvržení sekcí (design systém Natálie Mádrová, říjen 2026)
+   ========================================================================== */
+
+/* Hlavička sekce: nadpis vlevo, úvod nebo odkaz vpravo na stejné lince */
+.section-head { display: grid; gap: var(--space-3) var(--space-8); margin-bottom: var(--space-7); align-items: end; }
+.section-head h2 { max-width: 18ch; }
+.section-head .lead { max-width: 44ch; }
+@media (min-width: 900px) {
+  .section-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .section-head > :last-child:not(:first-child) { justify-self: end; }
+}
+
+/* Rozdělená sekce: nadpis vlevo (při scrollu zůstává), obsah vpravo */
+.split { display: grid; gap: var(--space-7); }
+.split-aside > * + * { margin-top: var(--space-4); }
+.split > * { min-width: 0; }
+@media (min-width: 1024px) {
+  .split { grid-template-columns: 5fr 7fr; gap: var(--space-8); align-items: start; }
+  .split-aside { position: sticky; top: var(--space-9); }
+}
+
+/* Mřížky karet */
+.cards-2, .cards-3 { display: grid; gap: var(--space-5); }
+.cards-2 > *, .cards-3 > * { min-width: 0; }
+@media (min-width: 640px) { .cards-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* O mně: fotka, text a čísla v jednom bloku */
+.about { display: grid; gap: var(--space-7); align-items: center; }
+.about > * { min-width: 0; }
+.about .photo-frame { aspect-ratio: 3 / 4; max-width: 340px; width: 100%; }
+.about-text > * + * { margin-top: var(--space-4); }
+.about-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); padding-top: var(--space-5); margin-top: var(--space-5) !important; border-top: 1px solid var(--color-border); }
+@media (max-width: 479px) { .about-stats .stat-number { font-size: 2.25rem; } .about-stats .stat-label { font-size: 0.75rem; } }
+@media (min-width: 900px) { .about { grid-template-columns: 4fr 8fr; gap: var(--space-8); } }
+
+/* Nabídka zdarma: text vlevo, formulář vpravo */
+.offer { display: grid; gap: var(--space-6); align-items: center; }
+.offer > * { min-width: 0; }
+.offer-text > * + * { margin-top: var(--space-4); }
+.offer-text .eyebrow { margin-bottom: 0; }
+@media (min-width: 900px) { .offer { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); } }
+
+/* Tmavá výzva: text vlevo, telefon a tlačítka vpravo */
+.cta-split { display: grid; gap: var(--space-6); align-items: end; }
+.cta-split > * { min-width: 0; }
+.cta-split p { color: var(--color-footer-heading); max-width: 46ch; margin-top: var(--space-3); }
+.cta-phone { font-family: var(--font-display); font-weight: 500; font-size: 2.5rem; line-height: 1.1; color: var(--color-text-on-dark); display: inline-block; margin-bottom: var(--space-4); font-variant-numeric: tabular-nums; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+@media (min-width: 900px) { .cta-split { grid-template-columns: 7fr 5fr; gap: var(--space-8); } }
+/* V tmavé sekci se primární tlačítko obrací, jinak splývá s pozadím */
+.section-dark .btn-primary { background: var(--color-text-on-dark); color: var(--color-text-primary); }
+.section-dark .btn-primary:hover { background: var(--color-footer-text); }
+.section-dark .btn-secondary { color: var(--color-text-on-dark); }
+.section-dark .btn-secondary:hover { background: rgba(250, 247, 242, 0.08); }
