@@ -157,7 +157,7 @@
         "Téma: " + tema + "\n\n" +
         "Zpráva:\n" + zprava;
       window.location.href =
-        "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        "mailto:natalie.madrova@bcas.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     });
   }
 
@@ -172,7 +172,7 @@
       var subject = "Průvodce nemovitostmi ve Španělsku";
       var body = "Jméno: " + jmeno + "\nTelefon: " + telefon + "\nE-mail: " + email;
       window.location.href =
-        "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        "mailto:natalie.madrova@bcas.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     });
   }
 
@@ -239,7 +239,7 @@
         try { sessionStorage.setItem(STORAGE_KEY, "1"); } catch (err) {}
         window.setTimeout(function () { close(false); }, 400);
         window.location.href =
-          "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+          "mailto:natalie.madrova@bcas.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       });
     }, 9000);
   })();

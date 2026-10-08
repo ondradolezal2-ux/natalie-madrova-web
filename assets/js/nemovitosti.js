@@ -9,11 +9,14 @@
     '<path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
 
   var cardHtml = function (p) {
+    var media = p.photos && p.photos.length
+      ? '<img src="' + p.photos[0] + '" alt="' + p.title + ', ' + p.locationLabel + '" loading="lazy" decoding="async">'
+      : '<div class="photo-placeholder">' + svgHome + '</div>';
     return (
       '<a class="property-card reveal" href="detail.html?id=' + encodeURIComponent(p.id) + '" ' +
       'data-type="' + p.type + '" data-location="' + p.location + '" data-price="' + p.priceBand + '">' +
         '<div class="property-media">' +
-          '<div class="photo-placeholder" title="TODO: nahradit reálnou fotkou — ' + p.title + '">' + svgHome + '</div>' +
+          media +
           '<span class="property-tag">' + p.tag + '</span>' +
         '</div>' +
         '<div class="property-body">' +

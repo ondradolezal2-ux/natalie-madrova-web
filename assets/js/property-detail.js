@@ -35,6 +35,13 @@
   var summaryEl = document.querySelector("[data-detail-summary]");
   if (summaryEl) summaryEl.textContent = property.summary;
 
+  var descriptionEl = document.querySelector("[data-detail-description]");
+  if (descriptionEl && property.description) {
+    descriptionEl.innerHTML = property.description
+      .map(function (para) { return "<p>" + para + "</p>"; })
+      .join("");
+  }
+
   var featuresEl = document.querySelector("[data-detail-features]");
   if (featuresEl) {
     featuresEl.innerHTML = property.features
@@ -42,9 +49,43 @@
       .join("");
   }
 
+  var sourceEl = document.querySelector("[data-detail-source]");
+  if (sourceEl && property.sourceUrl) {
+    sourceEl.href = property.sourceUrl;
+    sourceEl.hidden = false;
+  }
+
   var photoEl = document.querySelector("[data-detail-photo]");
-  if (photoEl) {
-    photoEl.title = "TODO: nahradit reálnou fotkou — " + property.title;
-    photoEl.innerHTML = svgHome;
+  var galleryEl = document.querySelector("[data-detail-gallery]");
+  var photos = property.photos || [];
+  if (!photoEl) return;
+
+  if (!photos.length) {
+    photoEl.innerHTML = '<div class="photo-placeholder">' + svgHome + "</div>";
+    return;
+  }
+
+  var alt = property.title + ", " + property.locationLabel;
+  photoEl.innerHTML = '<img src="' + photos[0] + '" alt="' + alt + '" decoding="async">';
+  var mainImg = photoEl.querySelector("img");
+
+  if (galleryEl && photos.length > 1) {
+    galleryEl.innerHTML = photos
+      .map(function (src, i) {
+        return (
+          '<button type="button" class="' + (i === 0 ? "is-active" : "") + '" data-index="' + i + '" ' +
+          'aria-label="Fotka ' + (i + 1) + ' z ' + photos.length + '">' +
+            '<img src="' + src + '" alt="" loading="lazy" decoding="async">' +
+          "</button>"
+        );
+      })
+      .join("");
+    galleryEl.hidden = false;
+    galleryEl.addEventListener("click", function (e) {
+      var btn = e.target.closest("button");
+      if (!btn) return;
+      mainImg.src = photos[Number(btn.getAttribute("data-index"))];
+      galleryEl.querySelectorAll("button").forEach(function (b) { b.classList.toggle("is-active", b === btn); });
+    });
   }
 })();

@@ -75,7 +75,7 @@
           "Celkem zaplaceno: " + formatCzk(lastResult.totalPaid) + "\n" +
           "Z toho úroky: " + formatCzk(lastResult.totalInterest);
         window.location.href =
-          "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+          "mailto:natalie.madrova@bcas.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       });
     }
   }
@@ -174,7 +174,7 @@
           gtag("event", "lead_form_submit", { form_id: "odhad-ceny" });
         }
         window.location.href =
-          "mailto:info@natalie-madrova.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+          "mailto:natalie.madrova@bcas.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       });
     }
 
