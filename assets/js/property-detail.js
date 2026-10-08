@@ -69,13 +69,14 @@
   photoEl.innerHTML = '<img src="' + photos[0] + '" alt="' + alt + '" decoding="async">';
   var mainImg = photoEl.querySelector("img");
 
+  var thumbs = property.thumbs || photos;
   if (galleryEl && photos.length > 1) {
     galleryEl.innerHTML = photos
       .map(function (src, i) {
         return (
           '<button type="button" class="' + (i === 0 ? "is-active" : "") + '" data-index="' + i + '" ' +
           'aria-label="Fotka ' + (i + 1) + ' z ' + photos.length + '">' +
-            '<img src="' + src + '" alt="" loading="lazy" decoding="async">' +
+            '<img src="' + (thumbs[i] || src) + '" alt="" loading="lazy" decoding="async">' +
           "</button>"
         );
       })

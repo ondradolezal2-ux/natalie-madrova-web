@@ -1,0 +1,56 @@
+{
+  "prodej-domy-rodinny-havlickova-tyniste-nad-orlici": {
+    "title": "Rodinný dům 3+1 s garáží a dílnou",
+    "locationLabel": "Týniště nad Orlicí, Havlíčkova",
+    "summary": "Dům 3+1 v klidné části Týniště nad Orlicí, s garáží, dílnou a půdou, ze které jde udělat obytné podkroví.",
+    "description": [
+      "Dům stojí v klidné části města s dobrou dostupností do centra a občanskou vybaveností na dosah. Má zádveří, samostatnou kuchyň, obývací pokoj, dětský pokoj, ložnici s přímým vstupem na terasu, koupelnu a samostatné WC.",
+      "Dům je částečně podsklepený. Nad obytnou částí je prostorná půda, kterou lze přestavět na obytné podkroví a dispozici tak výrazně zvětšit.",
+      "Na pozemku je garáž a dílna — místo na auto, nářadí i koníčky."
+    ],
+    "features": [
+      "Dispozice 3+1",
+      "Plocha 75 m²",
+      "Osobní vlastnictví",
+      "Garáž a dílna",
+      "Částečně podsklepený",
+      "Půda k vestavbě podkroví"
+    ]
+  },
+  "prodej-byty-1-1-37-m2-53834-rosice": {
+    "title": "Byt 1+1, 37 m², aktuálně pronajatý",
+    "locationLabel": "Rosice u Chrasti",
+    "summary": "Byt 1+1 v cihlovém domě v Rosicích u Chrasti. Je pronajatý, takže může vydělávat hned od koupě — nájemce ale přebírat nemusíte.",
+    "description": [
+      "Byt má užitnou plochu 37,4 m² a je v 1. nadzemním podlaží cihlového domu. Tvoří ho obývací pokoj, samostatná kuchyně, koupelna, WC a vstupní chodba.",
+      "K bytu patří možnost využívat společnou zahradu a parkování přímo u domu.",
+      "Byt je teď pronajatý. Stávajícího nájemce můžete převzít a mít příjem z nájmu hned od koupě, podmínkou prodeje to ale není."
+    ],
+    "features": [
+      "Dispozice 1+1",
+      "Užitná plocha 37,4 m²",
+      "Cihlový dům, 1. NP",
+      "Společná zahrada",
+      "Parkování u domu",
+      "Možnost převzít nájemce"
+    ]
+  },
+  "prodej-domy-rodinny-145-m2-51793-dobre": {
+    "title": "Rodinný dům 145 m² pro dvě generace",
+    "locationLabel": "Dobré",
+    "summary": "Prostorný dům se dvěma podlažími, která mohou fungovat jako samostatné byty. Podsklepený, se dvěma garážemi, dílnou a zahradou se skleníkem.",
+    "description": [
+      "Dům má dvě nadzemní podlaží a každé může sloužit jako samostatná obytná jednotka. Hodí se proto pro vícegenerační bydlení, větší rodinu nebo spojení bydlení a podnikání. Před 7 lety prošel částečnou revitalizací.",
+      "Celý dům je podsklepený s přístupem z interiéru. K domu patří dvě garáže s dílnou, vnitřní posezení s krbem a udírnou a prostorná zahrada se skleníkem.",
+      "Dům stojí kousek od centra obce, kde je mateřská a základní škola, pošta, obchod s potravinami a praktický lékař."
+    ],
+    "features": [
+      "Plocha 145 m²",
+      "2 nadzemní podlaží",
+      "Celý podsklepený",
+      "2 garáže a dílna",
+      "Zahrada se skleníkem",
+      "Krb a udírna"
+    ]
+  }
+}

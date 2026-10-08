@@ -15,8 +15,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/tokens.css?v=6">
-<link rel="stylesheet" href="../assets/css/main.css?v=6">
+<link rel="stylesheet" href="../assets/css/tokens.css?v=7">
+<link rel="stylesheet" href="../assets/css/main.css?v=7">
 <!-- GA4 (TODO: reálné ID od Natky) se načte až po souhlasu s cookies — viz assets/js/main.js -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -99,8 +99,9 @@
 
   <section class="section">
     <div class="container">
-      <!-- Zdroj: realizované zakázky týmu na finrealkchop.cz/realizovane-zakazky (stav k 8. 10. 2026) -->
+      <!-- Zakázky se každý den generují z finrealkchop.cz (_sync/sync_nemovitosti.py) — blok mezi značkami neupravovat ručně -->
       <div class="grid grid-3">
+      <!-- SYNC:REALIZOVANE START -->
         <div class="property-card reveal">
           <div class="property-media">
             <img src="https://finrealkchop.cz/files/user-images/user-solds/20542.jpg?20260820151141" alt="Rodinný dům, České Meziříčí" loading="lazy" decoding="async">
@@ -143,6 +144,16 @@
         </div>
         <div class="property-card reveal">
           <div class="property-media">
+            <img src="https://finrealkchop.cz/files/user-images/user-solds/19474.jpg?20260210104253" alt="Pozemek pro bydlení, 1012 m², Krňovice" loading="lazy" decoding="async">
+            <span class="property-tag">Prodáno</span>
+          </div>
+          <div class="property-body">
+            <span class="eyebrow property-location">Krňovice</span>
+            <h4 class="property-title">Pozemek pro bydlení, 1012 m²</h4>
+          </div>
+        </div>
+        <div class="property-card reveal">
+          <div class="property-media">
             <img src="https://finrealkchop.cz/files/user-images/user-solds/19473.jpg?20260210104149" alt="Byt 2+1, Rychnov nad Kněžnou" loading="lazy" decoding="async">
             <span class="property-tag">Prodáno</span>
           </div>
@@ -163,34 +174,25 @@
         </div>
         <div class="property-card reveal">
           <div class="property-media">
-            <img src="https://finrealkchop.cz/files/user-images/user-solds/18126.jpg?20250909100329" alt="Byt 2+kk, 75 m², Hradec Králové" loading="lazy" decoding="async">
+            <img src="https://finrealkchop.cz/files/user-images/user-solds/18952.jpg?20251119105936" alt="Rodinný dům, 194 m², Krucemburk" loading="lazy" decoding="async">
             <span class="property-tag">Prodáno</span>
           </div>
           <div class="property-body">
-            <span class="eyebrow property-location">Hradec Králové</span>
-            <h4 class="property-title">Byt 2+kk, 75 m²</h4>
+            <span class="eyebrow property-location">Krucemburk</span>
+            <h4 class="property-title">Rodinný dům, 194 m²</h4>
           </div>
         </div>
         <div class="property-card reveal">
           <div class="property-media">
-            <img src="https://finrealkchop.cz/files/user-images/user-solds/17825.jpg?20250718091948" alt="Byt 3+kk, 85 m², Hradec Králové" loading="lazy" decoding="async">
+            <img src="https://finrealkchop.cz/files/user-images/user-solds/18200.jpg?20250923131557" alt="Pozemek, 634 m², Žďár nad Orlicí" loading="lazy" decoding="async">
             <span class="property-tag">Prodáno</span>
           </div>
           <div class="property-body">
-            <span class="eyebrow property-location">Hradec Králové</span>
-            <h4 class="property-title">Byt 3+kk, 85 m²</h4>
+            <span class="eyebrow property-location">Žďár nad Orlicí</span>
+            <h4 class="property-title">Pozemek, 634 m²</h4>
           </div>
         </div>
-        <div class="property-card reveal">
-          <div class="property-media">
-            <img src="https://finrealkchop.cz/files/user-images/user-solds/17701.jpg?20250703125154" alt="Rodinný dům, 98 m², Týniště nad Orlicí" loading="lazy" decoding="async">
-            <span class="property-tag">Prodáno</span>
-          </div>
-          <div class="property-body">
-            <span class="eyebrow property-location">Týniště nad Orlicí</span>
-            <h4 class="property-title">Rodinný dům, 98 m²</h4>
-          </div>
-        </div>
+      <!-- SYNC:REALIZOVANE END -->
       </div>
 
       <div class="text-center mt-3 reveal">
@@ -275,6 +277,6 @@
   </a>
 </div>
 
-<script src="../assets/js/main.js?v=6"></script>
+<script src="../assets/js/main.js?v=7"></script>
 </body>
 </html>

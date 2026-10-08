@@ -1,0 +1,51 @@
+# Každý den stáhne aktuální nabídku a realizované zakázky z finrealkchop.cz
+# a když se něco změnilo, uloží to do webu (GitHub Pages ho pak znovu sestaví).
+# Ručně spustit: záložka Actions -> Synchronizace nemovitostí -> Run workflow.
+
+name: Synchronizace nemovitostí
+
+on:
+  schedule:
+    - cron: "0 4 * * *" # 6:00 letního / 5:00 zimního času
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-nemovitosti
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stáhnout nabídku z finrealkchop.cz
+        run: python3 _sync/sync_nemovitosti.py
+
+      - name: Uložit změny
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet; then
+            git add assets/js/properties-data.js nemovitosti/realizovane-zakazky.html
+            git commit -m "Synchronizace nabídky z finrealkchop.cz"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          elif [ $(( $(date +%s) - $(git log -1 --format=%ct) )) -gt 4320000 ]; then
+            # GitHub po 60 dnech bez commitu vypíná plánované workflow — po 50 dnech ticha prázdný commit
+            git commit --allow-empty -m "Udržovací commit plánované synchronizace"
+            git push
+          else
+            echo "Beze změn."
+          fi
+
+      - name: Znovu sestavit web
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
