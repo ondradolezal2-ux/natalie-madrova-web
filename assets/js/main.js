@@ -186,6 +186,22 @@
     });
   });
 
+  /* ---------- Mapa na kontaktu — načte se z Googlu až po kliknutí ---------- */
+  document.querySelectorAll("[data-map-consent]").forEach(function (box) {
+    var btn = box.querySelector("[data-map-load]");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var iframe = document.createElement("iframe");
+      iframe.src = box.getAttribute("data-map-src");
+      iframe.title = box.getAttribute("data-map-title") || "Mapa";
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      box.innerHTML = "";
+      box.appendChild(iframe);
+      box.classList.add("is-loaded");
+    });
+  });
+
   /* ---------- Lead magnet popup (Španělsko) — vyskočí po pár vteřinách na webu ---------- */
   (function () {
     var STORAGE_KEY = "nm-lead-popup-dismissed";
