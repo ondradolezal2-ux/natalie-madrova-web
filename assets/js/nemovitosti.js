@@ -38,6 +38,15 @@
 
   propertyGrid.innerHTML = properties.map(cardHtml).join("");
 
+  // Volné místo v řadě (méně než 3 nabídky) zaplní karta z <template data-property-fill>
+  var fill = section && section.querySelector("template[data-property-fill]");
+  var free = 3 - properties.length;
+  if (fill && free > 0) {
+    var fillCard = fill.content.firstElementChild.cloneNode(true);
+    fillCard.style.setProperty("--span", free);
+    propertyGrid.appendChild(fillCard);
+  }
+
   var filterSelects = document.querySelectorAll("[data-property-filter]");
   var propertyCards = Array.prototype.slice.call(propertyGrid.querySelectorAll(".property-card"));
   var emptyMsg = document.querySelector("[data-property-empty]");
