@@ -98,8 +98,10 @@
   </section>
 
   <section class="section">
-    <div class="container" style="max-width: 640px;">
-      <form class="card-surface reveal" data-estimate-calc novalidate>
+    <div class="container">
+      <!-- Na počítači vlevo průvodce odhadem, vpravo krátké vysvětlení; v mobilu pod sebou -->
+      <div class="estimate-layout">
+      <form class="card-surface" data-estimate-calc novalidate>
         <div class="step-indicator">
           <span></span><span></span><span></span><span></span>
         </div>
@@ -146,7 +148,8 @@
           <h3 class="mb-1">Plocha a stav</h3>
           <div class="form-field">
             <label for="plocha">Užitná plocha (m²)</label>
-            <input type="number" id="plocha" name="plocha" min="1" step="1" required placeholder="např. 75">
+            <input type="number" id="plocha" name="plocha" min="1" step="1" required placeholder="např. 75" aria-describedby="plocha-chyba">
+            <p class="form-note" id="plocha-chyba" data-area-error></p>
           </div>
           <div class="form-field">
             <label for="stav">Stav nemovitosti</label>
@@ -194,6 +197,17 @@
           </div>
         </div>
       </form>
+
+      <aside class="estimate-aside">
+        <h2 class="calc-heading">Jak odhad funguje</h2>
+        <ol class="estimate-points">
+          <li><strong>Pár krátkých otázek</strong>Typ, lokalita, plocha a stav. Zabere to pár minut a je to zdarma.</li>
+          <li><strong>Orientační cena</strong>Spočítá se z průměrných cen za m² v dané lokalitě.</li>
+          <li><strong>Přesný odhad osobně</strong>Konkrétní stav a specifika nemovitosti zohledním na osobní prohlídce.</li>
+        </ol>
+        <p class="estimate-call">Raději to proberete rovnou? <a href="tel:+420604306514">+420 604 306 514</a></p>
+      </aside>
+      </div>
     </div>
   </section>
 

@@ -137,8 +137,18 @@
       e.preventDefault();
       var type = estimateForm.querySelector("[name='typ']").value;
       var location = estimateForm.querySelector("[name='lokalita']").value;
-      var area = parseFloat(estimateForm.querySelector("[name='plocha']").value) || 0;
+      var areaInput = estimateForm.querySelector("[name='plocha']");
+      var area = parseFloat(areaInput.value) || 0;
       var condition = estimateForm.querySelector("[name='stav']").value;
+
+      // Bez plochy by vyšel odhad „0 – 0 Kč“
+      var areaError = estimateForm.querySelector("[data-area-error]");
+      if (area <= 0) {
+        if (areaError) areaError.textContent = "Vyplňte prosím užitnou plochu v m².";
+        areaInput.focus();
+        return;
+      }
+      if (areaError) areaError.textContent = "";
 
       var base = pricePerM2[location] || pricePerM2["jina"];
       var estimate = base * area * (typeMultiplier[type] || 1) * (conditionMultiplier[condition] || 1);

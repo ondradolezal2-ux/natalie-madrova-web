@@ -908,3 +908,18 @@ main:has(> .section-dark:last-child) + .site-footer .footer-grid {
   .calc-stats > div + div { border-top: 1px solid var(--color-border); }
   .calc-stats dd { margin: 0; }
 }
+
+/* Odhad ceny: na počítači průvodce vlevo, vysvětlení vpravo */
+.estimate-layout { display: grid; gap: var(--space-5); align-items: start; }
+.estimate-layout > * { min-width: 0; }
+.estimate-points { counter-reset: krok; border-top: 1px solid var(--color-border); }
+.estimate-points li { counter-increment: krok; display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); padding-block: var(--space-4); border-bottom: 1px solid var(--color-border); color: var(--color-text-secondary); }
+.estimate-points li::before { content: counter(krok, decimal-leading-zero); grid-row: span 2; font-weight: 500; color: var(--color-text-secondary); }
+.estimate-points strong { display: block; color: var(--color-text-primary); font-weight: 600; margin-bottom: var(--space-1); }
+.estimate-call { margin-top: var(--space-5); color: var(--color-text-secondary); }
+.estimate-call a { color: var(--color-text-primary); font-weight: 600; border-bottom: 1px solid var(--color-accent); white-space: nowrap; }
+@media (min-width: 900px) {
+  .estimate-layout { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-8); }
+  .estimate-aside { position: sticky; top: var(--space-9); padding-top: var(--space-5); }
+}
+[data-estimate-calc] .result-value { font-size: clamp(1.5rem, 1.6vw + 0.9rem, 2rem); }
