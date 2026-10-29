@@ -6,7 +6,9 @@ ručně: python3 _sync/sync_nemovitosti.py
 
 Co dělá:
 - Aktuálně v nabídce + detail každé nemovitosti -> assets/js/properties-data.js
-- Realizované zakázky (posledních 9) -> blok mezi značkami SYNC v nemovitosti/realizovane-zakazky.html
+- Realizované zakázky (až 24 nejnovějších) -> blok mezi značkami SYNC v nemovitosti/realizovane-zakazky.html
+  Jejich fotky se stáhnou, zmenší a uloží do assets/img/zakazky/ (finrealkchop.cz při
+  mnoha obrázcích najednou vrací 429 a část fotek by se návštěvníkům nenačetla).
 
 Když se stránka nepodaří načíst nebo vypadá jinak, než skript čeká, skončí chybou
 a nic nepřepíše — web zůstane na posledních správných datech a GitHub pošle e-mail.
@@ -17,6 +19,7 @@ Složka _sync se na web nepublikuje (Jekyll ignoruje složky s podtržítkem).
 """
 
 import html
+import io
 import json
 import re
 import sys
@@ -28,10 +31,12 @@ BASE = "https://finrealkchop.cz"
 ROOT = Path(__file__).resolve().parent.parent
 DATA_JS = ROOT / "assets/js/properties-data.js"
 REALIZED_HTML = ROOT / "nemovitosti/realizovane-zakazky.html"
+REALIZED_IMG_DIR = ROOT / "assets/img/zakazky"
+REALIZED_IMG_WIDTH = 800
 OVERRIDES = Path(__file__).resolve().parent / "upravy.json"
 
 MAX_PHOTOS = 12
-MAX_REALIZED = 9
+MAX_REALIZED = 24
 REALIZED_START = "<!-- SYNC:REALIZOVANE START -->"
 REALIZED_END = "<!-- SYNC:REALIZOVANE END -->"
 
@@ -83,6 +88,36 @@ def fetch(url):
             last = e
             time.sleep(3 * (attempt + 1))
     raise SyncError(f"Nepodařilo se načíst {url}: {last}")
+
+
+def realized_photo(url):
+    """Vrátí cestu k zmenšené kopii fotky zakázky na webu, nebo None, když se nepodaří stáhnout."""
+    from PIL import Image  # Pillow — instaluje ho workflow
+
+    name = re.sub(r"[^A-Za-z0-9_-]", "", url.split("?")[0].rsplit("/", 1)[-1].rsplit(".", 1)[0])
+    if not name:
+        return None
+    target = REALIZED_IMG_DIR / f"{name}.webp"
+    if not target.exists():
+        data = None
+        for attempt in range(4):
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "natalie-madrova-web sync (+github actions)"})
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    data = r.read()
+                break
+            except Exception:  # 429 nebo síťová chyba — počkat a zkusit znovu
+                time.sleep(10 * (attempt + 1))
+        if data is None:
+            print(f"Varování: fotku zakázky se nepodařilo stáhnout: {url}", file=sys.stderr)
+            return None
+        img = Image.open(io.BytesIO(data)).convert("RGB")
+        if img.width > REALIZED_IMG_WIDTH:
+            img = img.resize((REALIZED_IMG_WIDTH, round(img.height * REALIZED_IMG_WIDTH / img.width)), Image.LANCZOS)
+        REALIZED_IMG_DIR.mkdir(parents=True, exist_ok=True)
+        img.save(target, "WEBP", quality=78, method=6)
+        time.sleep(2)  # šetrně k cizímu serveru
+    return target
 
 
 def text(fragment):
@@ -311,13 +346,17 @@ def build_properties(overrides):
 
 def render_realized(cards):
     items = []
+    used = set()
     for card in cards[:MAX_REALIZED]:
         info = parse_title(card["title"])
         tag = "Pronajato" if info["tag"] == "Pronájem" else "Prodáno"
         title = friendly_title(info, {})
         town = html.escape(info.get("town") or "")
-        img = (f'<img src="{html.escape(card["image"])}" alt="{html.escape(title)}{", " + town if town else ""}" '
-               f'loading="lazy" decoding="async">') if card["image"] else ""
+        photo = realized_photo(card["image"]) if card["image"] else None
+        if photo:
+            used.add(photo.name)
+        img = (f'<img src="../{photo.relative_to(ROOT).as_posix()}" alt="{html.escape(title)}{", " + town if town else ""}" '
+               f'loading="lazy" decoding="async">') if photo else ""
         items.append(f"""
         <div class="property-card reveal">
           <div class="property-media">
@@ -329,6 +368,11 @@ def render_realized(cards):
             <h3 class="property-title">{html.escape(title)}</h3>
           </div>
         </div>""")
+    # fotky zakázek, které už na stránce nejsou, smazat
+    if REALIZED_IMG_DIR.exists():
+        for old in REALIZED_IMG_DIR.glob("*.webp"):
+            if old.name not in used:
+                old.unlink()
     return "".join(items)
 
 

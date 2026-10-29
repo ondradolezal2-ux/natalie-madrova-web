@@ -281,8 +281,15 @@ body:has(.mobile-menu.is-open) .site-header { background: var(--color-bg-alt); b
 }
 .hero-eyebrow { margin-bottom: var(--space-3); }
 .hero h1 { margin-bottom: var(--space-4); }
-.hero p.lead { max-width: 46ch; margin-bottom: var(--space-5); }
+.hero p.lead { max-width: 46ch; margin-bottom: var(--space-4); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.hero h1 span { display: block; }
+.hero-services { margin-bottom: var(--space-4); color: var(--color-text-primary); font-weight: 500; }
+.hero-services li + li { margin-top: var(--space-1); }
+.hero-countries {
+  font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-5); max-width: 52ch;
+}
 .hero-contact { margin-top: var(--space-4); color: var(--color-text-secondary); }
 .hero-contact a { color: var(--color-text-primary); font-weight: 600; border-bottom: 1px solid var(--color-accent); white-space: nowrap; }
 .hero-contact a:hover { border-color: var(--color-text-primary); }
@@ -782,7 +789,7 @@ body:has(.mobile-menu.is-open) .site-header { background: var(--color-bg-alt); b
 .cta-split { display: grid; gap: var(--space-6); align-items: center; }
 .cta-split > * { min-width: 0; }
 .cta-split p { color: var(--color-footer-heading); max-width: 46ch; margin-top: var(--space-3); }
-.cta-phone { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; font-size: 2.5rem; line-height: 1.1; color: var(--color-text-on-dark); display: inline-block; margin-bottom: var(--space-4); font-variant-numeric: tabular-nums; }
+.cta-phone { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; font-size: clamp(1.75rem, 4.5vw + 0.6rem, 2.5rem); white-space: nowrap; line-height: 1.1; color: var(--color-text-on-dark); display: inline-block; margin-bottom: var(--space-4); font-variant-numeric: tabular-nums; }
 .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 @media (min-width: 900px) { .cta-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); } }
 /* V tmavé sekci se primární tlačítko obrací, jinak splývá s pozadím */
@@ -850,6 +857,7 @@ main:has(> .section-dark:last-child) + .site-footer .footer-grid {
   .lead-capture { padding: var(--space-4); }
   .photo-portrait { aspect-ratio: 4 / 5; object-position: 50% 30%; }
   .property-filters { grid-template-columns: 1fr; }
+  .split { gap: var(--space-5); }
   .process-step { grid-template-columns: 3.25rem minmax(0, 1fr); gap: var(--space-3); }
   .process-step .step-number { font-size: 2rem; }
   .footer-grid { padding-block: var(--space-7); }
@@ -858,3 +866,22 @@ main:has(> .section-dark:last-child) + .site-footer .footer-grid {
   .btn-primary, .btn-secondary { width: 100%; }
   .cookie-actions > *, .calc-nav > * { width: auto; flex: 1 1 0; }
 }
+
+/* Partner v patičce */
+.footer-grid .footer-partner { margin-top: var(--space-3); color: var(--color-footer-muted); font-size: 0.875rem; }
+.section-tight-top { padding-top: 0; }
+.photo-team { object-position: 50% 25%; }
+
+/* Rozcestník „pro koho“ na stránkách o prodeji/koupi a pronájmu */
+.audience-tabs { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
+.audience-tabs a {
+  padding: 10px 20px; border: 1px solid var(--color-text-primary); border-radius: 999px;
+  font-weight: 600; font-size: 0.9375rem; transition: background .2s ease, color .2s ease;
+}
+.audience-tabs a:hover { background: var(--color-text-primary); color: var(--color-text-on-dark); }
+[id] { scroll-margin-top: 88px; }
+
+/* Fotka Natky s Rosťou: bez rámečku, s popiskem */
+.team-figure { margin: 0; max-width: 420px; width: 100%; }
+.team-figure img { aspect-ratio: 891 / 1023; border-radius: var(--radius-md); }
+.team-figure figcaption { margin-top: var(--space-3); font-size: 0.9375rem; color: var(--color-text-secondary); }
