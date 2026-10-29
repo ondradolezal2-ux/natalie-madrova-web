@@ -13,9 +13,9 @@
 <link rel="canonical" href="https://ondradolezal2-ux.github.io/natalie-madrova-web/sluzby/kalkulacky.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%224%22 fill=%22%232A2621%22/><text x=%2212%22 y=%2217%22 font-family=%22Georgia,serif%22 font-size=%2214%22 fill=%22%23FAF7F2%22 text-anchor=%22middle%22>N</text></svg>">
 <link rel="preload" href="../assets/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/fonts.css?v=12">
-<link rel="stylesheet" href="../assets/css/tokens.css?v=12">
-<link rel="stylesheet" href="../assets/css/main.css?v=12">
+<link rel="stylesheet" href="../assets/css/fonts.css?v=13">
+<link rel="stylesheet" href="../assets/css/tokens.css?v=13">
+<link rel="stylesheet" href="../assets/css/main.css?v=13">
 <!-- GA4 (TODO: reálné ID od Natky) se načte až po souhlasu s cookies — viz assets/js/main.js -->
 <script>
   document.documentElement.classList.add("js");
@@ -98,70 +98,65 @@
   </section>
 
   <section class="section">
-    <div class="container" style="max-width: 640px;">
-      <div class="card-surface reveal" data-mortgage-calc>
-        <div class="form-field">
-          <label for="price">Cena nemovitosti (Kč)</label>
-          <input type="number" id="price" data-field="price" min="0" step="1000" value="4500000">
-        </div>
-        <div class="form-field">
-          <label for="down">Vlastní zdroje (Kč)</label>
-          <input type="number" id="down" data-field="down" min="0" step="1000" value="900000">
-        </div>
-        <div class="form-row cols-2">
+    <div class="container">
+      <!-- Na počítači vlevo zadání, vpravo výsledek; v mobilu pod sebou -->
+      <div class="calc-layout" data-mortgage-calc>
+        <div class="card-surface calc-inputs">
+          <h2 class="calc-heading">Vaše údaje</h2>
           <div class="form-field">
-            <label for="rate">Úroková sazba (% p.a.)</label>
-            <input type="number" id="rate" data-field="rate" min="0" max="20" step="0.05" value="5.19">
+            <label for="price">Cena nemovitosti (Kč)</label>
+            <input type="number" id="price" data-field="price" min="0" step="1000" value="4500000">
           </div>
           <div class="form-field">
-            <label for="years">Doba splácení (roky)</label>
-            <input type="number" id="years" data-field="years" min="1" max="40" step="1" value="25">
+            <label for="down">Vlastní zdroje (Kč)</label>
+            <input type="number" id="down" data-field="down" min="0" step="1000" value="900000">
           </div>
-        </div>
-
-        <div class="result-box">
-          <div class="result-label">Měsíční splátka</div>
-          <div class="result-value" data-out="payment">—</div>
-        </div>
-
-        <div class="grid grid-3 mt-1" style="gap: var(--space-3);">
-          <div>
-            <div class="result-label">Výše úvěru</div>
-            <div style="font-weight:600;" data-out="loan">—</div>
-          </div>
-          <div>
-            <div class="result-label">Celkem zaplaceno</div>
-            <div style="font-weight:600;" data-out="total">—</div>
-          </div>
-          <div>
-            <div class="result-label">Z toho úroky</div>
-            <div style="font-weight:600;" data-out="interest">—</div>
-          </div>
-        </div>
-
-        <p class="text-secondary mt-2" style="font-size: var(--fs-small);">Výpočet je orientační a slouží pouze pro informativní účely. Přesnou nabídku hypotéky vám ráda připravím na míru na osobní konzultaci.</p>
-
-        <div class="lead-capture">
-          <h4>Chcete vědět, jestli na tuhle hypotéku reálně dosáhnete?</h4>
-          <p class="lead-note">Pošlu vám tenhle výpočet e-mailem a mrknu na reálné podmínky u bank — bez závazků.</p>
-          <!-- TODO: napojit na reálné odeslání (Formspree/CRM) — nyní mailto s předvyplněnou zprávou jako dočasné řešení -->
-          <form id="mortgage-lead-form" data-lead-form="hypoteka-vypocet">
-            <div class="form-row cols-2">
-              <div class="form-field">
-                <label for="lead-jmeno">Jméno</label>
-                <input type="text" id="lead-jmeno" name="jmeno" required autocomplete="name">
-              </div>
-              <div class="form-field">
-                <label for="lead-kontakt">Telefon nebo e-mail</label>
-                <input type="text" id="lead-kontakt" name="kontakt" required>
-              </div>
+          <div class="form-row cols-2">
+            <div class="form-field">
+              <label for="rate">Úroková sazba (% p.a.)</label>
+              <input type="number" id="rate" data-field="rate" min="0" max="20" step="0.05" value="5.19">
             </div>
-            <button type="submit" class="btn-primary">Poslat mi výpočet</button>
-            <p class="form-hint">Otevře se e-mail s předvyplněnou zprávou.</p>
-          </form>
+            <div class="form-field">
+              <label for="years">Doba splácení (roky)</label>
+              <input type="number" id="years" data-field="years" min="1" max="40" step="1" value="25">
+            </div>
+          </div>
+          <p class="calc-note">Výpočet je orientační a slouží pouze pro informativní účely. Přesnou nabídku hypotéky vám ráda připravím na míru na osobní konzultaci.</p>
         </div>
 
-        <a href="../kontakt.html" class="link-accent mt-2" style="display:inline-block;">Nebo rovnou domluvit konzultaci o hypotéce →</a>
+        <div class="calc-results">
+          <div class="result-box">
+            <div class="result-label">Měsíční splátka</div>
+            <div class="result-value" data-out="payment">—</div>
+            <dl class="calc-stats">
+              <div><dt>Výše úvěru</dt><dd data-out="loan">—</dd></div>
+              <div><dt>Celkem zaplaceno</dt><dd data-out="total">—</dd></div>
+              <div><dt>Z toho úroky</dt><dd data-out="interest">—</dd></div>
+            </dl>
+          </div>
+
+          <div class="lead-capture">
+            <h4>Chcete vědět, jestli na tuhle hypotéku reálně dosáhnete?</h4>
+            <p class="lead-note">Pošlu vám tenhle výpočet e-mailem a mrknu na reálné podmínky u bank — bez závazků.</p>
+            <!-- TODO: napojit na reálné odeslání (Formspree/CRM) — nyní mailto s předvyplněnou zprávou jako dočasné řešení -->
+            <form id="mortgage-lead-form" data-lead-form="hypoteka-vypocet">
+              <div class="form-row cols-2">
+                <div class="form-field">
+                  <label for="lead-jmeno">Jméno</label>
+                  <input type="text" id="lead-jmeno" name="jmeno" required autocomplete="name">
+                </div>
+                <div class="form-field">
+                  <label for="lead-kontakt">Telefon nebo e-mail</label>
+                  <input type="text" id="lead-kontakt" name="kontakt" required>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary">Poslat mi výpočet</button>
+              <p class="form-hint">Otevře se e-mail s předvyplněnou zprávou.</p>
+            </form>
+          </div>
+
+          <a href="../kontakt.html" class="link-accent calc-link">Nebo rovnou domluvit konzultaci o hypotéce →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -240,7 +235,7 @@
   </a>
 </div>
 
-<script src="../assets/js/main.js?v=12"></script>
-<script src="../assets/js/kalkulacky.js?v=12"></script>
+<script src="../assets/js/main.js?v=13"></script>
+<script src="../assets/js/kalkulacky.js?v=13"></script>
 </body>
 </html>

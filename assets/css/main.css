@@ -885,3 +885,26 @@ main:has(> .section-dark:last-child) + .site-footer .footer-grid {
 .team-figure { margin: 0; max-width: 420px; width: 100%; }
 .team-figure img { aspect-ratio: 891 / 1023; border-radius: var(--radius-md); }
 .team-figure figcaption { margin-top: var(--space-3); font-size: 0.9375rem; color: var(--color-text-secondary); }
+
+/* Hypoteční kalkulačka: na počítači zadání vlevo, výsledek vpravo (zůstává na očích při psaní) */
+.calc-layout { display: grid; gap: var(--space-5); align-items: start; }
+.calc-layout > * { min-width: 0; }
+.calc-heading { font-size: var(--fs-h3); margin-bottom: var(--space-4); }
+.calc-note { font-size: var(--fs-small); color: var(--color-text-secondary); margin-top: var(--space-2); }
+.calc-results .result-box { margin-top: 0; padding: var(--space-6); }
+.calc-results .result-value { font-size: clamp(2.25rem, 3vw + 1rem, 3.25rem); line-height: 1.1; margin-top: var(--space-2); }
+.calc-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin: var(--space-5) 0 0; padding-top: var(--space-4); border-top: 1px solid var(--color-border); }
+.calc-stats dt { font-size: var(--fs-small); color: var(--color-text-secondary); }
+.calc-stats dd { margin: var(--space-1) 0 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.calc-link { display: inline-block; margin-top: var(--space-5); }
+@media (min-width: 900px) {
+  .calc-layout { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-6); }
+  .calc-results { position: sticky; top: var(--space-9); }
+}
+@media (max-width: 479px) {
+  .calc-results .result-box { padding: var(--space-5) var(--space-4); }
+  .calc-stats { grid-template-columns: 1fr; gap: 0; padding-top: 0; }
+  .calc-stats > div { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: var(--space-3); }
+  .calc-stats > div + div { border-top: 1px solid var(--color-border); }
+  .calc-stats dd { margin: 0; }
+}
