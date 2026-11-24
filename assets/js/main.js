@@ -142,6 +142,43 @@
     link.addEventListener("click", function () { trackEvent("click_whatsapp"); });
   });
 
+  /* ---------- Kulaté tlačítko Zavolat (mobil) ----------
+     Objeví se po 20 s na webu (počítá se i přes více stránek). Schová se, když je na obrazovce
+     jiné tlačítko s číslem nebo cookie lišta, aby nebyla dvě tlačítka na volání naráz. */
+  (function () {
+    var fab = document.querySelector(".callfab");
+    if (!fab) return;
+    var start = Date.now();
+    try {
+      var saved = Number(window.sessionStorage.getItem("nm-start"));
+      if (saved && saved <= start) start = saved; else window.sessionStorage.setItem("nm-start", String(start));
+    } catch (e) { /* bez sessionStorage se počítá od načtení stránky */ }
+
+    var ready = false;
+    var telInView = [];
+    var bar = document.querySelector(".cookie-bar");
+    var update = function () {
+      var barOpen = !!(bar && bar.parentNode && bar.classList.contains("is-visible"));
+      var show = ready && !barOpen && telInView.indexOf(true) === -1;
+      fab.classList.toggle("is-visible", show);
+    };
+    window.setTimeout(function () { ready = true; update(); }, Math.max(0, 20000 - (Date.now() - start)));
+
+    if ("IntersectionObserver" in window) {
+      var tels = Array.prototype.filter.call(document.querySelectorAll('a[href^="tel:"]'), function (a) {
+        return a !== fab && /(^|\s)btn/.test(a.className);
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { telInView[tels.indexOf(entry.target)] = entry.isIntersecting; });
+        update();
+      });
+      tels.forEach(function (a) { io.observe(a); });
+    }
+    if (bar && "MutationObserver" in window) {
+      new MutationObserver(update).observe(bar, { attributes: true, attributeFilter: ["class"] });
+    }
+  })();
+
   /* ---------- Odeslání formulářů ----------
      box    = prvek, který se po odeslání nahradí potvrzením
      formId = název formuláře pro měření a pro Natku v e-mailu
