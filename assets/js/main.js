@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  /* ---------- Čistá adresa: /index.html → / (Ondřej 24. 11.) ----------
+     GitHub Pages neumí přesměrovat, tak adresu v řádku přepíše prohlížeč, stránka se znovu nenačítá. */
+  if (/\/index\.html$/.test(window.location.pathname) && window.history && window.history.replaceState) {
+    window.history.replaceState(null, "", window.location.pathname.replace(/index\.html$/, "") + window.location.search + window.location.hash);
+  }
+
   /* ---------- Navigace: změna vzhledu po scrollu ---------- */
   var header = document.querySelector(".site-header");
   if (header && !header.classList.contains("no-hero")) {
