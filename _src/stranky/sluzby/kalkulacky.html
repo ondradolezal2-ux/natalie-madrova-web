@@ -1,0 +1,73 @@
+  <section class="page-head">
+    <h1>Hypoteční kalkulačka</h1>
+    <p class="lead">Zadejte cenu nemovitosti, vlastní zdroje, úrokovou sazbu a dobu splácení. Měsíční splátku uvidíte okamžitě.</p>
+  </section>
+
+  <section class="tint">
+    <!-- Na počítači vlevo zadání, vpravo výsledek; v mobilu pod sebou. Výpočet: assets/js/kalkulacky.js -->
+    <div class="calc" data-mortgage-calc>
+      <div class="calc-inputs">
+        <h2 class="h-s">Vaše údaje</h2>
+        <div class="field">
+          <label for="price">Cena nemovitosti (Kč)</label>
+          <input type="number" id="price" data-field="price" min="0" step="1000" value="4500000" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="down">Vlastní zdroje (Kč)</label>
+          <input type="number" id="down" data-field="down" min="0" step="1000" value="900000" inputmode="numeric">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="rate">Úroková sazba (% p.a.)</label>
+            <input type="number" id="rate" data-field="rate" min="0" max="20" step="0.05" value="5.19" inputmode="decimal">
+          </div>
+          <div class="field">
+            <label for="years">Doba splácení (roky)</label>
+            <input type="number" id="years" data-field="years" min="1" max="40" step="1" value="25" inputmode="numeric">
+          </div>
+        </div>
+        <p class="calc-note">Výpočet je orientační a slouží pouze pro informativní účely. Přesnou nabídku hypotéky připravíme na míru na osobní konzultaci, ve spolupráci s Rostislavem Kchopem.</p>
+      </div>
+      <div class="calc-results">
+        <div class="result-box" aria-live="polite">
+          <p class="result-label">Měsíční splátka</p>
+          <p class="result-value" data-out="payment">—</p>
+          <dl class="calc-stats">
+            <div><dt>Výše úvěru</dt><dd data-out="loan">—</dd></div>
+            <div><dt>Celkem zaplaceno</dt><dd data-out="total">—</dd></div>
+            <div><dt>Z toho úroky</dt><dd data-out="interest">—</dd></div>
+          </dl>
+        </div>
+        <div class="lead-capture">
+          <h3>Chcete vědět, jestli na tuhle hypotéku reálně dosáhnete?</h3>
+          <p class="lead-note">Pošlu vám tenhle výpočet e-mailem. Hypotéku vám zařídím ve spolupráci s Rostislavem Kchopem a reálné podmínky u bank prověříme spolu, bez závazků.</p>
+          <form id="mortgage-lead-form" data-lead-form="hypoteka-vypocet">
+            <div class="row2">
+              <div class="field">
+                <label for="lead-jmeno">Jméno</label>
+                <input type="text" id="lead-jmeno" name="jmeno" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="lead-kontakt">Telefon nebo e-mail</label>
+                <input type="text" id="lead-kontakt" name="kontakt" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-lg" data-form-submit>Poslat mi výpočet</button>
+            <p class="form-hint" data-form-hint></p>
+            <p class="form-status" data-form-status role="alert"></p>
+          </form>
+        </div>
+        <a href="../kontakt.html?tema=hypoteka#kontakt-form" class="link calc-link">Nebo rovnou domluvit konzultaci o hypotéce</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <h2>Spočítáme to přesně</h2>
+    <p>Kalkulačka ukáže orientační splátku. Hypotéku vám zařídím ve spolupráci s Rostislavem Kchopem a na konzultaci porovnáme nabídky bank pro vaši situaci, bez závazků.</p>
+    <div class="actions">
+      <a class="btn btn-lg" href="../kontakt.html?tema=hypoteka#kontakt-form">Domluvit konzultaci</a>
+      <a class="btn-ghost btn-lg" href="odhad-ceny.html">Odhad ceny nemovitosti</a>
+    </div>
+    <a class="close-tel" href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a>
+  </section>

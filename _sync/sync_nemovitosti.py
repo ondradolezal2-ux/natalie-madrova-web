@@ -356,18 +356,13 @@ def render_realized(cards):
         if photo:
             used.add(photo.name)
         img = (f'<img src="../{photo.relative_to(ROOT).as_posix()}" alt="{html.escape(title)}{", " + town if town else ""}" '
-               f'loading="lazy" decoding="async">') if photo else ""
+               f'loading="lazy" decoding="async">') if photo else '<span class="photo-placeholder"></span>'
+        # Značení vzhledu v3 „Ateliér“: velká fotka bez kartičky, pod ní popisek (styl v assets/css/site.css)
         items.append(f"""
-        <div class="property-card reveal">
-          <div class="property-media">
-            {img}
-            <span class="property-tag">{tag}</span>
-          </div>
-          <div class="property-body">
-            <span class="eyebrow property-location">{town}</span>
-            <h3 class="property-title">{html.escape(title)}</h3>
-          </div>
-        </div>""")
+        <figure class="deal">
+          {img}
+          <figcaption><span class="deal-title">{html.escape(title)}</span><span class="deal-place">{town}</span><span class="deal-tag">{tag}</span></figcaption>
+        </figure>""")
     # fotky zakázek, které už na stránce nejsou, smazat
     if REALIZED_IMG_DIR.exists():
         for old in REALIZED_IMG_DIR.glob("*.webp"):

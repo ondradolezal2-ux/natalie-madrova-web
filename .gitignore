@@ -1,0 +1,9 @@
+# Repo je veřejné. Poznámky k zakázce a archiv návrhů na GitHub nepatří,
+# zůstávají jen ve složce na Macu.
+_poznamky/
+navrhy/
+
+# Systém a nástroje
+.DS_Store
+.claude/
+foto/

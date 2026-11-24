@@ -2,7 +2,7 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ochrana osobních údajů | Natálie Mádrová</title>
 <meta name="description" content="Zásady ochrany osobních údajů webu Natálie Mádrová — jak nakládáme s vašimi osobními údaji a soubory cookie.">
 <meta property="og:title" content="Ochrana osobních údajů | Natálie Mádrová">
@@ -11,210 +11,153 @@
 <meta property="og:image" content="https://madrovafinreal.cz/assets/img/og-image.jpg">
 <meta property="og:url" content="https://madrovafinreal.cz/ochrana-osobnich-udaju.html">
 <link rel="canonical" href="https://madrovafinreal.cz/ochrana-osobnich-udaju.html">
-<!-- Ikona: monogram MN z Natčiny vizitky -->
 <link rel="icon" href="assets/img/icon/favicon.ico" sizes="48x48">
 <link rel="icon" href="assets/img/icon/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="assets/img/icon/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="assets/img/icon/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=13">
-<link rel="stylesheet" href="assets/css/tokens.css?v=13">
-<link rel="stylesheet" href="assets/css/main.css?v=13">
-<!-- GA4 (TODO: reálné ID od Natky) se načte až po souhlasu s cookies — viz assets/js/main.js -->
+<link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=44">
 <script>
-  document.documentElement.classList.add("js");
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
 </script>
 </head>
-<body>
+<body class="inner">
 
-<header class="site-header no-hero">
-  <div class="container">
-    <a href="./" class="wordmark">Natálie <span>Mádrová</span></a>
-    <nav class="main-nav" aria-label="Hlavní navigace">
-      <ul>
-        <li><a class="nav-link" href="o-mne.html">O mně</a></li>
-        <li class="nav-item-dropdown">
-          <a class="nav-link" href="nemovitosti/">Nemovitosti</a>
-          <div class="nav-dropdown">
-            <a href="nemovitosti/">Aktuální nabídka</a>
-            <a href="nemovitosti/zahranicni.html">Zahraniční nemovitosti</a>
-            <a href="nemovitosti/jak-probiha-prodej.html">Prodej a koupě</a>
-            <a href="nemovitosti/jak-probiha-pronajem.html">Pronájem</a>
-            <a href="nemovitosti/realizovane-zakazky.html">Realizované zakázky</a>
-          </div>
-        </li>
-        <li class="nav-item-dropdown">
-          <a class="nav-link" href="sluzby/finance.html">Služby</a>
-          <div class="nav-dropdown">
-            <a href="sluzby/odhad-ceny.html">Odhad ceny nemovitosti</a>
-            <a href="sluzby/kalkulacky.html">Kalkulačky</a>
-            <a href="sluzby/finance.html">Finance</a>
-          </div>
-        </li>
-        <li><a class="nav-link" href="reference.html">Reference</a></li>
-      </ul>
-    </nav>
-    <a href="kontakt.html" class="btn-primary nav-cta">Rezervace konzultace</a>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<div class="mobile-menu">
-  <ul>
-    <li><a href="./">Domů</a></li>
-    <li><a href="o-mne.html">O mně</a></li>
-    <li>
+<header class="top">
+  <nav class="nav" aria-label="Hlavní navigace">
+    <a href="./">Domů</a>
+    <a href="o-mne.html">O mně</a>
+    <div class="dd">
       <a href="nemovitosti/">Nemovitosti</a>
-      <div class="mobile-sub">
+      <div class="dd-menu">
         <a href="nemovitosti/">Aktuální nabídka</a>
         <a href="nemovitosti/zahranicni.html">Zahraniční nemovitosti</a>
         <a href="nemovitosti/jak-probiha-prodej.html">Prodej a koupě</a>
         <a href="nemovitosti/jak-probiha-pronajem.html">Pronájem</a>
         <a href="nemovitosti/realizovane-zakazky.html">Realizované zakázky</a>
       </div>
-    </li>
-    <li>
+    </div>
+    <div class="dd">
       <a href="sluzby/finance.html">Služby</a>
-      <div class="mobile-sub">
+      <div class="dd-menu">
         <a href="sluzby/odhad-ceny.html">Odhad ceny nemovitosti</a>
         <a href="sluzby/kalkulacky.html">Kalkulačky</a>
         <a href="sluzby/finance.html">Finance</a>
       </div>
-    </li>
-    <li><a href="reference.html">Reference</a></li>
-    <li><a href="kontakt.html">Kontakt</a></li>
-  </ul>
-  <a href="kontakt.html" class="btn-primary">Rezervace konzultace</a>
+    </div>
+    <a href="reference.html">Reference</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <a class="btn top-cta" href="kontakt.html">Domluvit konzultaci</a>
+  <button class="menu" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span></button>
+</header>
+
+<div class="drawer" id="drawer" hidden>
+  <nav aria-label="Menu">
+    <a href="./">Domů</a>
+    <a href="o-mne.html">O mně</a>
+    <a href="nemovitosti/">Nemovitosti</a>
+    <div class="drawer-sub">
+      <a href="nemovitosti/">Aktuální nabídka</a>
+      <a href="nemovitosti/zahranicni.html">Zahraniční nemovitosti</a>
+      <a href="nemovitosti/jak-probiha-prodej.html">Prodej a koupě</a>
+      <a href="nemovitosti/jak-probiha-pronajem.html">Pronájem</a>
+      <a href="nemovitosti/realizovane-zakazky.html">Realizované zakázky</a>
+    </div>
+    <a href="sluzby/finance.html">Služby</a>
+    <div class="drawer-sub">
+      <a href="sluzby/odhad-ceny.html">Odhad ceny nemovitosti</a>
+      <a href="sluzby/kalkulacky.html">Kalkulačky</a>
+      <a href="sluzby/finance.html">Finance</a>
+    </div>
+    <a href="reference.html">Reference</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <a class="btn" href="kontakt.html">Domluvit konzultaci</a>
 </div>
 
 <main>
-
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow reveal">Právní informace</p>
-      <h1 class="reveal">Ochrana osobních údajů</h1>
-      <p class="lead reveal">Vážíme si vašeho soukromí. Níže najdete informace o tom, jaké osobní údaje zpracováváme a proč.</p>
-    </div>
+  <section class="page-head">
+    <h1>Ochrana osobních údajů</h1>
+    <p class="lead">Vážíme si vašeho soukromí. Níže najdete informace o tom, jaké osobní údaje zpracováváme a proč.</p>
   </section>
 
-  <section class="section">
-    <div class="container flow" style="max-width: 760px;">
-      <!-- TODO: text je obecný vzor, doporučujeme nechat ověřit právníkem. Sídlo dle ARES: Hlinné 13, 518 01 Dobré — zatím uvedena kancelář, rozhodnout s klientkou -->
-      <div>
-        <h3>1. Správce osobních údajů</h3>
-        <p>Správcem osobních údajů je Natálie Mádrová, IČO 24024775, kancelář Turkova 85, Týniště nad Orlicí, 517 21 (dále jen „správce“). Kontaktovat správce můžete na e-mailu natalie.madrova@bcas.cz nebo telefonu +420 604 306 514.</p>
-      </div>
-      <div>
-        <h3>2. Jaké údaje zpracováváme</h3>
-        <p>Zpracováváme osobní údaje, které nám poskytnete prostřednictvím kontaktního formuláře, e-mailu, telefonu nebo WhatsAppu — zejména jméno, e-mail, telefonní číslo a obsah vaší zprávy. Dále zpracováváme technické údaje související s návštěvou webu (viz sekce Cookies).</p>
-      </div>
-      <div>
-        <h3>3. Účel a právní základ zpracování</h3>
-        <p>Osobní údaje zpracováváme za účelem vyřízení vašeho dotazu, přípravy nabídky služeb a případné realizace smluvního vztahu. Právním základem je plnění smlouvy, oprávněný zájem správce nebo váš souhlas (např. u žádosti o průvodce ke stažení).</p>
-      </div>
-      <div>
-        <h3>4. Doba uchování údajů</h3>
-        <p>Osobní údaje uchováváme po dobu nezbytně nutnou k naplnění účelu zpracování, nejdéle však po dobu 5 let od posledního kontaktu, pokud zvláštní právní předpis nestanoví jinak.</p>
-      </div>
-      <div>
-        <h3>5. Předání třetím stranám</h3>
-        <p>Osobní údaje nepředáváme třetím stranám s výjimkou případů, kdy je to nezbytné pro vyřízení vašeho požadavku (např. bankám v rámci vyřízení hypotéky) nebo kdy nám to ukládá zákon.</p>
-      </div>
-      <div>
-        <h3>6. Vaše práva</h3>
-        <p>Máte právo na přístup ke svým osobním údajům, jejich opravu či výmaz, omezení zpracování, přenositelnost a právo vznést námitku proti zpracování. V případě dotazů nebo uplatnění práv nás kontaktujte na výše uvedeném e-mailu.</p>
-      </div>
-      <div>
-        <h3>7. Cookies</h3>
-        <p>Web používá soubory cookie k zajištění základní funkčnosti a se souhlasem i k analýze návštěvnosti (Google Analytics). Svou volbu můžete kdykoli změnit přes odkaz „Nastavení cookies" v patičce webu, nebo v nastavení svého prohlížeče.</p>
-        <p>Písma webu se načítají z našeho serveru, ne od třetích stran. Mapa Google na stránce Kontakt se načte až poté, co na ni kliknete — teprve tehdy se k Googlu přenese vaše IP adresa.</p>
-      </div>
-      <div>
-        <h3>8. Kontakt</h3>
-        <p>V případě jakýchkoli dotazů ohledně zpracování osobních údajů nás neváhejte kontaktovat na natalie.madrova@bcas.cz.</p>
-      </div>
-      <p class="text-secondary" style="font-size: var(--fs-small);">Tyto zásady jsou platné od 30. 8. 2026 a mohou být průběžně aktualizovány.</p>
+  <section class="tint">
+    <div class="prose">
+      <h2>1. Správce osobních údajů</h2>
+      <p>Správcem osobních údajů je Natálie Mádrová, IČO 24024775, kancelář Turkova 85, Týniště nad Orlicí, 517 21 (dále jen „správce“). Kontaktovat správce můžete na e-mailu natalie.madrova@bcas.cz nebo telefonu +420 604 306 514.</p>
+      <h2>2. Jaké údaje zpracováváme</h2>
+      <p>Zpracováváme osobní údaje, které nám poskytnete prostřednictvím kontaktního formuláře, e-mailu, telefonu nebo WhatsAppu, zejména jméno, e-mail, telefonní číslo a obsah vaší zprávy. Dále zpracováváme technické údaje související s návštěvou webu (viz sekce Cookies).</p>
+      <h2>3. Účel a právní základ zpracování</h2>
+      <p>Osobní údaje zpracováváme za účelem vyřízení vašeho dotazu, přípravy nabídky služeb a případné realizace smluvního vztahu. Právním základem je plnění smlouvy, oprávněný zájem správce nebo váš souhlas (např. u žádosti o průvodce ke stažení).</p>
+      <h2>4. Doba uchování údajů</h2>
+      <p>Osobní údaje uchováváme po dobu nezbytně nutnou k naplnění účelu zpracování, nejdéle však po dobu 5 let od posledního kontaktu, pokud zvláštní právní předpis nestanoví jinak.</p>
+      <h2>5. Předání třetím stranám</h2>
+      <p>Osobní údaje nepředáváme třetím stranám s výjimkou případů, kdy je to nezbytné pro vyřízení vašeho požadavku (např. Rostislavu Kchopovi, se kterým spolupracujeme na hypotékách, a bankám v rámci vyřízení hypotéky) nebo kdy nám to ukládá zákon.</p>
+      <p>Zprávy odeslané formulářem na webu přenáší služba Formspree (Formspree, Inc.), která je doručí na e-mail správce. Formspree údaje zpracovává ve Spojených státech.</p>
+      <h2>6. Vaše práva</h2>
+      <p>Máte právo na přístup ke svým osobním údajům, jejich opravu či výmaz, omezení zpracování, přenositelnost a právo vznést námitku proti zpracování. V případě dotazů nebo uplatnění práv nás kontaktujte na výše uvedeném e-mailu.</p>
+      <h2>7. Cookies</h2>
+      <p>Web používá soubory cookie k zajištění základní funkčnosti a se souhlasem i k analýze návštěvnosti (Google Analytics). Svou volbu můžete kdykoli změnit přes odkaz „Nastavení cookies“ v patičce webu, nebo v nastavení svého prohlížeče.</p>
+      <p>Písma webu se načítají z našeho serveru, ne od třetích stran. Na stránce Kontakt je mapa ze služby Google Mapy. Načítá se přímo od Googlu, takže Google při jejím zobrazení dostane vaši IP adresu a může použít své cookies.</p>
+      <h2>8. Kontakt</h2>
+      <p>V případě jakýchkoli dotazů ohledně zpracování osobních údajů nás neváhejte kontaktovat na natalie.madrova@bcas.cz.</p>
+      <p class="stamp">Tyto zásady jsou platné od 24. 11. 2026 a mohou být průběžně aktualizovány.</p>
     </div>
   </section>
-
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="grid footer-grid">
-      <div>
-        <p class="footer-wordmark">Natálie Mádrová</p>
-        <p>Realitní a finanční poradkyně pro Rychnovsko, Pardubicko a Královéhradecko — i pro nemovitosti v zahraničí.</p>
-        <p class="footer-partner">Spolupracuji se společností Broker Consulting, a.s.</p>
-        <div class="social-icons mt-2">
-          <a href="https://wa.me/420604306514" aria-label="WhatsApp" target="_blank" rel="noopener">
-            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.523.744 4.868 2.02 6.837L4 29l7.36-1.93a11.94 11.94 0 0 0 4.644.94h.005c6.627 0 12.004-5.377 12.004-12.005C28.013 8.377 22.636 3 16.004 3zm5.46 13.45c-.298-.15-1.767-.872-2.04-.972-.274-.1-.473-.15-.672.15-.198.298-.77.972-.944 1.17-.174.198-.348.224-.646.075-.298-.15-1.258-.464-2.397-1.48-.886-.79-1.484-1.766-1.658-2.064-.174-.298-.02-.46.13-.61.134-.133.298-.348.447-.522.15-.174.198-.298.298-.497.1-.198.05-.373-.025-.522-.075-.15-.672-1.62-.922-2.22-.243-.583-.49-.504-.672-.513-.174-.008-.373-.01-.573-.01-.198 0-.522.075-.795.373-.273.298-1.04 1.017-1.04 2.48 0 1.463 1.065 2.877 1.213 3.075.15.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.767-.723 2.016-1.42.248-.696.248-1.293.174-1.42-.075-.124-.273-.198-.571-.348z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div>
-        <h4>Navigace</h4>
-        <ul>
-          <li><a href="o-mne.html">O mně</a></li>
-          <li><a href="nemovitosti/">Nemovitosti</a></li>
-          <li><a href="sluzby/finance.html">Služby</a></li>
-          <li><a href="reference.html">Reference</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li>Turkova 85<br>Týniště nad Orlicí, 517 21</li>
-          <li><a href="tel:+420604306514">+420 604 306 514</a></li>
-          <li><a href="mailto:natalie.madrova@bcas.cz">natalie.madrova@bcas.cz</a></li>
-          <li><a href="https://wa.me/420604306514" target="_blank" rel="noopener">Napsat na WhatsApp</a></li>
-        </ul>
-      </div>
+<footer class="foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <p class="foot-brand">Natálie Mádrová</p>
+      <p>Realitní a finanční poradkyně pro Rychnovsko, Hradecko a okolí, i pro nemovitosti v zahraničí.</p>
+      <p>Spolupracuji se společností Broker Consulting, a.s.</p>
+      <img class="foot-partner" src="assets/img/partner/broker-consulting.png" alt="Broker Consulting: Finance, Reality, Spolu" width="480" height="247" loading="lazy">
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-current-year></span> Natálie Mádrová · IČO 24024775</span>
-      <span style="display:flex; gap:var(--space-3); flex-wrap:wrap;"><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
-        <a href="#" data-cookie-settings>Nastavení cookies</a></span>
+    <nav class="foot-nav" aria-label="Navigace v patičce">
+      <p class="foot-h">Navigace</p>
+      <a href="o-mne.html">O mně</a>
+      <a href="nemovitosti/">Nemovitosti</a>
+      <a href="sluzby/finance.html">Služby</a>
+      <a href="reference.html">Reference</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="foot-contact">
+      <p class="foot-h">Kontakt</p>
+      <address>Turkova 85<br>Týniště nad Orlicí, 517 21</address>
+      <a href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a>
+      <a href="mailto:natalie.madrova@bcas.cz">natalie.madrova@bcas.cz</a>
+      <a href="https://wa.me/420604306514" target="_blank" rel="noopener">Napsat na WhatsApp</a>
+      <a href="https://www.facebook.com/people/Nat%C3%A1lie-M%C3%A1drov%C3%A1/61553051444394/" target="_blank" rel="noopener">Facebook</a>
     </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© <span data-year>2026</span> Natálie Mádrová · IČO 24024775</span>
+    <span class="foot-legal"><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a> <a href="#" data-cookie-settings>Nastavení cookies</a></span>
   </div>
 </footer>
 
-<div class="cookie-bar" role="dialog" aria-live="polite">
-  <div class="container">
-    <p>Tento web používá soubory cookie ke zlepšení vašeho zážitku. Více informací najdete v <a href="ochrana-osobnich-udaju.html" class="link-accent">zásadách ochrany osobních údajů</a>.</p>
-    <div class="cookie-actions">
-      <button class="btn-secondary" data-cookie-decline>Odmítnout</button>
-      <button class="btn-primary" data-cookie-accept>Souhlasím</button>
-    </div>
+<div class="cookie-bar" role="dialog" aria-live="polite" aria-label="Souhlas s cookies">
+  <p>Tento web používá soubory cookie ke zlepšení vašeho zážitku. Více informací najdete v <a href="ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn-ghost" data-cookie-decline>Odmítnout</button>
+    <button type="button" class="btn-ghost" data-cookie-accept>Souhlasím</button>
   </div>
 </div>
 
-<div class="whatsapp-widget">
-  <div class="whatsapp-tooltip" data-whatsapp-tooltip hidden>
-    Napište mi na WhatsApp
-    <button type="button" class="whatsapp-tooltip-close" data-whatsapp-tooltip-close aria-label="Zavřít">&times;</button>
-  </div>
-  <a href="https://wa.me/420604306514" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Napsat na WhatsApp">
-    <svg viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-  </a>
-</div>
-
-<div class="mobile-cta-bar">
-  <a href="tel:+420604306514" class="mobile-cta-bar__btn" data-track="call">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>
+<nav class="callbar" aria-label="Rychlý kontakt">
+  <a class="callbar-call" href="tel:+420604306514">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>
     Zavolat
   </a>
-  <a href="https://wa.me/420604306514" class="mobile-cta-bar__btn mobile-cta-bar__btn--whatsapp" target="_blank" rel="noopener" data-track="whatsapp">
-    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.523.744 4.868 2.02 6.837L4 29l7.36-1.93a11.94 11.94 0 0 0 4.644.94h.005c6.627 0 12.004-5.377 12.004-12.005C28.013 8.377 22.636 3 16.004 3zm5.46 13.45c-.298-.15-1.767-.872-2.04-.972-.274-.1-.473-.15-.672.15-.198.298-.77.972-.944 1.17-.174.198-.348.224-.646.075-.298-.15-1.258-.464-2.397-1.48-.886-.79-1.484-1.766-1.658-2.064-.174-.298-.02-.46.13-.61.134-.133.298-.348.447-.522.15-.174.198-.298.298-.497.1-.198.05-.373-.025-.522-.075-.15-.672-1.62-.922-2.22-.243-.583-.49-.504-.672-.513-.174-.008-.373-.01-.573-.01-.198 0-.522.075-.795.373-.273.298-1.04 1.017-1.04 2.48 0 1.463 1.065 2.877 1.213 3.075.15.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.767-.723 2.016-1.42.248-.696.248-1.293.174-1.42-.075-.124-.273-.198-.571-.348z"/></svg>
+  <a class="callbar-wa" href="https://wa.me/420604306514" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.523.744 4.868 2.02 6.837L4 29l7.36-1.93a11.94 11.94 0 0 0 4.644.94h.005c6.627 0 12.004-5.377 12.004-12.005C28.013 8.377 22.636 3 16.004 3zm5.46 13.45c-.298-.15-1.767-.872-2.04-.972-.274-.1-.473-.15-.672.15-.198.298-.77.972-.944 1.17-.174.198-.348.224-.646.075-.298-.15-1.258-.464-2.397-1.48-.886-.79-1.484-1.766-1.658-2.064-.174-.298-.02-.46.13-.61.134-.133.298-.348.447-.522.15-.174.198-.298.298-.497.1-.198.05-.373-.025-.522-.075-.15-.672-1.62-.922-2.22-.243-.583-.49-.504-.672-.513-.174-.008-.373-.01-.573-.01-.198 0-.522.075-.795.373-.273.298-1.04 1.017-1.04 2.48 0 1.463 1.065 2.877 1.213 3.075.15.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.767-.723 2.016-1.42.248-.696.248-1.293.174-1.42-.075-.124-.273-.198-.571-.348z"/></svg>
     WhatsApp
   </a>
-</div>
+</nav>
 
-<script src="assets/js/main.js?v=14"></script>
+<script src="assets/js/main.js?v=44"></script>
 </body>
 </html>

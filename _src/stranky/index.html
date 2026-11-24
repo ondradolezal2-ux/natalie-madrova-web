@@ -1,0 +1,142 @@
+  <section class="hero">
+    <figure class="hero-photo">
+      <div class="fade">
+        <img src="assets/img/portraits/natalie-05-mercedes.jpg" alt="Natálie Mádrová" width="733" height="1100" fetchpriority="high">
+      </div>
+    </figure>
+    <div class="hero-copy">
+      <h1>
+        <span class="name">Natálie Mádrová</span>
+      </h1>
+      <p class="lead">Vaše finance. Vaše nemovitosti. <em>Jeden člověk, který je propojí.</em></p>
+      <div class="actions">
+        <a class="btn btn-lg" href="kontakt.html">Domluvit konzultaci</a>
+        <a class="btn-soft btn-lg" href="tel:+420604306514"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>+420&nbsp;604&nbsp;306&nbsp;514</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc">
+    <h2>S čím vám pomůžu</h2>
+    <p class="intro-lead">Reality, financování i pojištění vyřešíte s&nbsp;jedním člověkem.</p>
+    <ul class="trio">
+      <li><h3>Reality</h3><p>Prodej, koupě i pronájem bytů, domů a pozemků na Rychnovsku, Hradecku a&nbsp;v&nbsp;okolí.</p><a class="link" href="nemovitosti/">Nabídka nemovitostí</a></li>
+      <li><h3>Finance</h3><p>Hypotéky, investice a pojištění nastavené přesně podle vaší situace a cílů.</p><a class="link" href="sluzby/finance.html">Finanční služby</a></li>
+      <li><h3>Odhad ceny</h3><p>Rychlý orientační odhad ceny vaší nemovitosti zdarma, online, během pár minut.</p><a class="link" href="sluzby/odhad-ceny.html">Spočítat odhad</a></li>
+    </ul>
+  </section>
+
+  <section class="offer tint">
+    <div class="head">
+      <h2>Aktuálně v nabídce</h2>
+      <a class="link" href="nemovitosti/">Celá nabídka</a>
+    </div>
+    <!-- Data nabídky: assets/js/properties-data.js (každý den ze synchronizace) -->
+    <div class="listing" data-listing data-limit="2" data-detail="nemovitosti/detail.html">
+      <template data-card>
+        <a class="l-card" data-slot="link" href="#">
+          <img data-slot="photo" src="data:," alt="" loading="lazy" width="800" height="533">
+          <span class="l-meta"><span class="l-title" data-slot="title"></span><span class="l-price" data-slot="price"></span></span>
+          <span class="l-place" data-slot="place"></span>
+        </a>
+      </template>
+      <template data-fill>
+        <div class="sell">
+          <h3>Chcete prodat nemovitost?</h3>
+          <p>Rychlý orientační odhad ceny zdarma, online, během pár minut. Kromě inzerce nabídku aktivně párujeme s poptávkou v síti Broker Consulting, která má zhruba 800 000 klientů.</p>
+          <p class="sell-links"><a class="link" href="sluzby/odhad-ceny.html">Spočítat odhad</a> <a class="link" href="nemovitosti/jak-probiha-prodej.html#prodej">Jak probíhá prodej</a></p>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <section class="case">
+    <div class="case-text">
+      <h2><em>Prodáno</em> v&nbsp;Dobrém</h2>
+      <p class="facts">Rodinný dům, 145&nbsp;m²</p>
+      <p class="story">Prodaný zhruba za 3 měsíce.</p>
+      <a class="link" href="nemovitosti/realizovane-zakazky.html">Další realizované zakázky</a>
+    </div>
+    <figure class="case-photo">
+      <img src="assets/img/zakazky/24966.webp" alt="Prodaný rodinný dům v Dobrém" width="800" height="639" loading="lazy">
+    </figure>
+    <figure class="case-quote">
+      <blockquote>„Bylo vidět, že má ve své práci přehled a&nbsp;<em>opravdu se vyzná</em>.“</blockquote>
+      <figcaption>Vanesa Miřejovská, recenze na Googlu</figcaption>
+    </figure>
+  </section>
+
+  <!-- Nemovitosti v zahraničí: olivový blok se třemi kartami destinací (Ondřej 24. 11., varianta 09 z deseti).
+       Fotky jsou vizualizace developerů ze stránky Zahraniční nabídka, podnadpisy jsou z ní.
+       Pro karty jsou zvlášť vyříznuté na výšku a zvětšené Real-ESRGAN (assets/img/zahranici/karty, Ondřej 24. 11.: „ostřejší“). -->
+  <section class="abroad">
+    <div class="abroad-head">
+      <div>
+        <h2>Nemovitosti v&nbsp;<em>zahraničí</em></h2>
+        <p class="abroad-lead">Pomohu vám zorientovat se v&nbsp;místním trhu, právních specifikách i&nbsp;financování nákupu v&nbsp;zahraničí.</p>
+        <p class="abroad-more">Kromě Dubaje, Abú&nbsp;Dhabí a&nbsp;Španělska i&nbsp;Portugalsko, Chorvatsko, Rakousko, Černá&nbsp;Hora, Miami a&nbsp;Anglie.</p>
+      </div>
+      <a class="link" href="nemovitosti/zahranicni.html">Celá zahraniční nabídka</a>
+    </div>
+    <div class="dest-cards">
+      <a class="dest-card" href="nemovitosti/zahranicni.html">
+        <img src="assets/img/zahranici/karty/dubaj-900.webp" srcset="assets/img/zahranici/karty/dubaj-900.webp 900w, assets/img/zahranici/karty/dubaj-1500.webp 1500w" sizes="(max-width: 760px) 74vw, 31vw" alt="Vizualizace developerského projektu v Dubaji: tři výškové domy propojené nahoře, u pláže" width="900" height="1200" loading="lazy">
+        <span class="dest-cap"><h3>Dubaj</h3><span>Moderní město propojené s&nbsp;mořem</span></span>
+        <span class="dest-go"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="dest-card" href="nemovitosti/zahranicni.html">
+        <img src="assets/img/zahranici/karty/abu-dhabi-900.webp" srcset="assets/img/zahranici/karty/abu-dhabi-900.webp 900w, assets/img/zahranici/karty/abu-dhabi-1500.webp 1500w" sizes="(max-width: 760px) 74vw, 31vw" alt="Vizualizace developerského projektu v Abú Dhabí: vila se zahradou a bazénem" width="900" height="1200" loading="lazy">
+        <span class="dest-cap"><h3>Abú&nbsp;Dhabí</h3><span>Město navržené pro život</span></span>
+        <span class="dest-go"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="dest-card" href="nemovitosti/zahranicni.html">
+        <img src="assets/img/zahranici/karty/spanelsko-900.webp" srcset="assets/img/zahranici/karty/spanelsko-900.webp 900w, assets/img/zahranici/karty/spanelsko-1500.webp 1500w" sizes="(max-width: 760px) 74vw, 31vw" alt="Vizualizace developerského projektu ve Španělsku: bílé řadové domy se zahradou a palmami" width="900" height="1200" loading="lazy">
+        <span class="dest-cap"><h3>Španělsko</h3><span>Costa Blanca a&nbsp;Costa del Sol</span></span>
+        <span class="dest-go"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="duo warm">
+    <figure class="duo-photo">
+      <div class="fade">
+        <img src="assets/img/portraits/natalie-01-notebook.jpg" alt="Natálie Mádrová s notebookem" width="854" height="1100" loading="lazy">
+      </div>
+    </figure>
+    <div class="duo-text">
+      <h2>Realitní a finanční poradenství <em>pod jednou střechou</em></h2>
+      <p>Spojuji realitní poradenství s financemi, abyste nemuseli řešit hypotéku, pojištění a prodej nemovitosti s několika různými lidmi. Individuální přístup, transparentní komunikace a komplexní servis od prvního kroku až po předání klíčů.</p>
+      <a class="link" href="o-mne.html">Více o mně</a>
+    </div>
+  </section>
+
+  <section class="refs tint">
+    <div class="head">
+      <h2>Co říkají klienti</h2>
+      <a class="link" href="reference.html">Všechny reference</a>
+    </div>
+    <div class="quotes">
+      <figure class="q">
+        <blockquote>Slečna Mádrová si na mě udělala dostatek času, vše mi důkladně a srozumitelně vysvětlila a ukázala jednotlivé možnosti. Bylo vidět, že má ve své práci přehled a opravdu se vyzná.</blockquote>
+        <figcaption>Vanesa Miřejovská<span>recenze na Googlu</span></figcaption>
+      </figure>
+      <figure class="q">
+        <blockquote>Velmi profesionální a milý přístup. Vše mi bylo srozumitelně vysvětleno, jak jednotlivé druhy pojištění, tak i možnosti investování. Moc děkuji za poradenství Natálii Madrové.</blockquote>
+        <figcaption>Michaela Cachová<span>recenze na Googlu</span></figcaption>
+      </figure>
+      <figure class="q">
+        <blockquote>Při schůzce jsme probírali finance a pojištění. Poradili mi, co by se dalo změnit k lepšímu, a taky se změnilo. Mohu doporučit dalším.</blockquote>
+        <figcaption>Vladimíra Mrkvičková<span>recenze na Googlu</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="close">
+    <h2>Pojďme probrat <em>váš plán</em></h2>
+    <p>Ať už prodáváte, kupujete, nebo řešíte financování, první konzultace je zdarma a nezávazná a pomůže vám ujasnit další kroky.</p>
+    <div class="actions">
+      <a class="btn btn-lg" href="kontakt.html">Domluvit konzultaci</a>
+      <a class="btn-ghost btn-lg" href="https://wa.me/420604306514" target="_blank" rel="noopener">Napsat na WhatsApp</a>
+    </div>
+    <a class="close-tel" href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a>
+  </section>

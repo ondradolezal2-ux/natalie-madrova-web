@@ -1,0 +1,114 @@
+  <section class="page-head with-photo" style="--hb: #dcdde0; --hg: #e8e8e9">
+    <figure class="head-photo">
+      <div class="fade">
+        <img src="assets/img/portraits/natalie-02-whatsapp.jpg" alt="Natálie Mádrová telefonuje" width="733" height="1100" fetchpriority="high">
+      </div>
+    </figure>
+    <h1>Ozvěte se mi</h1>
+    <p class="lead">Ráda s vámi proberu váš záměr, ať už jde o prodej, koupi, hypotéku nebo pojištění. První konzultace je zdarma a nezávazná. Nejrychleji se domluvíme na telefonu nebo přes WhatsApp.</p>
+  </section>
+
+  <section class="tint">
+    <div class="contact">
+      <div class="contact-info">
+        <h2 class="h-s">Zavolejte nebo napište na WhatsApp</h2>
+        <p class="muted reply">Odpovím do 24 hodin, obvykle mnohem dřív.</p>
+        <p class="tel-line"><a class="contact-tel" href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a></p>
+        <div class="actions">
+          <a class="btn-ghost btn-lg" href="https://wa.me/420604306514" target="_blank" rel="noopener">Napsat na WhatsApp</a>
+        </div>
+        <dl>
+          <div><dt>Kancelář Týniště nad Orlicí</dt><dd>Turkova 85, Týniště nad Orlicí, 517 21</dd></div>
+          <div><dt>Kancelář Hradec Králové</dt><dd>Karla IV. 28, Hradec Králové, 500 02</dd></div>
+          <div><dt>E-mail</dt><dd><a class="link" href="mailto:natalie.madrova@bcas.cz">natalie.madrova@bcas.cz</a></dd></div>
+          <div><dt>Facebook</dt><dd><a class="link" href="https://www.facebook.com/people/Nat%C3%A1lie-M%C3%A1drov%C3%A1/61553051444394/" target="_blank" rel="noopener">Natálie Mádrová</a></dd></div>
+          <div><dt>Dostupnost</dt><dd>Po–Pá 9:00–17:00, po domluvě i mimo tuto dobu</dd></div>
+        </dl>
+      </div>
+
+      <!-- Krátký formulář: téma klepnutím, jméno, telefon, e-mail nepovinně. Souhlas není potřeba, dotaz se vyřizuje z oprávněného zájmu (Ochrana osobních údajů, bod 3). -->
+      <form id="kontakt-form" class="lead-form" data-lead-form="kontakt">
+        <div class="lf-head">
+          <img class="lf-avatar" src="assets/img/portraits/natalie-avatar.webp" alt="" width="64" height="64">
+          <div>
+            <h2 class="h-s">Nechte mi číslo, ozvu&nbsp;se vám</h2>
+            <p>Napište, co řešíte. Zavolám vám a domluvíme se, jak dál.</p>
+          </div>
+        </div>
+        <fieldset class="lf-topics">
+          <legend>S čím vám mám pomoct?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="tema" value="Hypotéka" data-tema="hypoteka" required><span>Hypotéka</span></label>
+            <label class="chip"><input type="radio" name="tema" value="Prodej nemovitosti" data-tema="prodej"><span>Prodej nemovitosti</span></label>
+            <label class="chip"><input type="radio" name="tema" value="Koupě nemovitosti" data-tema="koupe"><span>Koupě nemovitosti</span></label>
+            <label class="chip"><input type="radio" name="tema" value="Pronájem" data-tema="pronajem"><span>Pronájem</span></label>
+            <label class="chip"><input type="radio" name="tema" value="Pojištění" data-tema="pojisteni"><span>Pojištění</span></label>
+            <label class="chip"><input type="radio" name="tema" value="Investice" data-tema="investice"><span>Investice</span></label>
+            <label class="chip"><input type="radio" name="tema" value="Zahraniční nemovitost" data-tema="zahranicni"><span>Zahraniční nemovitost</span></label>
+            <label class="chip"><input type="radio" name="tema" value="Něco jiného" data-tema="jine"><span>Něco jiného</span></label>
+          </div>
+        </fieldset>
+        <div class="lf-rest">
+          <div class="field">
+            <label for="jmeno">Jméno a příjmení</label>
+            <input type="text" id="jmeno" name="jmeno" required autocomplete="name">
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" required autocomplete="tel" inputmode="tel">
+            </div>
+            <div class="field">
+              <label for="email">E-mail <span>(nepovinné)</span></label>
+              <input type="email" id="email" name="email" autocomplete="email">
+            </div>
+          </div>
+          <div class="field">
+            <label for="zprava">Chcete něco dodat? <span>(nepovinné)</span></label>
+            <textarea id="zprava" name="zprava" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-lg" data-form-submit>Chci nezávaznou konzultaci</button>
+          <p class="lf-assure">Konzultace je zdarma a nezávazná. Ozvu se do 24 hodin.</p>
+          <p class="lf-note">Údaje použiji jen k odpovědi na váš dotaz, víc v <a href="ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
+          <p class="form-hint" data-form-hint></p>
+          <p class="form-status" data-form-status role="alert"></p>
+        </div>
+      </form>
+
+      <!-- Mapa je vidět hned. Google při jejím zobrazení dostane IP adresu návštěvníka, proto to uvádí Ochrana osobních údajů v bodě 7. -->
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=Turkova+85,+T%C3%BDni%C5%A1t%C4%9B+nad+Orlic%C3%AD&amp;output=embed" title="Mapa: kancelář Turkova 85, Týniště nad Orlicí" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Turkova+85%2C+T%C3%BDni%C5%A1t%C4%9B+nad+Orlic%C3%AD" target="_blank" rel="noopener">Otevřít v Google Mapách</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="split">
+      <div class="split-aside">
+        <h2>Co lidi zajímá nejčastěji</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Kolik stojí první konzultace?</summary>
+          <p>Úvodní konzultace je zdarma a nezávazná. Probereme váš záměr a já vám řeknu, jak bych postupovala a co by to obnášelo.</p>
+        </details>
+        <details>
+          <summary>Jak dlouho trvá prodej nebo vyřízení hypotéky?</summary>
+          <p>Záleží na konkrétní situaci. U prodeje nemovitosti i u hypotéky vám po úvodní konzultaci dám reálný odhad časového plánu na míru. Hypotéku vám zařídím ve spolupráci s Rostislavem Kchopem.</p>
+        </details>
+        <details>
+          <summary>Spolupracujete jen s určitými bankami?</summary>
+          <p>Ne, porovnávám nabídky napříč bankami a vybírám tu, která nejlépe sedí na vaši situaci, ne jednu předem danou instituci.</p>
+        </details>
+        <details>
+          <summary>Dá se vše řešit na dálku?</summary>
+          <p>Ano, úvodní konzultaci i většinu komunikace zvládneme telefonicky, přes WhatsApp nebo online. Osobní schůzka je potřeba typicky jen u prohlídky nemovitosti nebo podpisu smluv.</p>
+        </details>
+        <details>
+          <summary>Kolik si účtujete za zprostředkování?</summary>
+          <p>Odměna se odvíjí od konkrétní služby a rozsahu spolupráce. Přesnou částku probereme transparentně už na úvodní konzultaci, bez skrytých poplatků.</p>
+        </details>
+      </div>
+    </div>
+  </section>

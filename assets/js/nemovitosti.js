@@ -4,51 +4,43 @@
   var propertyGrid = document.querySelector("[data-property-grid]");
   if (!propertyGrid || !window.PROPERTIES) return;
 
-  // Úvodní stránka ukazuje jen pár nabídek a odkazuje do podsložky nemovitosti/
   var detailBase = propertyGrid.getAttribute("data-detail-base") || "detail.html";
-  var limit = parseInt(propertyGrid.getAttribute("data-limit"), 10) || window.PROPERTIES.length;
-  var properties = window.PROPERTIES.slice(0, limit);
-  var section = propertyGrid.closest("[data-property-section]");
-  if (section && !properties.length) { section.hidden = true; return; }
+  var properties = window.PROPERTIES;
 
   var svgHome =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
     '<path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
 
+  var esc = function (s) {
+    return String(s || "").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
+  };
+
+  // Velká fotka bez rámečku, pod ní název, cena a místo
   var cardHtml = function (p) {
-    var cover = (p.thumbs && p.thumbs[0]) || (p.photos && p.photos[0]);
+    var cover = p.photos && p.photos[0];
     var media = cover
-      ? '<img src="' + cover + '" alt="' + p.title + ', ' + p.locationLabel + '" loading="lazy" decoding="async">'
-      : '<div class="photo-placeholder">' + svgHome + '</div>';
+      ? '<img src="' + esc(cover) + '" alt="' + esc(p.title + ", " + p.locationLabel) + '" loading="lazy" decoding="async">'
+      : '<span class="photo-placeholder">' + svgHome + "</span>";
     return (
-      '<a class="property-card" href="' + detailBase + '?id=' + encodeURIComponent(p.id) + '" ' +
-      'data-type="' + p.type + '" data-location="' + p.location + '" data-price="' + p.priceBand + '">' +
-        '<div class="property-media">' +
-          media +
-          '<span class="property-tag">' + p.tag + '</span>' +
-        '</div>' +
-        '<div class="property-body">' +
-          '<span class="eyebrow property-location">' + p.locationLabel + '</span>' +
-          '<h3 class="property-title">' + p.title + '</h3>' +
-          '<p class="property-price">' + p.price + '</p>' +
-        '</div>' +
-      '</a>'
+      '<a class="l-card" href="' + detailBase + "?id=" + encodeURIComponent(p.id) + '" ' +
+      'data-type="' + esc(p.type) + '" data-location="' + esc(p.location) + '" data-price="' + esc(p.priceBand) + '">' +
+        media +
+        '<span class="l-meta"><span class="l-title">' + esc(p.title) + '</span><span class="l-price">' + esc(p.price) + "</span></span>" +
+        '<span class="l-place">' + esc(p.tag) + " · " + esc(p.locationLabel) + "</span>" +
+      "</a>"
     );
   };
 
   propertyGrid.innerHTML = properties.map(cardHtml).join("");
 
-  // Volné místo v řadě (méně než 3 nabídky) zaplní karta z <template data-property-fill>
-  var fill = section && section.querySelector("template[data-property-fill]");
-  var free = 3 - properties.length;
-  if (fill && free > 0) {
-    var fillCard = fill.content.firstElementChild.cloneNode(true);
-    fillCard.style.setProperty("--span", free);
-    propertyGrid.appendChild(fillCard);
+  // Lichý počet nabídek: volné místo v řadě zaplní pozvánka k prodeji z <template data-property-fill>
+  var fill = document.querySelector("template[data-property-fill]");
+  if (fill && properties.length % 2 === 1) {
+    propertyGrid.appendChild(fill.content.firstElementChild.cloneNode(true));
   }
 
   var filterSelects = document.querySelectorAll("[data-property-filter]");
-  var propertyCards = Array.prototype.slice.call(propertyGrid.querySelectorAll(".property-card"));
+  var propertyCards = Array.prototype.slice.call(propertyGrid.querySelectorAll(".l-card"));
   var emptyMsg = document.querySelector("[data-property-empty]");
 
   var applyPropertyFilters = function () {
@@ -71,4 +63,5 @@
   filterSelects.forEach(function (select) {
     select.addEventListener("change", applyPropertyFilters);
   });
+  if (emptyMsg) emptyMsg.hidden = properties.length > 0;
 })();

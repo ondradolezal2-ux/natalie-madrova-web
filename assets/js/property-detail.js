@@ -32,6 +32,14 @@
   var priceEl = document.querySelector("[data-detail-price]");
   if (priceEl) priceEl.textContent = property.price;
 
+  // „Domluvit prohlídku“ otevře formulář s vybraným tématem a názvem nemovitosti ve zprávě
+  var ctaEl = document.querySelector("[data-detail-cta]");
+  if (ctaEl) {
+    var tema = /pron/i.test(property.tag || "") ? "pronajem" : "koupe";
+    ctaEl.href = "../kontakt.html?tema=" + tema + "&zajem=" +
+      encodeURIComponent(property.title + ", " + property.locationLabel) + "#kontakt-form";
+  }
+
   var summaryEl = document.querySelector("[data-detail-summary]");
   if (summaryEl) summaryEl.textContent = property.summary;
 

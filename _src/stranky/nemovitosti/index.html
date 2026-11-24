@@ -1,0 +1,76 @@
+  <section class="page-head">
+    <h1>Aktuální nabídka nemovitostí na Rychnovsku a&nbsp;Hradecku</h1>
+    <p class="lead">Nemovitosti z aktuální nabídky našeho týmu. Nabídka se průběžně mění. Pokud nevidíte, co hledáte, ozvěte se, ráda vám pomůžu najít nemovitost na míru.</p>
+  </section>
+
+  <section class="tint">
+    <div class="filters">
+      <div class="field">
+        <label for="filter-typ">Typ</label>
+        <select id="filter-typ" data-property-filter="type">
+          <option value="">Všechny typy</option>
+          <option value="byt">Byt</option>
+          <option value="dum">Rodinný dům</option>
+          <option value="pozemek">Pozemek</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="filter-lokalita">Lokalita</label>
+        <select id="filter-lokalita" data-property-filter="location">
+          <option value="">Všechny lokality</option>
+          <option value="tyniste-nad-orlici">Týniště nad Orlicí</option>
+          <option value="rychnov-nad-kneznou">Rychnovsko</option>
+          <option value="hradec-kralove">Královéhradecko</option>
+          <option value="pardubice">Pardubicko</option>
+          <option value="jina">Jiná lokalita</option>
+          <option value="zahranici">Zahraničí</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="filter-cena">Cena</label>
+        <select id="filter-cena" data-property-filter="price">
+          <option value="">Bez omezení</option>
+          <option value="0-3">do 3 mil. Kč</option>
+          <option value="3-6">3–6 mil. Kč</option>
+          <option value="6-plus">nad 6 mil. Kč</option>
+        </select>
+      </div>
+    </div>
+    <!-- Data nabídky: assets/js/properties-data.js (každý den ze synchronizace) -->
+    <div class="listing all" data-property-grid></div>
+    <template data-property-fill>
+      <div class="sell">
+        <h3>Chcete prodat nemovitost?</h3>
+        <p>Rychlý orientační odhad ceny zdarma, online, během pár minut. Kromě inzerce nabídku aktivně párujeme s poptávkou v síti Broker Consulting, která má zhruba 800 000 klientů.</p>
+        <p class="sell-links"><a class="link" href="../sluzby/odhad-ceny.html">Spočítat odhad</a> <a class="link" href="jak-probiha-prodej.html#prodej">Jak probíhá prodej</a></p>
+      </div>
+    </template>
+    <p class="empty" data-property-empty hidden>Žádná nemovitost neodpovídá zvoleným filtrům. Zkuste je upravit, nebo se mi rovnou ozvěte, ráda pomůžu najít něco na míru.</p>
+  </section>
+
+  <section class="duo paper">
+    <figure class="duo-photo" style="--ar: 891 / 1023">
+      <div class="fade">
+        <img src="../assets/img/portraits/natalie-rostislav-kchop.jpg" alt="Natálie Mádrová a Rostislav Kchop" width="891" height="1023" loading="lazy">
+      </div>
+      <figcaption>Natálie Mádrová a Rostislav Kchop</figcaption>
+    </figure>
+    <div class="duo-text">
+      <h2>Nevidíte, co hledáte?</h2>
+      <p>Nabídka se průběžně mění. Napište mi, co hledáte, a spolu s týmem Rostislava Kchopa vám pomůžeme najít nemovitost na míru.</p>
+      <div class="actions">
+        <a class="btn-ghost btn-lg" href="../kontakt.html?tema=koupe#kontakt-form">Napsat, co hledám</a>
+        <a class="btn-soft btn-lg" href="tel:+420604306514"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>+420&nbsp;604&nbsp;306&nbsp;514</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <h2>Prodáváte nebo kupujete?</h2>
+    <p>Provedu vás celým procesem od první konzultace až po předání klíčů a rovnou vyřešíme i financování.</p>
+    <div class="actions">
+      <a class="btn btn-lg" href="../kontakt.html">Domluvit konzultaci</a>
+      <a class="btn-ghost btn-lg" href="jak-probiha-prodej.html">Jak probíhá prodej a koupě</a>
+    </div>
+    <a class="close-tel" href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a>
+  </section>

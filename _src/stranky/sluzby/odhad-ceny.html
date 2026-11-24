@@ -1,0 +1,119 @@
+  <section class="page-head">
+    <h1>Odhad ceny nemovitosti na Rychnovsku a&nbsp;Hradecku</h1>
+    <p class="lead">Vyplňte pár základních údajů a získejte orientační odhad ceny vaší nemovitosti. Pro přesné ocenění na míru se domluvíme na osobní prohlídce.</p>
+  </section>
+
+  <section class="tint">
+    <!-- Na počítači vlevo průvodce odhadem, vpravo krátké vysvětlení; v mobilu pod sebou. Výpočet: assets/js/kalkulacky.js -->
+    <div class="estimate">
+      <form data-estimate-calc novalidate>
+        <div class="step-indicator" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="calc-step">
+          <p class="step-label">Krok 1 ze 4</p>
+          <h2 class="h-s">Typ nemovitosti</h2>
+          <div class="field">
+            <label for="typ">Vyberte typ</label>
+            <select id="typ" name="typ" required>
+              <option value="byt">Byt</option>
+              <option value="rodinny-dum">Rodinný dům</option>
+              <option value="pozemek">Pozemek</option>
+              <option value="chata-chalupa">Chata / chalupa</option>
+            </select>
+          </div>
+          <div class="calc-nav">
+            <span></span>
+            <button type="button" class="btn btn-lg" data-step-next>Pokračovat</button>
+          </div>
+        </div>
+        <div class="calc-step">
+          <p class="step-label">Krok 2 ze 4</p>
+          <h2 class="h-s">Lokalita</h2>
+          <div class="field">
+            <label for="lokalita">Vyberte lokalitu</label>
+            <select id="lokalita" name="lokalita" required>
+              <option value="tyniste-nad-orlici">Týniště nad Orlicí</option>
+              <option value="rychnov-nad-kneznou">Rychnov nad Kněžnou</option>
+              <option value="hradec-kralove">Hradec Králové</option>
+              <option value="pardubice">Pardubice</option>
+              <option value="jina">Jiná lokalita</option>
+            </select>
+          </div>
+          <div class="calc-nav">
+            <button type="button" class="btn-ghost btn-lg" data-step-prev>Zpět</button>
+            <button type="button" class="btn btn-lg" data-step-next>Pokračovat</button>
+          </div>
+        </div>
+        <div class="calc-step">
+          <p class="step-label">Krok 3 ze 4</p>
+          <h2 class="h-s">Plocha a stav</h2>
+          <div class="field">
+            <label for="plocha">Užitná plocha (m²)</label>
+            <input type="number" id="plocha" name="plocha" min="1" step="1" required placeholder="např. 75" inputmode="numeric" aria-describedby="plocha-chyba">
+            <p class="form-note" id="plocha-chyba" data-area-error></p>
+          </div>
+          <div class="field">
+            <label for="stav">Stav nemovitosti</label>
+            <select id="stav" name="stav" required>
+              <option value="novostavba">Novostavba</option>
+              <option value="velmi-dobry" selected>Velmi dobrý</option>
+              <option value="k-rekonstrukci">K rekonstrukci</option>
+            </select>
+          </div>
+          <div class="calc-nav">
+            <button type="button" class="btn-ghost btn-lg" data-step-prev>Zpět</button>
+            <button type="submit" class="btn btn-lg">Spočítat odhad</button>
+          </div>
+        </div>
+        <div class="calc-step">
+          <p class="step-label">Výsledek</p>
+          <h2 class="h-s">Váš orientační odhad</h2>
+          <div class="result-box" data-estimate-result aria-live="polite">
+            <p class="result-label">Odhadovaná cena</p>
+            <p class="result-value" data-estimate-value>—</p>
+          </div>
+          <p class="calc-note">Jedná se o orientační odhad na základě průměrných cen za m² v dané lokalitě. Přesný odhad zohledňující konkrétní stav a specifika nemovitosti vám ráda připravím osobně.</p>
+          <div class="lead-capture">
+            <h3>Chci přesný odhad od makléřky</h3>
+            <p class="lead-note">Nechte mi kontakt. Podívám se na konkrétní nemovitost a upřesním odhad při osobní nebo online konzultaci.</p>
+            <div class="row2">
+              <div class="field">
+                <label for="estimate-lead-jmeno">Jméno</label>
+                <input type="text" id="estimate-lead-jmeno" autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="estimate-lead-kontakt">Telefon nebo e-mail</label>
+                <input type="text" id="estimate-lead-kontakt">
+              </div>
+            </div>
+            <button type="button" class="btn btn-lg" data-estimate-lead-send data-form-submit>Chci přesný odhad</button>
+            <p class="form-hint" data-form-hint></p>
+            <p class="form-status" data-form-status role="alert"></p>
+          </div>
+          <div class="calc-nav start">
+            <button type="button" class="btn-ghost" data-step-prev>Upravit údaje</button>
+          </div>
+        </div>
+      </form>
+      <aside class="estimate-aside">
+        <h2 class="h-s">Jak odhad funguje</h2>
+        <ul>
+          <li><strong>Pár krátkých otázek</strong>Typ, lokalita, plocha a stav. Zabere to pár minut a je to zdarma.</li>
+          <li><strong>Orientační cena</strong>Spočítá se z průměrných cen za m² v dané lokalitě.</li>
+          <li><strong>Přesný odhad osobně</strong>Konkrétní stav a specifika nemovitosti zohledním na osobní prohlídce.</li>
+        </ul>
+        <p class="estimate-call">Raději to proberete rovnou? <a class="btn-soft" href="tel:+420604306514"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>+420&nbsp;604&nbsp;306&nbsp;514</a></p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="close">
+    <h2>Prodáváte? Provedu vás celým prodejem</h2>
+    <p>Od realistické ceny přes fotky a prohlídky až po předání klíčů. První konzultace je zdarma a nezávazná.</p>
+    <div class="actions">
+      <a class="btn btn-lg" href="../kontakt.html?tema=prodej#kontakt-form">Domluvit konzultaci</a>
+      <a class="btn-ghost btn-lg" href="../nemovitosti/jak-probiha-prodej.html">Jak probíhá prodej</a>
+    </div>
+    <a class="close-tel" href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a>
+  </section>

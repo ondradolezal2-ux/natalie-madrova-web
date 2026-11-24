@@ -59,35 +59,35 @@
     });
     calculate();
 
-    /* Lead formulář pod výsledkem — odešle spočítané hodnoty e-mailem (TODO: napojit na reálný backend) */
+    /* Lead formulář pod výsledkem — pošle spočítané hodnoty Natce (odeslání v main.js) */
     var leadForm = document.getElementById("mortgage-lead-form");
     if (leadForm) {
       leadForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        var jmeno = leadForm.querySelector("#lead-jmeno").value;
-        var kontakt = leadForm.querySelector("#lead-kontakt").value;
-        var subject = "Hypoteční kalkulačka — žádost o výpočet";
-        var body =
-          "Jméno: " + jmeno + "\n" +
-          "Kontakt: " + kontakt + "\n\n" +
-          "Spočítaná měsíční splátka: " + formatCzk(lastResult.monthly) + "\n" +
-          "Výše úvěru: " + formatCzk(lastResult.loan) + "\n" +
-          "Celkem zaplaceno: " + formatCzk(lastResult.totalPaid) + "\n" +
-          "Z toho úroky: " + formatCzk(lastResult.totalInterest);
-        window.location.href =
-          "mailto:natalie.madrova@bcas.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        window.NM.sendLead(leadForm.closest(".lead-capture"), "hypoteka-vypocet", "Hypoteční kalkulačka — žádost o výpočet", {
+          "Jméno": leadForm.querySelector("#lead-jmeno").value,
+          "Kontakt": leadForm.querySelector("#lead-kontakt").value,
+          "Cena nemovitosti": formatCzk(parseFloat(priceInput.value) || 0),
+          "Vlastní zdroje": formatCzk(parseFloat(downInput.value) || 0),
+          "Úroková sazba": String(rateInput.value).replace(".", ",") + " %",
+          "Doba splácení": yearsInput.value + " let",
+          "Měsíční splátka": formatCzk(lastResult.monthly),
+          "Výše úvěru": formatCzk(lastResult.loan),
+          "Celkem zaplaceno": formatCzk(lastResult.totalPaid),
+          "Z toho úroky": formatCzk(lastResult.totalInterest)
+        });
       });
     }
   }
 
   /* =========================================================
      Odhad ceny nemovitosti — vícekrokový formulář
-     Orientační ceny za m² dle lokality (TODO: ověřit reálnými daty)
+     Orientační ceny za m² dle lokality (aktualizováno 11/2026)
      ========================================================= */
   var pricePerM2 = {
     "tyniste-nad-orlici": 55000,
-    "rychnov-nad-kneznou": 58000,
-    "hradec-kralove": 72000,
+    "rychnov-nad-kneznou": 55000,
+    "hradec-kralove": 80000,
     "pardubice": 70000,
     "jina": 50000
   };
@@ -167,24 +167,34 @@
       showStep(steps.length - 1);
     });
 
-    /* Lead formulář pod výsledkem — odešle spočítaný odhad e-mailem (TODO: napojit na reálný backend) */
+    /* Lead formulář pod výsledkem — pošle odhad i zadané údaje Natce (odeslání v main.js).
+       Je uvnitř formuláře odhadu, proto tlačítko a vlastní kontrola polí. */
+    var estimateLead = estimateForm.querySelector(".lead-capture");
     var estimateLeadBtn = estimateForm.querySelector("[data-estimate-lead-send]");
-    if (estimateLeadBtn) {
+    if (estimateLead && estimateLeadBtn) {
       estimateLeadBtn.addEventListener("click", function () {
-        var jmeno = estimateForm.querySelector("#estimate-lead-jmeno").value;
-        var kontakt = estimateForm.querySelector("#estimate-lead-kontakt").value;
-        var subject = "Odhad ceny nemovitosti — žádost o přesný odhad";
-        var body =
-          "Jméno: " + jmeno + "\n" +
-          "Kontakt: " + kontakt + "\n\n" +
-          "Orientační odhad z kalkulačky: " +
-          Math.round(lastEstimate.low).toLocaleString("cs-CZ") + " – " +
-          Math.round(lastEstimate.high).toLocaleString("cs-CZ") + " Kč";
-        if (typeof gtag === "function") {
-          gtag("event", "lead_form_submit", { form_id: "odhad-ceny" });
+        var jmeno = estimateForm.querySelector("#estimate-lead-jmeno");
+        var kontakt = estimateForm.querySelector("#estimate-lead-kontakt");
+        var status = estimateLead.querySelector("[data-form-status]");
+        if (!jmeno.value.trim() || !kontakt.value.trim()) {
+          if (status) status.textContent = "Vyplňte prosím jméno a telefon nebo e-mail.";
+          (jmeno.value.trim() ? kontakt : jmeno).focus();
+          return;
         }
-        window.location.href =
-          "mailto:natalie.madrova@bcas.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        var label = function (name) {
+          var field = estimateForm.querySelector("[name='" + name + "']");
+          return field.tagName === "SELECT" ? field.options[field.selectedIndex].text : field.value;
+        };
+        window.NM.sendLead(estimateLead, "odhad-ceny", "Odhad ceny nemovitosti — žádost o přesný odhad", {
+          "Jméno": jmeno.value,
+          "Kontakt": kontakt.value,
+          "Typ": label("typ"),
+          "Lokalita": label("lokalita"),
+          "Plocha": label("plocha") + " m²",
+          "Stav": label("stav"),
+          "Orientační odhad": Math.round(lastEstimate.low).toLocaleString("cs-CZ") + " – " +
+            Math.round(lastEstimate.high).toLocaleString("cs-CZ") + " Kč"
+        });
       });
     }
 

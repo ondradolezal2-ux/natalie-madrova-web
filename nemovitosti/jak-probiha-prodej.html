@@ -2,292 +2,189 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prodej a koupě nemovitosti | Natálie Mádrová</title>
-<meta name="description" content="Jak probíhá prodej i koupě nemovitosti s Natálií Mádrovou — pro prodávající i kupující, od první konzultace po předání klíčů.">
+<meta name="description" content="Prodej a koupě nemovitosti na Rychnovsku a Hradecku s Natálií Mádrovou. Jak to probíhá pro prodávající i kupující, od první konzultace po předání klíčů.">
 <meta property="og:title" content="Prodej a koupě nemovitosti | Natálie Mádrová">
 <meta property="og:description" content="Prodej i koupě nemovitosti krok za krokem — pro prodávající i kupující.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://madrovafinreal.cz/assets/img/og-image.jpg">
 <meta property="og:url" content="https://madrovafinreal.cz/nemovitosti/jak-probiha-prodej.html">
 <link rel="canonical" href="https://madrovafinreal.cz/nemovitosti/jak-probiha-prodej.html">
-<!-- Ikona: monogram MN z Natčiny vizitky -->
 <link rel="icon" href="../assets/img/icon/favicon.ico" sizes="48x48">
 <link rel="icon" href="../assets/img/icon/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../assets/img/icon/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="../assets/img/icon/apple-touch-icon.png">
-<link rel="preload" href="../assets/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/fonts.css?v=13">
-<link rel="stylesheet" href="../assets/css/tokens.css?v=13">
-<link rel="stylesheet" href="../assets/css/main.css?v=13">
-<!-- GA4 (TODO: reálné ID od Natky) se načte až po souhlasu s cookies — viz assets/js/main.js -->
+<link rel="preload" href="../assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css?v=44">
 <script>
-  document.documentElement.classList.add("js");
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
 </script>
 </head>
-<body>
+<body class="inner">
 
-<header class="site-header no-hero">
-  <div class="container">
-    <a href="../" class="wordmark">Natálie <span>Mádrová</span></a>
-    <nav class="main-nav" aria-label="Hlavní navigace">
-      <ul>
-        <li><a class="nav-link" href="../o-mne.html">O mně</a></li>
-        <li class="nav-item-dropdown">
-          <a class="nav-link" href="./">Nemovitosti</a>
-          <div class="nav-dropdown">
-            <a href="./">Aktuální nabídka</a>
-            <a href="zahranicni.html">Zahraniční nemovitosti</a>
-            <a href="jak-probiha-prodej.html">Prodej a koupě</a>
-            <a href="jak-probiha-pronajem.html">Pronájem</a>
-            <a href="realizovane-zakazky.html">Realizované zakázky</a>
-          </div>
-        </li>
-        <li class="nav-item-dropdown">
-          <a class="nav-link" href="../sluzby/finance.html">Služby</a>
-          <div class="nav-dropdown">
-            <a href="../sluzby/odhad-ceny.html">Odhad ceny nemovitosti</a>
-            <a href="../sluzby/kalkulacky.html">Kalkulačky</a>
-            <a href="../sluzby/finance.html">Finance</a>
-          </div>
-        </li>
-        <li><a class="nav-link" href="../reference.html">Reference</a></li>
-      </ul>
-    </nav>
-    <a href="../kontakt.html" class="btn-primary nav-cta">Rezervace konzultace</a>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<div class="mobile-menu">
-  <ul>
-    <li><a href="../">Domů</a></li>
-    <li><a href="../o-mne.html">O mně</a></li>
-    <li>
-      <a href="./">Nemovitosti</a>
-      <div class="mobile-sub">
-        <a href="./">Aktuální nabídka</a>
-        <a href="zahranicni.html">Zahraniční nemovitosti</a>
-        <a href="jak-probiha-prodej.html">Prodej a koupě</a>
-        <a href="jak-probiha-pronajem.html">Pronájem</a>
-        <a href="realizovane-zakazky.html">Realizované zakázky</a>
+<header class="top">
+  <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../">Domů</a>
+    <a href="../o-mne.html">O mně</a>
+    <div class="dd">
+      <a href="../nemovitosti/" class="is-current">Nemovitosti</a>
+      <div class="dd-menu">
+        <a href="../nemovitosti/">Aktuální nabídka</a>
+        <a href="../nemovitosti/zahranicni.html">Zahraniční nemovitosti</a>
+        <a href="../nemovitosti/jak-probiha-prodej.html">Prodej a koupě</a>
+        <a href="../nemovitosti/jak-probiha-pronajem.html">Pronájem</a>
+        <a href="../nemovitosti/realizovane-zakazky.html">Realizované zakázky</a>
       </div>
-    </li>
-    <li>
+    </div>
+    <div class="dd">
       <a href="../sluzby/finance.html">Služby</a>
-      <div class="mobile-sub">
+      <div class="dd-menu">
         <a href="../sluzby/odhad-ceny.html">Odhad ceny nemovitosti</a>
         <a href="../sluzby/kalkulacky.html">Kalkulačky</a>
         <a href="../sluzby/finance.html">Finance</a>
       </div>
-    </li>
-    <li><a href="../reference.html">Reference</a></li>
-    <li><a href="../kontakt.html">Kontakt</a></li>
-  </ul>
-  <a href="../kontakt.html" class="btn-primary">Rezervace konzultace</a>
+    </div>
+    <a href="../reference.html">Reference</a>
+    <a href="../kontakt.html">Kontakt</a>
+  </nav>
+  <a class="btn top-cta" href="../kontakt.html">Domluvit konzultaci</a>
+  <button class="menu" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span></button>
+</header>
+
+<div class="drawer" id="drawer" hidden>
+  <nav aria-label="Menu">
+    <a href="../">Domů</a>
+    <a href="../o-mne.html">O mně</a>
+    <a href="../nemovitosti/">Nemovitosti</a>
+    <div class="drawer-sub">
+      <a href="../nemovitosti/">Aktuální nabídka</a>
+      <a href="../nemovitosti/zahranicni.html">Zahraniční nemovitosti</a>
+      <a href="../nemovitosti/jak-probiha-prodej.html">Prodej a koupě</a>
+      <a href="../nemovitosti/jak-probiha-pronajem.html">Pronájem</a>
+      <a href="../nemovitosti/realizovane-zakazky.html">Realizované zakázky</a>
+    </div>
+    <a href="../sluzby/finance.html">Služby</a>
+    <div class="drawer-sub">
+      <a href="../sluzby/odhad-ceny.html">Odhad ceny nemovitosti</a>
+      <a href="../sluzby/kalkulacky.html">Kalkulačky</a>
+      <a href="../sluzby/finance.html">Finance</a>
+    </div>
+    <a href="../reference.html">Reference</a>
+    <a href="../kontakt.html">Kontakt</a>
+  </nav>
+  <a class="btn" href="../kontakt.html">Domluvit konzultaci</a>
 </div>
 
 <main>
-
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Nemovitosti</p>
-      <h1>Prodej a koupě nemovitosti</h1>
-      <p class="lead">Ať nemovitost prodáváte, nebo hledáte, provedu vás celým procesem od první konzultace až po předání klíčů.</p>
-      <nav class="audience-tabs" aria-label="Pro koho">
-        <a href="#prodej">Prodávám</a>
-        <a href="#koupe">Kupuji</a>
-      </nav>
-    </div>
+  <section class="page-head with-photo">
+    <figure class="head-photo">
+      <div class="fade">
+        <img src="../assets/img/portraits/natalie-05-mercedes.jpg" alt="Natálie Mádrová" width="733" height="1100" fetchpriority="high">
+      </div>
+    </figure>
+    <h1>Prodej a koupě nemovitosti na Rychnovsku a&nbsp;Hradecku</h1>
+    <p class="lead">Ať nemovitost prodáváte, nebo hledáte, provedu vás celým procesem od první konzultace až po předání klíčů.</p>
+    <nav class="jump" aria-label="Pro koho">
+      <a class="link" href="#prodej">Prodávám</a>
+      <a class="link" href="#koupe">Kupuji</a>
+    </nav>
   </section>
 
-  <section class="section" id="prodej">
-    <div class="container split">
+  <section class="tint" id="prodej">
+    <div class="split">
       <div class="split-aside">
         <h2>Když prodáváte</h2>
-        <p class="lead">Postarám se o celý prodej, abyste prodali za dobrou cenu a bez starostí.</p>
+        <p>Postarám se o celý prodej, abyste prodali za dobrou cenu a bez starostí.</p>
       </div>
-      <div class="process-steps">
-        <div class="process-step">
-          <span class="step-number">I.</span>
-          <div>
-            <h3>Úvodní konzultace</h3>
-            <p>Probereme vaše očekávání, časový plán a specifika nemovitosti. Doporučím realistickou prodejní strategii.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">II.</span>
-          <div>
-            <h3>Příprava a fotodokumentace</h3>
-            <p>Zajistím profesionální fotografie, případně home staging, a připravím podklady pro inzerci.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">III.</span>
-          <div>
-            <h3>Inzerce a marketing</h3>
-            <p>Nemovitost nabídnu na realitních portálech, ve vlastní síti kontaktů a na sociálních sítích. Navíc ji aktivně párujeme s interní poptávkou v naší síti zhruba 800 000 klientů.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">IV.</span>
-          <div>
-            <h3>Prohlídky se zájemci</h3>
-            <p>Zajistím a odvedu prohlídky, prověřím vážný zájem a bonitu kupujících.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">V.</span>
-          <div>
-            <h3>Uzavření obchodu</h3>
-            <p>Připravím smluvní dokumentaci, zajistím bezpečnou úschovu peněz a doprovodím vás k předání nemovitosti. Právní stránku celého procesu zajišťuje naše právní oddělení.</p>
-          </div>
-        </div>
-      </div>
+      <ol class="steps">
+        <li><h3>Úvodní konzultace</h3><p>Probereme vaše očekávání, časový plán a specifika nemovitosti. Doporučím realistickou prodejní strategii.</p></li>
+        <li><h3>Příprava a fotodokumentace</h3><p>Zajistím profesionální fotografie, případně home staging, a připravím podklady pro inzerci.</p></li>
+        <li><h3>Inzerce a marketing</h3><p>Nemovitost nabídnu na realitních portálech, ve vlastní síti kontaktů a na sociálních sítích. Navíc ji aktivně párujeme s interní poptávkou v síti Broker Consulting, která má zhruba 800 000 klientů.</p></li>
+        <li><h3>Prohlídky se zájemci</h3><p>Zajistím a odvedu prohlídky, prověřím vážný zájem a bonitu kupujících.</p></li>
+        <li><h3>Uzavření obchodu</h3><p>Připravím smluvní dokumentaci, zajistím bezpečnou úschovu peněz a doprovodím vás k předání nemovitosti. Právní stránku celého procesu zajišťuje naše právní oddělení.</p></li>
+      </ol>
     </div>
   </section>
 
-  <section class="section section-alt" id="koupe">
-    <div class="container split">
+  <section id="koupe">
+    <div class="split">
       <div class="split-aside">
         <h2>Když kupujete</h2>
-        <p class="lead">Pomohu vám najít tu pravou nemovitost a rovnou vyřešit i její financování.</p>
+        <p>Pomohu vám najít tu pravou nemovitost a rovnou vyřešit i její financování.</p>
       </div>
-      <div class="process-steps">
-        <div class="process-step">
-          <span class="step-number">I.</span>
-          <div>
-            <h3>Úvodní konzultace</h3>
-            <p>Ujasníme si, co hledáte, v jaké lokalitě a s jakým rozpočtem.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">II.</span>
-          <div>
-            <h3>Financování</h3>
-            <p>Spočítáme, na jakou hypotéku dosáhnete, a připravíme financování, abyste se mohli rozhodnout včas.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">III.</span>
-          <div>
-            <h3>Výběr nemovitosti</h3>
-            <p>Vytipuji vhodné nemovitosti z nabídky našeho týmu i z trhu a pomohu vám je porovnat.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">IV.</span>
-          <div>
-            <h3>Prohlídky</h3>
-            <p>Domluvím prohlídky a pomohu vám posoudit stav nemovitosti i přiměřenost ceny.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-number">V.</span>
-          <div>
-            <h3>Koupě a převod</h3>
-            <p>Připravíme rezervační a kupní smlouvu, zajistíme bezpečnou úschovu peněz a převod na katastru. Právní stránku celého procesu zajišťuje naše právní oddělení.</p>
-          </div>
-        </div>
-      </div>
+      <ol class="steps">
+        <li><h3>Úvodní konzultace</h3><p>Ujasníme si, co hledáte, v jaké lokalitě a s jakým rozpočtem.</p></li>
+        <li><h3>Financování</h3><p>Spočítáme, na jakou hypotéku dosáhnete. Hypotéku vám zařídím ve spolupráci s Rostislavem Kchopem, abyste se mohli rozhodnout včas.</p></li>
+        <li><h3>Výběr nemovitosti</h3><p>Vytipuji vhodné nemovitosti z nabídky našeho týmu i z trhu a pomohu vám je porovnat.</p></li>
+        <li><h3>Prohlídky</h3><p>Domluvím prohlídky a pomohu vám posoudit stav nemovitosti i přiměřenost ceny.</p></li>
+        <li><h3>Koupě a převod</h3><p>Připravíme rezervační a kupní smlouvu, zajistíme bezpečnou úschovu peněz a převod na katastru. Právní stránku celého procesu zajišťuje naše právní oddělení.</p></li>
+      </ol>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container about">
-      <div class="photo-frame">
-        <img class="brand-photo photo-portrait" src="../assets/img/portraits/natalie-02-whatsapp.jpg" alt="Natálie Mádrová telefonuje" loading="lazy">
-      </div>
-      <div class="about-text">
-        <h2>Ozvěte se, ať jste na kterékoli straně</h2>
-        <p class="lead">První konzultace je nezávazná. Probereme, co potřebujete, a domluvíme další postup.</p>
-        <div class="hero-actions">
-          <a href="../kontakt.html" class="btn-primary">Chci prodat nemovitost</a>
-          <a href="../kontakt.html" class="btn-secondary">Hledám nemovitost</a>
-        </div>
-        <p class="hero-contact"><a href="tel:+420604306514">+420 604 306 514</a></p>
-      </div>
+  <section class="close">
+    <h2>Ozvěte se, ať jste na kterékoli straně</h2>
+    <p>První konzultace je zdarma a nezávazná. Probereme, co potřebujete, a domluvíme další postup.</p>
+    <div class="actions">
+      <a class="btn btn-lg" href="../kontakt.html?tema=prodej#kontakt-form">Chci prodat nemovitost</a>
+      <a class="btn-ghost btn-lg" href="../kontakt.html?tema=koupe#kontakt-form">Hledám nemovitost</a>
     </div>
+    <a class="close-tel" href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a>
   </section>
-
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="grid footer-grid">
-      <div>
-        <p class="footer-wordmark">Natálie Mádrová</p>
-        <p>Realitní a finanční poradkyně pro Rychnovsko, Pardubicko a Královéhradecko — i pro nemovitosti v zahraničí.</p>
-        <p class="footer-partner">Spolupracuji se společností Broker Consulting, a.s.</p>
-        <div class="social-icons mt-2">
-          <a href="https://wa.me/420604306514" aria-label="WhatsApp" target="_blank" rel="noopener">
-            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.523.744 4.868 2.02 6.837L4 29l7.36-1.93a11.94 11.94 0 0 0 4.644.94h.005c6.627 0 12.004-5.377 12.004-12.005C28.013 8.377 22.636 3 16.004 3zm5.46 13.45c-.298-.15-1.767-.872-2.04-.972-.274-.1-.473-.15-.672.15-.198.298-.77.972-.944 1.17-.174.198-.348.224-.646.075-.298-.15-1.258-.464-2.397-1.48-.886-.79-1.484-1.766-1.658-2.064-.174-.298-.02-.46.13-.61.134-.133.298-.348.447-.522.15-.174.198-.298.298-.497.1-.198.05-.373-.025-.522-.075-.15-.672-1.62-.922-2.22-.243-.583-.49-.504-.672-.513-.174-.008-.373-.01-.573-.01-.198 0-.522.075-.795.373-.273.298-1.04 1.017-1.04 2.48 0 1.463 1.065 2.877 1.213 3.075.15.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.767-.723 2.016-1.42.248-.696.248-1.293.174-1.42-.075-.124-.273-.198-.571-.348z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div>
-        <h4>Navigace</h4>
-        <ul>
-          <li><a href="../o-mne.html">O mně</a></li>
-          <li><a href="./">Nemovitosti</a></li>
-          <li><a href="../sluzby/finance.html">Služby</a></li>
-          <li><a href="../reference.html">Reference</a></li>
-          <li><a href="../kontakt.html">Kontakt</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li>Turkova 85<br>Týniště nad Orlicí, 517 21</li>
-          <li><a href="tel:+420604306514">+420 604 306 514</a></li>
-          <li><a href="mailto:natalie.madrova@bcas.cz">natalie.madrova@bcas.cz</a></li>
-          <li><a href="https://wa.me/420604306514" target="_blank" rel="noopener">Napsat na WhatsApp</a></li>
-        </ul>
-      </div>
+<footer class="foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <p class="foot-brand">Natálie Mádrová</p>
+      <p>Realitní a finanční poradkyně pro Rychnovsko, Hradecko a okolí, i pro nemovitosti v zahraničí.</p>
+      <p>Spolupracuji se společností Broker Consulting, a.s.</p>
+      <img class="foot-partner" src="../assets/img/partner/broker-consulting.png" alt="Broker Consulting: Finance, Reality, Spolu" width="480" height="247" loading="lazy">
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-current-year></span> Natálie Mádrová · IČO 24024775</span>
-      <span style="display:flex; gap:var(--space-3); flex-wrap:wrap;"><a href="../ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
-        <a href="#" data-cookie-settings>Nastavení cookies</a></span>
+    <nav class="foot-nav" aria-label="Navigace v patičce">
+      <p class="foot-h">Navigace</p>
+      <a href="../o-mne.html">O mně</a>
+      <a href="../nemovitosti/">Nemovitosti</a>
+      <a href="../sluzby/finance.html">Služby</a>
+      <a href="../reference.html">Reference</a>
+      <a href="../kontakt.html">Kontakt</a>
+    </nav>
+    <div class="foot-contact">
+      <p class="foot-h">Kontakt</p>
+      <address>Turkova 85<br>Týniště nad Orlicí, 517 21</address>
+      <a href="tel:+420604306514">+420&nbsp;604&nbsp;306&nbsp;514</a>
+      <a href="mailto:natalie.madrova@bcas.cz">natalie.madrova@bcas.cz</a>
+      <a href="https://wa.me/420604306514" target="_blank" rel="noopener">Napsat na WhatsApp</a>
+      <a href="https://www.facebook.com/people/Nat%C3%A1lie-M%C3%A1drov%C3%A1/61553051444394/" target="_blank" rel="noopener">Facebook</a>
     </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© <span data-year>2026</span> Natálie Mádrová · IČO 24024775</span>
+    <span class="foot-legal"><a href="../ochrana-osobnich-udaju.html">Ochrana osobních údajů</a> <a href="#" data-cookie-settings>Nastavení cookies</a></span>
   </div>
 </footer>
 
-<div class="cookie-bar" role="dialog" aria-live="polite">
-  <div class="container">
-    <p>Tento web používá soubory cookie ke zlepšení vašeho zážitku. Více informací najdete v <a href="../ochrana-osobnich-udaju.html" class="link-accent">zásadách ochrany osobních údajů</a>.</p>
-    <div class="cookie-actions">
-      <button class="btn-secondary" data-cookie-decline>Odmítnout</button>
-      <button class="btn-primary" data-cookie-accept>Souhlasím</button>
-    </div>
+<div class="cookie-bar" role="dialog" aria-live="polite" aria-label="Souhlas s cookies">
+  <p>Tento web používá soubory cookie ke zlepšení vašeho zážitku. Více informací najdete v <a href="../ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn-ghost" data-cookie-decline>Odmítnout</button>
+    <button type="button" class="btn-ghost" data-cookie-accept>Souhlasím</button>
   </div>
 </div>
 
-<div class="whatsapp-widget">
-  <div class="whatsapp-tooltip" data-whatsapp-tooltip hidden>
-    Napište mi na WhatsApp
-    <button type="button" class="whatsapp-tooltip-close" data-whatsapp-tooltip-close aria-label="Zavřít">&times;</button>
-  </div>
-  <a href="https://wa.me/420604306514" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Napsat na WhatsApp">
-    <svg viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-  </a>
-</div>
-
-<div class="mobile-cta-bar">
-  <a href="tel:+420604306514" class="mobile-cta-bar__btn" data-track="call">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>
+<nav class="callbar" aria-label="Rychlý kontakt">
+  <a class="callbar-call" href="tel:+420604306514">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>
     Zavolat
   </a>
-  <a href="https://wa.me/420604306514" class="mobile-cta-bar__btn mobile-cta-bar__btn--whatsapp" target="_blank" rel="noopener" data-track="whatsapp">
-    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.523.744 4.868 2.02 6.837L4 29l7.36-1.93a11.94 11.94 0 0 0 4.644.94h.005c6.627 0 12.004-5.377 12.004-12.005C28.013 8.377 22.636 3 16.004 3zm5.46 13.45c-.298-.15-1.767-.872-2.04-.972-.274-.1-.473-.15-.672.15-.198.298-.77.972-.944 1.17-.174.198-.348.224-.646.075-.298-.15-1.258-.464-2.397-1.48-.886-.79-1.484-1.766-1.658-2.064-.174-.298-.02-.46.13-.61.134-.133.298-.348.447-.522.15-.174.198-.298.298-.497.1-.198.05-.373-.025-.522-.075-.15-.672-1.62-.922-2.22-.243-.583-.49-.504-.672-.513-.174-.008-.373-.01-.573-.01-.198 0-.522.075-.795.373-.273.298-1.04 1.017-1.04 2.48 0 1.463 1.065 2.877 1.213 3.075.15.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.767-.723 2.016-1.42.248-.696.248-1.293.174-1.42-.075-.124-.273-.198-.571-.348z"/></svg>
+  <a class="callbar-wa" href="https://wa.me/420604306514" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.523.744 4.868 2.02 6.837L4 29l7.36-1.93a11.94 11.94 0 0 0 4.644.94h.005c6.627 0 12.004-5.377 12.004-12.005C28.013 8.377 22.636 3 16.004 3zm5.46 13.45c-.298-.15-1.767-.872-2.04-.972-.274-.1-.473-.15-.672.15-.198.298-.77.972-.944 1.17-.174.198-.348.224-.646.075-.298-.15-1.258-.464-2.397-1.48-.886-.79-1.484-1.766-1.658-2.064-.174-.298-.02-.46.13-.61.134-.133.298-.348.447-.522.15-.174.198-.298.298-.497.1-.198.05-.373-.025-.522-.075-.15-.672-1.62-.922-2.22-.243-.583-.49-.504-.672-.513-.174-.008-.373-.01-.573-.01-.198 0-.522.075-.795.373-.273.298-1.04 1.017-1.04 2.48 0 1.463 1.065 2.877 1.213 3.075.15.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.767-.723 2.016-1.42.248-.696.248-1.293.174-1.42-.075-.124-.273-.198-.571-.348z"/></svg>
     WhatsApp
   </a>
-</div>
+</nav>
 
-<script src="../assets/js/main.js?v=14"></script>
+<script src="../assets/js/main.js?v=44"></script>
 </body>
 </html>
