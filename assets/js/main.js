@@ -293,10 +293,10 @@
     var trap = box.querySelector('input[name="_gotcha"]');
     payload._gotcha = trap ? trap.value : "";
 
-    // Skutečně se odesílá jen z ostrého webu (whitelist hostů). Všude jinde (localhost, IP v síti, náhledy, file:)
-    // se payload jen vypíše do konzole a ukáže se potvrzení, jako by odeslání proběhlo.
+    // Skutečně se odesílá jen z ostrého webu (whitelist hostů, http i https, ať se neztratí poptávka z http://).
+    // Všude jinde (localhost, IP v síti, náhledy, file:) se payload jen vypíše do konzole a ukáže se potvrzení.
     var host = window.location.hostname;
-    var isLive = window.location.protocol === "https:" && (host === "madrovafinreal.cz" || host === "www.madrovafinreal.cz");
+    var isLive = host === "madrovafinreal.cz" || host === "www.madrovafinreal.cz";
     var isLocal = !isLive;
     var request;
     if (isLocal) {

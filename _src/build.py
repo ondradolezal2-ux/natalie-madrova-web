@@ -9,7 +9,7 @@ ROOT = pathlib.Path(__file__).parent.parent
 # Jediný základ všech absolutních adres webu: canonical, og:url, og:image, JSON-LD, sitemap.xml a robots.txt.
 # Doména madrovafinreal.cz je koupená (18. 11. 2026). Web na ní poběží, až ji při nasazení nastavíme na GitHub Pages.
 BASE = "https://madrovafinreal.cz/"
-V = "51"  # zvýšit při změně CSS/JS, ať prohlížeče nenačítají starou verzi
+V = "52"  # zvýšit při změně CSS/JS, ať prohlížeče nenačítají starou verzi
 
 SYNC_START = "<!-- SYNC:REALIZOVANE START -->"
 SYNC_END = "<!-- SYNC:REALIZOVANE END -->"
