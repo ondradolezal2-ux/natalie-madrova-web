@@ -52,12 +52,27 @@
     prev.addEventListener("click", function () { if (prev.getAttribute("aria-disabled") !== "true") go(-1); });
     next.addEventListener("click", function () { if (next.getAttribute("aria-disabled") !== "true") go(1); });
     track.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", function () { shown = -1; update(); });
+    // Jen při změně šířky (otočení, okno): iPhone mění výšku při každém posunu stránky (lišta Safari)
+    // a kvůli tomu se další fotky stahovat nemají.
+    var lastW = window.innerWidth;
+    window.addEventListener("resize", function () {
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      shown = -1;
+      update();
+    });
 
-    // Druhá fotka se stáhne, až se galerie blíží na obrazovku, ať při prvním posunu není prázdné místo
+    // Druhá fotka se stáhne, až se galerie blíží na obrazovku, ať při prvním posunu není prázdné místo.
+    // Vždy až po první fotce: u Dubaje je galerie vidět hned a na pomalém mobilu by si o připojení přetahovaly.
+    function afterFirst(fn) {
+      var first = imgs[0];
+      if (first.complete) { fn(); return; }
+      first.addEventListener("load", fn, { once: true });
+      first.addEventListener("error", fn, { once: true });
+    }
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { load(1); io.disconnect(); }
+        if (entries[0].isIntersecting) { io.disconnect(); afterFirst(function () { load(1); }); }
       }, { rootMargin: "200px 0px" });
       io.observe(g);
     }
