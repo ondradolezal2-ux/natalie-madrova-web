@@ -2,14 +2,15 @@
   "use strict";
 
   var svgHome =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
     '<path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
 
   var params = new URLSearchParams(window.location.search);
   var id = params.get("id");
   var property = (window.PROPERTIES || []).filter(function (p) { return p.id === id; })[0];
 
-  var contentEl = document.querySelector("[data-detail-content]");
+  // Obsah detailu (a závěrečná výzva pod ním) se ukáže, jen když je nemovitost nalezena
+  var contentEls = document.querySelectorAll("[data-detail-content]");
   var notFoundEl = document.querySelector("[data-detail-not-found]");
 
   if (!property) {
@@ -17,7 +18,7 @@
     return;
   }
 
-  if (contentEl) contentEl.hidden = false;
+  contentEls.forEach(function (el) { el.hidden = false; });
   document.title = property.title + " | Natálie Mádrová";
 
   var titleEl = document.querySelector("[data-detail-title]");
@@ -43,22 +44,32 @@
   var summaryEl = document.querySelector("[data-detail-summary]");
   if (summaryEl) summaryEl.textContent = property.summary;
 
+  // Texty z dat se vkládají jen jako text (textContent), nikdy jako HTML
+  var asList = function (value) { return Array.isArray(value) ? value : (value ? [value] : []); };
+
   var descriptionEl = document.querySelector("[data-detail-description]");
   if (descriptionEl && property.description) {
-    descriptionEl.innerHTML = property.description
-      .map(function (para) { return "<p>" + para + "</p>"; })
-      .join("");
+    descriptionEl.textContent = "";
+    asList(property.description).forEach(function (para) {
+      var p = document.createElement("p");
+      p.textContent = para;
+      descriptionEl.appendChild(p);
+    });
   }
 
   var featuresEl = document.querySelector("[data-detail-features]");
   if (featuresEl) {
-    featuresEl.innerHTML = property.features
-      .map(function (f) { return "<li>" + f + "</li>"; })
-      .join("");
+    featuresEl.textContent = "";
+    asList(property.features).forEach(function (f) {
+      var li = document.createElement("li");
+      li.textContent = f;
+      featuresEl.appendChild(li);
+    });
   }
 
+  // Odkaz na původní inzerát jen s adresou http(s), ne třeba javascript:
   var sourceEl = document.querySelector("[data-detail-source]");
-  if (sourceEl && property.sourceUrl) {
+  if (sourceEl && /^https?:\/\//i.test(property.sourceUrl || "")) {
     sourceEl.href = property.sourceUrl;
     sourceEl.hidden = false;
   }
@@ -73,28 +84,40 @@
     return;
   }
 
-  var alt = property.title + ", " + property.locationLabel;
-  photoEl.innerHTML = '<img src="' + photos[0] + '" alt="' + alt + '" decoding="async">';
-  var mainImg = photoEl.querySelector("img");
+  var mainImg = document.createElement("img");
+  mainImg.src = photos[0];
+  mainImg.alt = property.title + ", " + property.locationLabel;
+  mainImg.decoding = "async";
+  photoEl.textContent = "";
+  photoEl.appendChild(mainImg);
 
   var thumbs = property.thumbs || photos;
   if (galleryEl && photos.length > 1) {
-    galleryEl.innerHTML = photos
-      .map(function (src, i) {
-        return (
-          '<button type="button" class="' + (i === 0 ? "is-active" : "") + '" data-index="' + i + '" ' +
-          'aria-label="Fotka ' + (i + 1) + ' z ' + photos.length + '">' +
-            '<img src="' + (thumbs[i] || src) + '" alt="" loading="lazy" decoding="async">' +
-          "</button>"
-        );
-      })
-      .join("");
+    galleryEl.textContent = "";
+    photos.forEach(function (src, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = i === 0 ? "is-active" : "";
+      btn.setAttribute("data-index", String(i));
+      btn.setAttribute("aria-label", "Fotka " + (i + 1) + " z " + photos.length);
+      btn.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      var thumb = document.createElement("img");
+      thumb.src = thumbs[i] || src;
+      thumb.alt = "";
+      thumb.loading = "lazy";
+      thumb.decoding = "async";
+      btn.appendChild(thumb);
+      galleryEl.appendChild(btn);
+    });
     galleryEl.hidden = false;
     galleryEl.addEventListener("click", function (e) {
       var btn = e.target.closest("button");
       if (!btn) return;
       mainImg.src = photos[Number(btn.getAttribute("data-index"))];
-      galleryEl.querySelectorAll("button").forEach(function (b) { b.classList.toggle("is-active", b === btn); });
+      galleryEl.querySelectorAll("button").forEach(function (b) {
+        b.classList.toggle("is-active", b === btn);
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
     });
   }
 })();

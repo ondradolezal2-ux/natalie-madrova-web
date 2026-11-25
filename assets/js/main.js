@@ -28,22 +28,59 @@
   var menuBtn = document.querySelector(".menu");
   var drawer = document.getElementById("drawer");
   if (menuBtn && drawer) {
+    // Za otevřeným menu se nesmí dát tabulátorem ani čtečkou procházet obsah stránky: main a patička jsou inert
+    var behind = document.querySelectorAll("main, footer");
     var setMenu = function (open) {
+      var focusWasInside = drawer.contains(document.activeElement);
       drawer.hidden = !open;
       document.body.classList.toggle("menu-open", open);
       menuBtn.setAttribute("aria-expanded", String(open));
       menuBtn.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+      behind.forEach(function (el) {
+        if (open) el.setAttribute("inert", ""); else el.removeAttribute("inert");
+      });
+      // po zavření se zaměření vrátí na tlačítko menu, když bylo uvnitř menu
+      if (!open && focusWasInside) menuBtn.focus();
     };
     menuBtn.addEventListener("click", function () { setMenu(drawer.hidden); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !drawer.hidden) setMenu(false);
+    });
     drawer.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () { setMenu(false); });
     });
+    // Při rozšíření okna nad breakpoint (otočení tabletu) se menu zavře, jinak by zůstal inert na main a footer.
+    // Zaměření se nepřesouvá: tlačítko menu je na širokém okně skryté.
+    var narrow = window.matchMedia("(max-width: 860px)");
+    var onNarrowChange = function () { if (!narrow.matches && !drawer.hidden) { menuBtn.blur(); setMenu(false); } };
+    if (narrow.addEventListener) narrow.addEventListener("change", onNarrowChange);
+    else if (narrow.addListener) narrow.addListener(onNarrowChange);
   }
+
+  /* ---------- Podmenu v hlavičce na počítači: Escape ho zavře (otevřené myší i klávesnicí) ---------- */
+  var menus = document.querySelectorAll(".dd");
+  menus.forEach(function (dd) {
+    var reopen = function () { dd.classList.remove("is-esc"); };
+    dd.addEventListener("mouseleave", reopen);
+    dd.addEventListener("focusout", function (e) { if (!dd.contains(e.relatedTarget)) reopen(); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    menus.forEach(function (dd) {
+      if (!dd.matches(":hover") && !dd.matches(":focus-within")) return;
+      dd.classList.add("is-esc");
+      var top = dd.querySelector(":scope > a");
+      // zaměření uvnitř podmenu se vrátí na položku hlavního menu
+      if (top && dd.contains(document.activeElement) && document.activeElement !== top) top.focus();
+    });
+  });
 
   /* ---------- Google Analytics (GA4) — načte se až po souhlasu s cookies ---------- */
   var gaLoaded = false;
+  var gaDisableKey = "ga-disable-" + CONFIG.ga4Id;
+  window[gaDisableKey] = true; // bez souhlasu se nic neměří
   var loadAnalytics = function () {
+    window[gaDisableKey] = false;
     if (gaLoaded) return;
     gaLoaded = true;
     var script = document.createElement("script");
@@ -76,21 +113,67 @@
     if (stored === "accepted") {
       loadAnalytics();
     } else if (!stored) {
-      window.setTimeout(function () { cookieBar.classList.add("is-visible"); }, 600);
+      window.setTimeout(function () { show(); }, 600);
     }
     var acceptBtn = cookieBar.querySelector("[data-cookie-accept]");
     var declineBtn = cookieBar.querySelector("[data-cookie-decline]");
+    var mainEl = document.querySelector("main");
+    var returnTo = null; // prvek, který měl zaměření před otevřením lišty
+
+    // Pod lištou se nesmí ztratit zaměřený prvek ani cíl kotvy: dokument dostane dolní scroll-padding ve výšce lišty
+    var syncPadding = function () {
+      var open = cookieBar.classList.contains("is-visible");
+      var pad = open ? cookieBar.offsetHeight + (parseFloat(window.getComputedStyle(cookieBar).bottom) || 0) + 12 : 0;
+      document.documentElement.style.scrollPaddingBottom = pad ? pad + "px" : "";
+    };
+    new MutationObserver(syncPadding).observe(cookieBar, { attributes: true, attributeFilter: ["class"] });
+    window.addEventListener("resize", syncPadding);
+
+    // moveFocus: jen při otevření z „Nastavení cookies“; při automatickém zobrazení po načtení se zaměření nepřesouvá
+    var show = function (moveFocus) {
+      var active = document.activeElement;
+      returnTo = active && active !== document.body && !cookieBar.contains(active) ? active : null;
+      cookieBar.classList.add("is-visible");
+      if (moveFocus) {
+        var first = cookieBar.querySelector("button");
+        // lišta je do přechodu skrytá (visibility), zaměřit jde až po jejím zviditelnění
+        if (first) window.requestAnimationFrame(function () { first.focus(); });
+      }
+    };
+    // Odmítnutí smaže cookies Google Analytics (_ga, _ga_*) z této domény i z domény bez www a měření vypne
+    var deleteGaCookies = function () {
+      var host = window.location.hostname.replace(/^www\./, "");
+      var domains = ["", "; domain=" + window.location.hostname, "; domain=." + host];
+      document.cookie.split(";").forEach(function (c) {
+        var name = c.split("=")[0].trim();
+        if (name !== "_ga" && name.indexOf("_ga_") !== 0) return;
+        domains.forEach(function (d) {
+          document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + d;
+        });
+      });
+    };
     var hide = function (value) {
+      var hadFocus = cookieBar.contains(document.activeElement);
       cookieBar.classList.remove("is-visible");
       try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
+      // po zavření se zaměření vrátí tam, kde bylo, jinak na obsah stránky
+      if (hadFocus) {
+        var target = returnTo && document.contains(returnTo) ? returnTo : mainEl;
+        if (target) target.focus({ preventScroll: true });
+      }
+      returnTo = null;
     };
     if (acceptBtn) acceptBtn.addEventListener("click", function () { loadAnalytics(); hide("accepted"); });
-    if (declineBtn) declineBtn.addEventListener("click", function () { hide("declined"); });
+    if (declineBtn) declineBtn.addEventListener("click", function () {
+      window[gaDisableKey] = true;
+      deleteGaCookies();
+      hide("declined");
+    });
 
     document.querySelectorAll("[data-cookie-settings]").forEach(function (link) {
       link.addEventListener("click", function (e) {
         e.preventDefault();
-        cookieBar.classList.add("is-visible");
+        show(true);
       });
     });
   }
@@ -112,7 +195,7 @@
       put("price", p.price);
       n.querySelectorAll('img[data-slot="photo"]').forEach(function (img) {
         img.src = (p.photos && p.photos[0]) || "";
-        img.alt = p.title + ", " + p.locationLabel;
+        img.alt = ""; // odkaz kolem karty už má text (název, místo, cena)
       });
       n.querySelectorAll('a[data-slot="link"]').forEach(function (a) {
         a.href = box.getAttribute("data-detail") + "?id=" + encodeURIComponent(p.id);
@@ -166,8 +249,11 @@
 
     if ("IntersectionObserver" in window) {
       var tels = Array.prototype.filter.call(document.querySelectorAll('a[href^="tel:"]'), function (a) {
-        return a !== fab && /(^|\s)btn/.test(a.className);
+        return a !== fab && (/(^|\s)btn/.test(a.className) || a.classList.contains("close-tel"));
       });
+      // celá patička: tlačítko by jinak zakrylo „Nastavení cookies“ a IČO
+      var foot = document.querySelector("footer.foot");
+      if (foot) tels.push(foot);
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) { telInView[tels.indexOf(entry.target)] = entry.isIntersecting; });
         update();
@@ -182,8 +268,9 @@
   /* ---------- Odeslání formulářů ----------
      box    = prvek, který se po odeslání nahradí potvrzením
      formId = název formuláře pro měření a pro Natku v e-mailu
-     data   = { "Popisek": hodnota } */
-  var sendLead = function (box, formId, subject, data) {
+     data   = { "Popisek": hodnota }
+     extra  = volitelně další pole pro Formspree mimo text e-mailu, např. { _replyto: "adresa" } */
+  var sendLead = function (box, formId, subject, data, extra) {
     var lines = Object.keys(data).map(function (key) { return key + ": " + data[key]; });
 
     // Bez nastaveného endpointu zůstává dočasné řešení přes e-mailový program
@@ -201,20 +288,40 @@
     var payload = { _subject: subject, formular: formId };
     Object.keys(data).forEach(function (key) { payload[key] = data[key]; });
     if (data["E-mail"]) payload._replyto = data["E-mail"]; // Natka může odpovědět rovnou z e-mailu
+    if (extra) Object.keys(extra).forEach(function (key) { payload[key] = extra[key]; });
+    // Past na roboty: skryté pole _gotcha. Když ho vyplní robot, Formspree zprávu zahodí.
+    var trap = box.querySelector('input[name="_gotcha"]');
+    payload._gotcha = trap ? trap.value : "";
 
-    fetch(CONFIG.formEndpoint, {
-      method: "POST",
-      headers: { "Accept": "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    }).then(function (response) {
+    // Skutečně se odesílá jen z ostrého webu (whitelist hostů). Všude jinde (localhost, IP v síti, náhledy, file:)
+    // se payload jen vypíše do konzole a ukáže se potvrzení, jako by odeslání proběhlo.
+    var host = window.location.hostname;
+    var isLive = window.location.protocol === "https:" && (host === "madrovafinreal.cz" || host === "www.madrovafinreal.cz");
+    var isLocal = !isLive;
+    var request;
+    if (isLocal) {
+      console.info("[test] formulář neodeslán:", payload);
+      request = Promise.resolve({ ok: true });
+    } else {
+      request = fetch(CONFIG.formEndpoint, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+    }
+    request.then(function (response) {
       if (!response.ok) throw new Error("HTTP " + response.status);
       // Událost se počítá až po skutečném odeslání
       trackEvent("lead_form_submit", { form_id: formId });
-      box.innerHTML =
-        '<div class="form-success" role="status" tabindex="-1">' +
-          "<h3>Děkuji, zpráva dorazila.</h3>" +
-          '<p>Ozvu se vám co nejdřív. Když to spěchá, zavolejte mi na <a href="tel:' + PHONE.replace(/\s/g, "") + '">' + PHONE + "</a>.</p>" +
-        "</div>";
+      box.innerHTML = formId === "pruvodce-spanelsko"
+        ? '<div class="form-success" role="status" tabindex="-1">' +
+            "<h3>Děkuji, máte to zapsané.</h3>" +
+            "<p>Průvodce vám pošlu e-mailem, až bude hotový.</p>" +
+          "</div>"
+        : '<div class="form-success" role="status" tabindex="-1">' +
+            "<h3>Děkuji, zpráva dorazila.</h3>" +
+            '<p>Ozvu se vám co nejdřív. Když to spěchá, zavolejte mi na <a href="tel:' + PHONE.replace(/\s/g, "") + '">' + PHONE + "</a>.</p>" +
+          "</div>";
       box.querySelector(".form-success").focus();
     }).catch(function () {
       if (button) button.disabled = false;

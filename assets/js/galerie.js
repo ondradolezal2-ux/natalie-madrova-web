@@ -28,6 +28,8 @@
       delete img.dataset.srcset;
       delete img.dataset.src;
     }
+    // Šipka na kraji pásu je aria-disabled, ne disabled: zaměření z ní nespadne na body
+    function setDisabled(btn, off) { btn.setAttribute("aria-disabled", off ? "true" : "false"); }
     var shown = -1;
     function update() {
       var i = current();
@@ -36,8 +38,8 @@
       load(i);
       load(i + 1);
       count.textContent = "Fotka " + (i + 1) + " z " + n;
-      prev.disabled = i === 0;
-      next.disabled = i === n - 1;
+      setDisabled(prev, i === 0);
+      setDisabled(next, i === n - 1);
       dots.forEach(function (d, k) { d.classList.toggle("is-active", k === i); });
     }
     function go(step) {
@@ -47,8 +49,8 @@
       track.scrollTo({ left: i * track.clientWidth, behavior: reduce.matches ? "auto" : "smooth" });
     }
 
-    prev.addEventListener("click", function () { go(-1); });
-    next.addEventListener("click", function () { go(1); });
+    prev.addEventListener("click", function () { if (prev.getAttribute("aria-disabled") !== "true") go(-1); });
+    next.addEventListener("click", function () { if (next.getAttribute("aria-disabled") !== "true") go(1); });
     track.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", function () { shown = -1; update(); });
 
@@ -67,8 +69,8 @@
     // první update nesmí stáhnout druhou fotku dřív, než je galerie blízko
     var i0 = current();
     count.textContent = "Fotka " + (i0 + 1) + " z " + n;
-    prev.disabled = i0 === 0;
-    next.disabled = i0 === n - 1;
+    setDisabled(prev, i0 === 0);
+    setDisabled(next, i0 === n - 1);
     dots.forEach(function (d, k) { d.classList.toggle("is-active", k === i0); });
     shown = i0;
   });

@@ -19,19 +19,20 @@
         <div class="row2">
           <div class="field">
             <label for="rate">Úroková sazba (% p.a.)</label>
-            <input type="number" id="rate" data-field="rate" min="0" max="20" step="0.05" value="5.19" inputmode="decimal">
+            <input type="number" id="rate" data-field="rate" min="0" max="20" step="0.01" value="5.96" inputmode="decimal" aria-describedby="rate-zdroj">
           </div>
           <div class="field">
             <label for="years">Doba splácení (roky)</label>
             <input type="number" id="years" data-field="years" min="1" max="40" step="1" value="25" inputmode="numeric">
           </div>
         </div>
-        <p class="calc-note">Výpočet je orientační a slouží pouze pro informativní účely. Přesnou nabídku hypotéky připravíme na míru na osobní konzultaci, ve spolupráci s Rostislavem Kchopem.</p>
+        <p class="calc-note" id="rate-zdroj">Výchozí sazba 5,96 % je průměrná nabídková sazba hypoték podle <a href="https://www.hypoindex.cz/" target="_blank" rel="noopener">Swiss Life Hypoindexu</a> (listopad 2026). Můžete zadat vlastní.</p>
+        <p class="calc-note">Výpočet je orientační a slouží pouze pro informativní účely. Přesnou nabídku hypotéky připravíme na míru na osobní konzultaci ve spolupráci s Rostislavem Kchopem.</p>
       </div>
       <div class="calc-results">
-        <div class="result-box" aria-live="polite">
+        <div class="result-box">
           <p class="result-label">Měsíční splátka</p>
-          <p class="result-value" data-out="payment">—</p>
+          <p class="result-value" data-out="payment" aria-live="polite">—</p>
           <dl class="calc-stats">
             <div><dt>Výše úvěru</dt><dd data-out="loan">—</dd></div>
             <div><dt>Celkem zaplaceno</dt><dd data-out="total">—</dd></div>
@@ -52,7 +53,9 @@
                 <input type="text" id="lead-kontakt" name="kontakt" required>
               </div>
             </div>
+            <div class="hp" aria-hidden="true"><label>Nevyplňovat <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
             <button type="submit" class="btn btn-lg" data-form-submit>Poslat mi výpočet</button>
+            <p class="lf-note">Údaje použiji jen k odpovědi na váš dotaz, víc v <a href="../ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
             <p class="form-hint" data-form-hint></p>
             <p class="form-status" data-form-status role="alert"></p>
           </form>

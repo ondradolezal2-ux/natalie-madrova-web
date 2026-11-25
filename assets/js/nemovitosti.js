@@ -12,14 +12,14 @@
     '<path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.5"/></svg>';
 
   var esc = function (s) {
-    return String(s || "").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; });
   };
 
   // Velká fotka bez rámečku, pod ní název, cena a místo
   var cardHtml = function (p) {
     var cover = p.photos && p.photos[0];
     var media = cover
-      ? '<img src="' + esc(cover) + '" alt="' + esc(p.title + ", " + p.locationLabel) + '" loading="lazy" decoding="async">'
+      ? '<img src="' + esc(cover) + '" alt="" loading="lazy" decoding="async">'
       : '<span class="photo-placeholder">' + svgHome + "</span>";
     return (
       '<a class="l-card" href="' + detailBase + "?id=" + encodeURIComponent(p.id) + '" ' +
@@ -42,6 +42,7 @@
   var filterSelects = document.querySelectorAll("[data-property-filter]");
   var propertyCards = Array.prototype.slice.call(propertyGrid.querySelectorAll(".l-card"));
   var emptyMsg = document.querySelector("[data-property-empty]");
+  var sellCard = propertyGrid.querySelector(".sell");
 
   var applyPropertyFilters = function () {
     var values = {};
@@ -58,6 +59,8 @@
       if (matches) visibleCount++;
     });
     if (emptyMsg) emptyMsg.hidden = visibleCount > 0;
+    // Bez výsledků se pozvánka k prodeji schová, ať hláška „Žádná nemovitost…“ není pod ní
+    if (sellCard) sellCard.hidden = visibleCount === 0;
   };
 
   filterSelects.forEach(function (select) {

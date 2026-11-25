@@ -9,7 +9,7 @@ ROOT = pathlib.Path(__file__).parent.parent
 # Jediný základ všech absolutních adres webu: canonical, og:url, og:image, JSON-LD, sitemap.xml a robots.txt.
 # Doména madrovafinreal.cz je koupená (18. 11. 2026). Web na ní poběží, až ji při nasazení nastavíme na GitHub Pages.
 BASE = "https://madrovafinreal.cz/"
-V = "46"  # zvýšit při změně CSS/JS, ať prohlížeče nenačítají starou verzi
+V = "51"  # zvýšit při změně CSS/JS, ať prohlížeče nenačítají starou verzi
 
 SYNC_START = "<!-- SYNC:REALIZOVANE START -->"
 SYNC_END = "<!-- SYNC:REALIZOVANE END -->"
@@ -38,7 +38,7 @@ LD_BUSINESS = """<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Natálie Mádrová — Reality a finance",
+  "name": "Natálie Mádrová",
   "telephone": "+420604306514",
   "address": {
     "@type": "PostalAddress",
@@ -56,7 +56,7 @@ PAGES = {
     "index.html": dict(
         prio="1.0",
         title="Natálie Mádrová | Realitní a finanční poradkyně pro Rychnovsko a Hradecko",
-        desc="Realitní a finanční poradkyně pro Rychnovsko a Hradecko. Prodej a koupě nemovitostí, hypotéky a pojištění s jedním člověkem. Kancelář v Týništi nad Orlicí a v Hradci Králové.",
+        desc="Realitní a finanční poradkyně pro Rychnovsko a Hradecko. Prodej, koupě, hypotéky a pojištění ve spolupráci s Rostislavem Kchopem. Týniště nad Orlicí.",
         og_desc="Vaše finance. Vaše nemovitosti. Jeden člověk, který je propojí. Finanční a realitní poradenství pro Rychnovsko a Hradecko i zahraničí.",
         ld=LD_AGENT, body="home", data=True),
     "o-mne.html": dict(
@@ -76,19 +76,19 @@ PAGES = {
     "reference.html": dict(
         prio="0.6",
         title="Reference | Natálie Mádrová — poradkyně Rychnovsko a Hradecko",
-        desc="Recenze klientů realitní a finanční poradkyně Natálie Mádrové z Rychnovska a Hradecka.",
+        desc="Recenze klientů na Googlu: zkušenosti lidí se spoluprací s Natálií Mádrovou při finančním poradenství, pojištění a investování.",
         og_title="Reference | Natálie Mádrová",
         og_desc="Zkušenosti klientů se spoluprací.",
         sec="ref"),
     "ochrana-osobnich-udaju.html": dict(
         prio="0.2",
         title="Ochrana osobních údajů | Natálie Mádrová",
-        desc="Zásady ochrany osobních údajů webu Natálie Mádrová — jak nakládáme s vašimi osobními údaji a soubory cookie.",
+        desc="Zásady ochrany osobních údajů webu Natálie Mádrové: jaké údaje zpracováváme, proč, jak dlouho je uchováváme, komu je předáváme a jaká máte práva.",
         og_desc="Informace o zpracování osobních údajů a cookies."),
     "nemovitosti/index.html": dict(
         prio="0.9",
         title="Nemovitosti — aktuální nabídka | Natálie Mádrová",
-        desc="Aktuální nabídka bytů, domů a pozemků k prodeji a pronájmu na Rychnovsku a Hradecku.",
+        desc="Aktuální nabídka bytů, domů a pozemků k prodeji a pronájmu na Rychnovsku a Hradecku. Nabídku našeho týmu si můžete filtrovat podle typu, lokality a ceny.",
         og_desc="Aktuální nabídka nemovitostí k prodeji a pronájmu.",
         sec="nem", data=True, js=["nemovitosti.js"]),
     "nemovitosti/detail.html": dict(
@@ -99,7 +99,7 @@ PAGES = {
         prio="0.7",
         title="Zahraniční nemovitosti — Dubaj, Abú Dhabí, Španělsko | Natálie Mádrová",
         desc="Nemovitosti v Dubaji, Abú Dhabí, Španělsku, Portugalsku, Chorvatsku, Rakousku a dalších zemích. Pomohu vám s výběrem, financováním i celým procesem koupě.",
-        og_desc="Nemovitosti ve Španělsku a Dubaji jako investiční příležitost.",
+        og_desc="Nemovitosti v Dubaji, Abú Dhabí a Španělsku jako investiční příležitost.",
         sec="nem", js=["galerie.js"]),
     "nemovitosti/jak-probiha-prodej.html": dict(
         prio="0.6",
@@ -116,15 +116,20 @@ PAGES = {
     "nemovitosti/realizovane-zakazky.html": dict(
         prio="0.5",
         title="Realizované zakázky | Natálie Mádrová",
-        desc="Výběr realizovaných prodejů a pronájmů nemovitostí našeho týmu na Rychnovsku a Hradecku.",
+        desc="Výběr realizovaných prodejů a pronájmů nemovitostí našeho týmu na Rychnovsku a Hradecku: rodinné domy, byty i pozemky, vždy s místem a stavem zakázky.",
         og_desc="Výběr realizovaných prodejů a pronájmů nemovitostí našeho týmu.",
         sec="nem"),
     "sluzby/finance.html": dict(
         prio="0.7",
         title="Finance — hypotéky, investice, pojištění | Natálie Mádrová",
-        desc="Hypotéky, pojištění a investice na Rychnovsku a Hradecku. Pomohu vám nastavit financování nemovitosti i ochranu vašich financí.",
-        og_desc="Hypotéky, investice a pojištění na jednom místě.",
+        desc="Hypotéky, pojištění a investice na Rychnovsku a Hradecku ve spolupráci s Rostislavem Kchopem. Financování nemovitosti i ochrana vašich financí.",
+        og_desc="Hypotéky, investice a pojištění ve spolupráci s Rostislavem Kchopem.",
         sec="sluz"),
+    # 404.html servíruje GitHub Pages na libovolné cestě, proto má všechny odkazy a soubory absolutní od kořene (s = "/")
+    "404.html": dict(
+        title="Stránka nenalezena | Natálie Mádrová",
+        desc="Tato stránka neexistuje nebo se přesunula.",
+        robots="noindex"),
     "sluzby/kalkulacky.html": dict(
         prio="0.7",
         title="Hypoteční kalkulačka | Natálie Mádrová",
@@ -148,10 +153,11 @@ HEAD = """<!DOCTYPE html>
 <title>[[title]]</title>
 <meta name="description" content="[[desc]]">
 [[meta]]<!-- Ikona: monogram MN z Natčiny vizitky -->
-<link rel="icon" href="[[s]]assets/img/icon/favicon.ico" sizes="48x48">
-<link rel="icon" href="[[s]]assets/img/icon/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="[[s]]assets/img/icon/icon-192.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="[[s]]assets/img/icon/apple-touch-icon.png">
+<link rel="icon" href="[[s]]assets/img/icon/favicon.ico?v=2" sizes="48x48">
+<link rel="icon" href="[[s]]assets/img/icon/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="[[s]]assets/img/icon/favicon-32.png?v=2" type="image/png" sizes="32x32">
+<link rel="icon" href="[[s]]assets/img/icon/icon-192.png?v=2" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="[[s]]assets/img/icon/apple-touch-icon.png?v=2">
 <link rel="preload" href="[[s]]assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 [[preload]]<link rel="stylesheet" href="[[s]]assets/css/site.css?v=[[v]]">
 [[ld]]<!-- GA4 (TODO: reálné ID od Natky) se načte až po souhlasu s cookies — viz assets/js/main.js -->
@@ -161,7 +167,19 @@ HEAD = """<!DOCTYPE html>
 </script>
 </head>
 <body class="[[body]]">
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+
 """
+
+COOKIE = """<div class="cookie-bar" role="dialog" aria-live="polite" aria-label="Souhlas s cookies">
+  <p>Se souhlasem měřím návštěvnost webu přes Google Analytics (cookies). Více v <a href="[[s]]ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn-ghost" data-cookie-decline>Odmítnout</button>
+    <button type="button" class="btn-ghost" data-cookie-accept>Souhlasím</button>
+  </div>
+</div>
+"""
+
 
 HEADER = """
 <header class="top">
@@ -195,8 +213,8 @@ HEADER = """
 <div class="drawer" id="drawer" hidden>
   <nav aria-label="Menu">
     <a href="[[home]]">Domů</a>
-    <a href="[[s]]o-mne.html">O mně</a>
-    <a href="[[s]]nemovitosti/">Nemovitosti</a>
+    <a href="[[s]]o-mne.html"[[a_omne]]>O mně</a>
+    <a href="[[s]]nemovitosti/"[[a_nem]]>Nemovitosti</a>
     <div class="drawer-sub">
       <a href="[[s]]nemovitosti/">Aktuální nabídka</a>
       <a href="[[s]]nemovitosti/zahranicni.html">Zahraniční nemovitosti</a>
@@ -204,14 +222,14 @@ HEADER = """
       <a href="[[s]]nemovitosti/jak-probiha-pronajem.html">Pronájem</a>
       <a href="[[s]]nemovitosti/realizovane-zakazky.html">Realizované zakázky</a>
     </div>
-    <a href="[[s]]sluzby/finance.html">Služby</a>
+    <a href="[[s]]sluzby/finance.html"[[a_sluz]]>Služby</a>
     <div class="drawer-sub">
       <a href="[[s]]sluzby/odhad-ceny.html">Odhad ceny nemovitosti</a>
       <a href="[[s]]sluzby/kalkulacky.html">Kalkulačky</a>
       <a href="[[s]]sluzby/finance.html">Finance</a>
     </div>
-    <a href="[[s]]reference.html">Reference</a>
-    <a href="[[s]]kontakt.html">Kontakt</a>
+    <a href="[[s]]reference.html"[[a_ref]]>Reference</a>
+    <a href="[[s]]kontakt.html"[[a_kontakt]]>Kontakt</a>
   </nav>
   <a class="btn" href="[[s]]kontakt.html">Domluvit konzultaci</a>
 </div>
@@ -224,6 +242,7 @@ FOOTER = """
       <p class="foot-brand">Natálie Mádrová</p>
       <p>Realitní a finanční poradkyně pro Rychnovsko, Hradecko a okolí, i pro nemovitosti v zahraničí.</p>
       <p>Spolupracuji se společností Broker Consulting, a.s.</p>
+      <p>Hypotéky, pojištění a investice zajišťuji ve spolupráci s Rostislavem Kchopem.</p>
       <img class="foot-partner" src="[[s]]assets/img/partner/broker-consulting.png" alt="Broker Consulting: Finance, Reality, Spolu" width="480" height="247" loading="lazy">
     </div>
     <nav class="foot-nav" aria-label="Navigace v patičce">
@@ -245,17 +264,9 @@ FOOTER = """
   </div>
   <div class="foot-bottom">
     <span>© <span data-year>2026</span> Natálie Mádrová · IČO 24024775</span>
-    <span class="foot-legal"><a href="[[s]]ochrana-osobnich-udaju.html">Ochrana osobních údajů</a> <a href="#" data-cookie-settings>Nastavení cookies</a></span>
+    <span class="foot-legal"><a href="[[s]]ochrana-osobnich-udaju.html">Ochrana osobních údajů</a> <button type="button" data-cookie-settings>Nastavení cookies</button></span>
   </div>
 </footer>
-
-<div class="cookie-bar" role="dialog" aria-live="polite" aria-label="Souhlas s cookies">
-  <p>Tento web používá soubory cookie ke zlepšení vašeho zážitku. Více informací najdete v <a href="[[s]]ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
-  <div class="cookie-actions">
-    <button type="button" class="btn-ghost" data-cookie-decline>Odmítnout</button>
-    <button type="button" class="btn-ghost" data-cookie-accept>Souhlasím</button>
-  </div>
-</div>
 
 <a class="callfab" href="tel:+420604306514" aria-label="Zavolat Natálii Mádrové">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>
@@ -267,6 +278,10 @@ FOOTER = """
 """
 
 
+# Položka menu, jejíž odkaz vede přesně na aktuální stránku, má aria-current="page"; jiné stránky téže sekce mají "true"
+CURRENT_PAGE = {"omne": "o-mne.html", "nem": "nemovitosti/", "sluz": "sluzby/finance.html", "ref": "reference.html", "kontakt": "kontakt.html"}
+
+
 def clean(path):
     """Adresa stránky bez index.html: index.html → "", nemovitosti/index.html → nemovitosti/."""
     return path[: -len("index.html")] if path.endswith("index.html") else path
@@ -276,13 +291,35 @@ def fill(tpl, ctx):
     return re.sub(r"\[\[(\w+)\]\]", lambda m: ctx[m[1]], tpl)
 
 
+# Jednopísmenné předložky a spojky (v, s, z, k, o, u, a, i) nesmí zůstat na konci řádku: za ně se v textu stránky
+# dá nezlomitelná mezera. Mění se jen text mezi značkami, ne atributy, <script>, <style>, <title>, komentáře ani blok SYNC.
+NBSP_SKIP = re.compile(r"(<!--.*?-->|<script\b.*?</script>|<style\b.*?</style>|<title\b.*?</title>|<[^>]+>)", re.S)
+NBSP_RE = re.compile(r"(?:(?<=[\s\u00a0(„\"'–—])|(?<=&nbsp;)|^)([vszkouaiVSZKOUAI]) (?=\S)")
+
+
+def nbsp_text(html):
+    parts = NBSP_SKIP.split(html)
+    # sudé části jsou text, liché značky (split se zachycující skupinou)
+    for i in range(0, len(parts), 2):
+        parts[i] = NBSP_RE.sub(lambda m: m[1] + "&nbsp;", parts[i])
+    return "".join(parts)
+
+
+def nbsp_page(html):
+    start, end = html.find(SYNC_START), html.find(SYNC_END)
+    if start == -1 or end == -1:
+        return nbsp_text(html)
+    end += len(SYNC_END)
+    return nbsp_text(html[:start]) + html[start:end] + nbsp_text(html[end:])
+
+
 def sync_block(page):
     start, end = page.find(SYNC_START), page.find(SYNC_END)
     return page[start:end + len(SYNC_END)] if start != -1 and end != -1 else None
 
 
 def build(path, cfg):
-    s = "../" * path.count("/")
+    s = "/" if path == "404.html" else "../" * path.count("/")
     url = BASE + clean(path)
     meta = ""
     if cfg.get("robots"):
@@ -292,7 +329,11 @@ def build(path, cfg):
             '<meta property="og:title" content="%s">\n'
             '<meta property="og:description" content="%s">\n'
             '<meta property="og:type" content="website">\n'
+            '<meta property="og:locale" content="cs_CZ">\n'
+            '<meta property="og:site_name" content="Natálie Mádrová">\n'
             '<meta property="og:image" content="%sassets/img/og-image.jpg">\n'
+            '<meta property="og:image:width" content="1200">\n'
+            '<meta property="og:image:height" content="630">\n'
             '<meta property="og:url" content="%s">\n'
             '<link rel="canonical" href="%s">\n'
         ) % (cfg.get("og_title", cfg["title"]), cfg["og_desc"], BASE, url, url)
@@ -313,7 +354,9 @@ def build(path, cfg):
         scripts="\n".join(scripts),
     )
     for key in ("omne", "nem", "sluz", "ref", "kontakt"):
-        ctx["c_" + key] = ' class="is-current"' if cfg.get("sec") == key else ""
+        cur = "page" if CURRENT_PAGE.get(key) in (path, clean(path)) else "true"
+        ctx["c_" + key] = ' class="is-current" aria-current="%s"' % cur if cfg.get("sec") == key else ""
+        ctx["a_" + key] = ' aria-current="%s"' % cur if cfg.get("sec") == key else ""  # mobilní menu: jen aria-current
 
     main = fill((SRC / path).read_text(encoding="utf-8"), ctx)
     out = ROOT / path
@@ -322,10 +365,11 @@ def build(path, cfg):
         live = sync_block(out.read_text(encoding="utf-8"))
         if live and 'class="deal' in live:
             main = main.replace(sync_block(main), live)
-    html = fill(HEAD + HEADER, ctx) + "\n<main>\n" + main.rstrip() + "\n</main>\n" + fill(FOOTER, ctx)
+    html = fill(HEAD + COOKIE + HEADER, ctx) + "\n<main id=\"obsah\" tabindex=\"-1\">\n" + main.rstrip() + "\n</main>\n" + fill(FOOTER, ctx)
     # Komentáře ze šablon i ze zdrojů stránek jsou pro nás, na hotový web nepatří.
     # Zůstávají jen značky SYNC, podle kterých synchronizace přepisuje realizované zakázky.
     html = re.sub(r"[ \t]*<!--(?!\s*SYNC:).*?-->[ \t]*\n?", "", html, flags=re.S)
+    html = nbsp_page(html)
     out.write_text(html, encoding="utf-8")
     print("hotovo", path)
 

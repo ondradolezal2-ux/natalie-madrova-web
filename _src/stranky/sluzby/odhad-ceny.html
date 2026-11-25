@@ -7,6 +7,7 @@
     <!-- Na počítači vlevo průvodce odhadem, vpravo krátké vysvětlení; v mobilu pod sebou. Výpočet: assets/js/kalkulacky.js -->
     <div class="estimate">
       <form data-estimate-calc novalidate>
+        <p class="sr-only" role="status" data-estimate-announce></p>
         <div class="step-indicator" aria-hidden="true">
           <span></span><span></span><span></span><span></span>
         </div>
@@ -47,13 +48,13 @@
         </div>
         <div class="calc-step">
           <p class="step-label">Krok 3 ze 4</p>
-          <h2 class="h-s">Plocha a stav</h2>
+          <h2 class="h-s" data-area-heading>Plocha a stav</h2>
           <div class="field">
-            <label for="plocha">Užitná plocha (m²)</label>
-            <input type="number" id="plocha" name="plocha" min="1" step="1" required placeholder="např. 75" inputmode="numeric" aria-describedby="plocha-chyba">
+            <label for="plocha" data-area-label>Užitná plocha (m²)</label>
+            <input type="number" id="plocha" name="plocha" min="1" max="100000" step="1" required placeholder="např. 75" inputmode="numeric" aria-describedby="plocha-chyba">
             <p class="form-note" id="plocha-chyba" data-area-error></p>
           </div>
-          <div class="field">
+          <div class="field" data-condition-field>
             <label for="stav">Stav nemovitosti</label>
             <select id="stav" name="stav" required>
               <option value="novostavba">Novostavba</option>
@@ -69,11 +70,12 @@
         <div class="calc-step">
           <p class="step-label">Výsledek</p>
           <h2 class="h-s">Váš orientační odhad</h2>
-          <div class="result-box" data-estimate-result aria-live="polite">
+          <div class="result-box" data-estimate-result>
             <p class="result-label">Odhadovaná cena</p>
             <p class="result-value" data-estimate-value>—</p>
           </div>
-          <p class="calc-note">Jedná se o orientační odhad na základě průměrných cen za m² v dané lokalitě. Přesný odhad zohledňující konkrétní stav a specifika nemovitosti vám ráda připravím osobně.</p>
+          <p class="calc-note" data-note="budova">Jedná se o orientační odhad na základě průměrných cen za m² v dané lokalitě. Přesný odhad zohledňující konkrétní stav a specifika nemovitosti vám ráda připravím osobně.</p>
+          <p class="calc-note" data-note="pozemek" hidden>U pozemku vychází odhad z mediánu nabídkových cen stavebních pozemků v okrese podle nemovitostniodhad.cz (k 24. 11. 2026), u jiné lokality z mediánu za celou ČR. Skutečné prodejní ceny bývají obvykle nižší než inzerované. Přesný odhad vašeho pozemku vám ráda připravím osobně.</p>
           <div class="lead-capture">
             <h3>Chci přesný odhad od makléřky</h3>
             <p class="lead-note">Nechte mi kontakt. Podívám se na konkrétní nemovitost a upřesním odhad při osobní nebo online konzultaci.</p>
@@ -87,7 +89,9 @@
                 <input type="text" id="estimate-lead-kontakt">
               </div>
             </div>
+            <div class="hp" aria-hidden="true"><label>Nevyplňovat <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
             <button type="button" class="btn btn-lg" data-estimate-lead-send data-form-submit>Chci přesný odhad</button>
+            <p class="lf-note">Údaje použiji jen k odpovědi na váš dotaz, víc v <a href="../ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
             <p class="form-hint" data-form-hint></p>
             <p class="form-status" data-form-status role="alert"></p>
           </div>
@@ -100,7 +104,7 @@
         <h2 class="h-s">Jak odhad funguje</h2>
         <ul>
           <li><strong>Pár krátkých otázek</strong>Typ, lokalita, plocha a stav. Zabere to pár minut a je to zdarma.</li>
-          <li><strong>Orientační cena</strong>Spočítá se z průměrných cen za m² v dané lokalitě.</li>
+          <li><strong>Orientační cena</strong>Spočítá se z cen za m² v dané lokalitě, u pozemků podle okresu.</li>
           <li><strong>Přesný odhad osobně</strong>Konkrétní stav a specifika nemovitosti zohledním na osobní prohlídce.</li>
         </ul>
         <p class="estimate-call">Raději to proberete rovnou? <a class="btn-soft" href="tel:+420604306514"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 1-2z"/></svg>+420&nbsp;604&nbsp;306&nbsp;514</a></p>
