@@ -158,6 +158,8 @@ section { padding: clamp(80px, 10vw, 152px) var(--gutter); }
           mask-image: linear-gradient(to top, transparent 0, #000 14%, #000 88%, transparent 100%); }
 .hero-copy { grid-column: 1; grid-row: 1; align-self: center; padding: calc(var(--top) + 32px) 0 72px var(--gutter); position: relative; z-index: 1; }
 .hero h1 { font-weight: 400; }
+/* Podpis nad jménem, jen na počítači a tabletu, na mobilu ne (Ondřej 25. 11., varianta J) */
+.hero-sig { display: block; width: clamp(150px, 12vw, 210px); height: auto; margin: 0 0 -4px -6px; }
 .name { display: block; font-size: clamp(54px, 6.4vw, 102px); line-height: 0.94; font-weight: 620; font-stretch: 125%; letter-spacing: -0.035em; }
 /* Úvod je jen jméno, heslo a tlačítko s číslem (Ondřej 24. 11.), služby jsou hned v dalším bloku. */
 .hero .lead { margin-top: 24px; max-width: 32ch; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.18; font-weight: 560; font-stretch: 112%; letter-spacing: -0.02em; text-wrap: balance; }
@@ -684,6 +686,7 @@ input::placeholder { color: var(--ink-2); opacity: 1; } /* 5,7 : 1 na bílém po
   .hero-photo img { -webkit-mask-image: none; mask-image: none; }
   @keyframes emerge { from { opacity: 0; filter: blur(14px); } to { opacity: 1; filter: blur(0); } }
   .hero-copy { grid-column: 1; grid-row: 2; margin-top: -62px; padding: 0 16px 44px; }
+  .hero-sig { display: none; }
   .name { font-size: 42px; }
   .hero .lead { margin-top: 10px; font-size: 21px; }
   .hero .actions { margin-top: 18px; }
